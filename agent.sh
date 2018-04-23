@@ -31,10 +31,10 @@ if ! [ -x "$(which docker)" ]; then
    curl -fsSL get.docker.com -o get-docker.sh
    sh get-docker.sh
 fi
-if [[ "$(docker images -q $image:$tag 2> /dev/null)" == "" ]]; then
+#if [[ "$(docker images -q $image:$tag 2> /dev/null)" == "" ]]; then
   #docker pull samyankun/eostestnet:0.1
-  docker pull $image/$tag
-fi
+docker pull $image/$tag
+#fi
 if [ $? -ne 0 ]; then
   echo "Error occurs"
 fi
