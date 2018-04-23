@@ -10,14 +10,7 @@ if [ $# -ne 1 ]; then
   exit
 fi
 container_hostname=$1
-if [ -e ./Porridge ]; then
-  rm -rf Porridge
-fi
-git clone https://github.com/yankunsam/Porridge.git
-cd Porridge
-git checkout master
-cd ..
-if grep -Fxq "$container_hostname" ./Porridge/accounts.conf
+if grep -Fxq "$container_hostname" ./accounts.conf
 then
     # if found
     echo "$container_hostname exist, please have a check in account.conf supply another one"
