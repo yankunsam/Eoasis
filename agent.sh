@@ -38,4 +38,4 @@ docker pull $image:$tag
 if [ $? -ne 0 ]; then
   echo "Error occurs"
 fi
-docker run -it --rm --hostname $container_hostname  $image:$tag /bin/bash
+docker run -it --rm --hostname $container_hostname -p 9876:9876 $image:$tag /bin/bash
