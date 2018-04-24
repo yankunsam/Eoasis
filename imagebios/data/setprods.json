@@ -1,0 +1,17 @@
+{
+  "version": "12348",
+  "producers": [
+    {
+      "producer_name": "hvgu",
+      "block_signing_key": "EOS7teYUcGxMg9ziRanek957YV3pagmgfqXP3LSDTMLFYMfEne3uu"
+    },
+    {
+      "producer_name": "qwpg",
+      "block_signing_key": "EOS8dtkgP7ZEvt5D5DPSdn8njNaEN51NrbECjfCMMeTcGQ5BTqfMr"
+    },
+    {
+      "producer_name": "gqdy",
+      "block_signing_key": "EOS7euvEiCuizz4P2fnauBK55YLd9qq6a7XzfhQ8s2xRMaqQmpcx2"
+    }
+  ]
+}
