@@ -1,2 +1,3 @@
 #!/bin/bash
-docker exec eos0 cleos push action eosio setprods ./setprods.json -p eosio@active
+docker cp ./setprods.json eos0:/root/data/setprods.json
+docker exec eos0 cleos push action eosio setprods /root/data/setprods.json -p eosio@active
