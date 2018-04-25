@@ -1,0 +1,22 @@
+{
+  "version": "12348",
+  "producers": [
+    {
+      "producer_name": "mjex",
+      "block_signing_key": "EOS6bWc12cWrvL5UNQy51szfotPaA6Q1kj6sMFtXSFrSDwwNyrkAo"
+    },
+    {
+      "producer_name": "newt",
+      "block_signing_key": "EOS5o6wjCkRNLH88Lf51Tkrr78FiU9e3ZQe1ELc333JWERiQJCZED"
+    },
+    {
+      "producer_name": "ozkl",
+      "block_signing_key": "EOS7CWWvRwFgfYRN2GFyeSA7VmKJBeG9QRxgwMXqxAvwkrc8GXvp9"
+    },
+    {
+      "producer_name": "zdvn",
+      "block_signing_key": "EOS6L7jDerMBrZPnjmpGv4p7JyTV8pJaruFYsuP2M4cdtkfSVfieN"
+    }
+  ]
+  
+}
