@@ -8,6 +8,10 @@ image="samyankun/eostestnet"
 tag="0.1"
 
 container_hostname=$1
+if [ -e ./accounts ]
+then
+  rm ./accounts.conf
+fi
 if grep -Fxq "$container_hostname" ./accounts.conf
 then
     # if found
@@ -35,7 +39,7 @@ fi
 #delete exist data
 rm -rf /opt/data/*
 let portbase=9800
-let portmax=9800+$2
+let portmax=9800+$2-1
 for port in `seq $portbase $portmax `
 do
   bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 4 | head -n 1)
