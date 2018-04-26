@@ -7,4 +7,9 @@ do
     accountname=$(echo $line | awk -F ":" '{print $1}')
     publickey=$(echo $line | awk -F ":" '{print $2}')
     docker exec eos0 cleos create account eosio $accountname $publickey $publickey
+    if [ $? -ne 0 ]
+    then
+      echo "create account error"
+      exit
+    fi
 done < "$filename"
