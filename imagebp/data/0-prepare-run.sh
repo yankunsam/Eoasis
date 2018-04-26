@@ -5,7 +5,7 @@ genesisfile="/root/data/genesis.json"
 datadir="/opt/data/"
 command=$(cleos create key)
 privatekey=$(echo $command | awk '{print $3}')
-echo "Privatekey:" $privatekey
+echo "Privatekey:" $privatekey > /opt/data/privatekey.conf
 publickey=$(echo $command | awk '{print $6}')
 echo "$(hostname):$publickey" > /opt/data/publickey.conf
 
