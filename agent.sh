@@ -8,8 +8,9 @@ image="samyankun/eostestnet"
 tag="0.1"
 
 container_hostname=$1
-if [ -e ./accounts ]
+if [ -e ./accounts.conf ]
 then
+  echo "[INFO] Delete the exist account file"
   rm ./accounts.conf
 fi
 if grep -Fxq "$container_hostname" ./accounts.conf
