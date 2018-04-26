@@ -17,7 +17,10 @@ fi
 sed  -i 's/private-key.*/private-key=["'$publickkey'","'$privatekey'"]/g' $configfile
 sed -i 's/.*producer-name.*/producer-name = '$(hostname)'/g' /root/data/config.ini
 
-kill $(ps -aux | grep nodeos | grep -v "grep" | awk '{print $2}')
+if pgrep "nodeos" 2>/dev/null; then
+  echo "Terminating nodeos"
+  pkill nodeos
+fi
 nodeos --data-dir /opt/data --config-dir /root/data/ > /opt/data/stdout.txt 2> /opt/data/stderr.txt & echo $! > /opt/data/eosd.pid
 #nodeos --data-dir /opt/data --config-dir /root/data/
 sleep 3
