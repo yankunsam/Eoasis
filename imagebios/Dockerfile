@@ -6,7 +6,6 @@ COPY nodeos /usr/local/bin/nodeos
 COPY data /root/data
 COPY cleos /usr/local/bin/cleos
 COPY keosd /usr/local/bin/keosd
-#COPY scholar-server-config /root/config
 COPY contracts /root/contracts
 COPY 0-prepare-run.sh /root/data/0-prepare-run.sh
 COPY non-bios.sh /root/data/non-bios.sh
