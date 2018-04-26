@@ -32,6 +32,8 @@ fi
 if [ $? -ne 0 ]; then
   echo "Error occurs"
 fi
+#delete exist data
+rm -rf /opt/data/*
 let portbase=9800
 let portmax=9800+$2
 for port in `seq $portbase $portmax `
