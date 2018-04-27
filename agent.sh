@@ -55,6 +55,9 @@ do
     echo "container error"
     exit
   fi
+  sleep 1
   docker exec $bp$port cat /opt/data/publickey.conf >> ./accounts.conf
+  docker exec $bp$port cleos wallet create > /opt/data/data-$bp/wallet.password
+  docker exec $bp$port  cleos wallet import $(cat /opt/data/data-$bp/privatekey.conf  | awk '{print $2}')
+
 done
-#
