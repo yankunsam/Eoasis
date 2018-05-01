@@ -3,6 +3,8 @@ import subprocess
 import datetime
 import time
 import daemon
+import shutil
+import os
 year = ""
 month = ""
 day = ""
@@ -28,9 +30,11 @@ class Bios:
     }
     nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config","--producer-name","eosio"]
 
-    def __init__(self, producerName,initialKey):
+    def __init__(self, producerName,initialKey,dataDir,configDir):
         self.producerName = producerName
         self.initialKey = initialKey
+        self.dataDir = dataDir
+        self.configDir = configDir
 
     def createGenisisfile(self):
         self.__conf['initial_key'] = self.initialKey
@@ -46,14 +50,16 @@ class Bios:
         #If nodeos has run,kill it
         subprocess.run(["killall","nodeos"])
         #Delete exist data directory
-        subprocess.run(["rm","-fr","/home/sam/data/*"])
+        if os.path.exists(self.dataDir):
+            shutil.rmtree(self.dataDir)
+        os.mkdir(self.dataDir)
         #with Popen, nodeos will run in backend
-        log = open("/home/sam/data/nodeos.log",'w+')
+        log = open(("%s/%s" % (self.dataDir,"nodeos.log")),'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
             subprocess.Popen(self.nodeosCmdList)
 
-            
-biosInstance = Bios("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
+
+biosInstance = Bios("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","/home/sam/data","/home/sam/config")
 biosInstance.createGenisisfile()
 #time.sleep(10)
 biosInstance.nodeosRun()
