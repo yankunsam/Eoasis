@@ -31,22 +31,29 @@ class Bios:
     def __init__(self, producerName,initialKey):
         self.producerName = producerName
         self.initialKey = initialKey
+
     def createGenisisfile(self):
         self.__conf['initial_key'] = self.initialKey
         year, month, day, hour, minute = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M").split(',')
         # 4 is for the different time zone
-        self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:55" % (year ,month,day,hour,minute)
+        #self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:55" % (year ,month,day,hour,minute)
         print(self.__conf['initial_timestamp'])
-        #self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
+        self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
         with open('/home/sam/config/genesis.json','w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
+
     def nodeosRun(self):
+        #If nodeos has run,kill it
+        subprocess.run(["killall","nodeos"])
+        #Delete exist data directory
+        subprocess.run(["rm","-fr","/home/sam/data/*"])
         #with Popen, nodeos will run in backend
         log = open("/home/sam/data/nodeos.log",'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
             subprocess.Popen(self.nodeosCmdList)
 
+            
 biosInstance = Bios("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
 biosInstance.createGenisisfile()
-time.sleep(10)
+#time.sleep(10)
 biosInstance.nodeosRun()
