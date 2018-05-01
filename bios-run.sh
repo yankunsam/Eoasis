@@ -19,7 +19,7 @@ else
   echo "[INFO] delete exist $configdir"
 fi
 docker pull samyankun/eosbios:0.1
-if [ $(docker inspect | grep eos0) ]; then
+if [ $(docker inspect eos0 | grep eos0) ]; then
   echo "[INFO] stop the exist eos0 container"
   docker stop --force eos0
 fi
