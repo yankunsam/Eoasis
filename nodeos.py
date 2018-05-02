@@ -34,14 +34,13 @@ class Nodeos:
     }
     nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config"]
 
-    def __init__(self, producerName,initialKey,dataDir,configDir):
-        self.producerName = producerName
-        self.initialKey = initialKey
-        self.dataDir = dataDir
-        self.configDir = configDir
+    def __init__(self, producername,datadir,configdir):
+        self.producerName = producername
+        self.datadir = datadir
+        self.configdir = configdir
 
-    def createGenisisfile(self):
-        self.__conf['initial_key'] = self.initialKey
+    def createGenisisfile(self,initialkey):
+        self.__conf['initial_key'] = initialkey
         year, month, day, hour, minute = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M").split(',')
         # 4 is for the different time zone
         #self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:55" % (year ,month,day,hour,minute)
@@ -53,16 +52,16 @@ class Nodeos:
     def nodeosRun(self,privatekey,producername):
         subprocess.run(["killall","nodeos","-q"])
         #Delete exist data directory
-        if os.path.exists(self.dataDir):
-            shutil.rmtree(self.dataDir)
-        os.mkdir(self.dataDir)
+        if os.path.exists(self.datadir):
+            shutil.rmtree(self.datadir)
+        os.mkdir(self.datadir)
         #with Popen, nodeos will run in backend
-        log = open(("%s/%s" % (self.dataDir,"nodeos.log")),'w+')
+        log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
             subprocess.Popen(self.nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
 
 
-biosInstance = Nodeos("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","/home/sam/data","/home/sam/config")
-biosInstance.createGenisisfile()
+nodeosInstance = Nodeos("eosio","/home/sam/data","/home/sam/config")
+nodeosInstance.createGenisisfile("EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
 #time.sleep(10)
-biosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
+nodeosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
