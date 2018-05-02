@@ -7,11 +7,11 @@ import shutil
 import os
 
 
-year = ""
-month = ""
-day = ""
-hour = ""
-minute = ""
+# year = ""
+# month = ""
+# day = ""
+# hour = ""
+# minute = ""
 
 
 class Nodeos:
@@ -41,11 +41,11 @@ class Nodeos:
 
     def createGenisisfile(self,initialkey):
         self.__conf['initial_key'] = initialkey
-        year, month, day, hour, minute = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M").split(',')
+        year, month, day, hour, minute,second = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M,%S").split(',')
         # 4 is for the different time zone
-        #self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:55" % (year ,month,day,hour,minute)
+        self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:%s" % (year ,month,day,hour,minute,second)
         #print(self.__conf['initial_timestamp'])
-        self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
+        #self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
         with open('/home/sam/config/genesis.json','w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
