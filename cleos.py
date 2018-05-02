@@ -38,7 +38,7 @@ class Cleos:
     def pushaction(self,contract,action,data,account,permission):
         subprocess.run(self.pushactioncmdlist + [contract,action,data,"-p","%s@%s" % (account,permission)])
 
-cleosinstance = Cleos("eosio")
+#cleosinstance = Cleos("eosio")
 #cleosinstance.createWallet()
 #cleosinstance.importPrivatekey( )
 #cleosinstance.setContract()
@@ -46,4 +46,4 @@ cleosinstance = Cleos("eosio")
 #print(tmp)
 #cleosinstance.importPrivatekey(tmp[0])
 #cleosinstance.createAccount("eosio","eosio.token",tmp[1],tmp[1])
-cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
+#cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")

@@ -61,12 +61,3 @@ class Nodeos:
         with daemon.DaemonContext(stdout=log,stderr=log):
             nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir]
             subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
-
-
-nodeosInstance = Nodeos("eosio","/home/sam/data","/home/sam/config")
-nodeosInstance.createGenesisfile("EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
-#time.sleep(10)
-pub = ["EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"]
-#nodeosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
-#print(tuple(pub))
-nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',pub[0],'"',",",'"',pub[1],'"',"]"),"eosio")
