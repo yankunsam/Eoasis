@@ -32,7 +32,7 @@ class Nodeos:
     },
     "initial_chain_id": "0000000000000000000000000000000000000000000000000000000000000000"
     }
-    nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config"]
+
 
     def __init__(self, producername,datadir,configdir):
         self.producername = producername
@@ -42,10 +42,11 @@ class Nodeos:
     def createGenisisfile(self,initialkey):
         self.__conf['initial_key'] = initialkey
         year, month, day, hour, minute,second = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M,%S").split(',')
-        # 4 is for the different time zone
-        self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:%s" % (year ,month,day,hour,minute,second)
+        #  ***Do Remeber***
+        # bios node and block producer node need the same initial_timestamp.
+        #self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:%s" % (year ,month,day,hour,minute,second)
         #print(self.__conf['initial_timestamp'])
-        #self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
+        self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
         with open('/home/sam/config/genesis.json','w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
@@ -58,10 +59,11 @@ class Nodeos:
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
-            subprocess.Popen(self.nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
+            nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir]
+            subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
 
 
 nodeosInstance = Nodeos("eosio","/home/sam/data","/home/sam/config")
-nodeosInstance.createGenisisfile("EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
+#nodeosInstance.createGenisisfile("EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg")
 #time.sleep(10)
 nodeosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
