@@ -5,11 +5,15 @@ import time
 import daemon
 import shutil
 import os
+
+
 year = ""
 month = ""
 day = ""
 hour = ""
 minute = ""
+
+
 class Bios:
     __conf = {
     "initial_key": "",
