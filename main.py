@@ -17,10 +17,11 @@ def test():
     pub = ["EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"]
     #nodeosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
     #print(tuple(pub))
-    nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',pub[0],'"',",",'"',pub[1],'"',"]"),"eosio")
+    nodeosInstance.nodeosRun(pub[0],pub[1],"eosio")
 
 
 def main():
+    #parse command line: https://docs.python.org/3.5/howto/argparse.html
     #parse configfile
     config = parseconfigfile()
     print(config.sections())
