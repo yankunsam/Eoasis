@@ -14,7 +14,7 @@ hour = ""
 minute = ""
 
 
-class Bios:
+class Nodeos:
     __conf = {
     "initial_key": "",
     "initial_timestamp": "",
@@ -32,7 +32,7 @@ class Bios:
     },
     "initial_chain_id": "0000000000000000000000000000000000000000000000000000000000000000"
     }
-    nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config","--producer-name","eosio"]
+    nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config"]
 
     def __init__(self, producerName,initialKey,dataDir,configDir):
         self.producerName = producerName
@@ -50,7 +50,7 @@ class Bios:
         with open('/home/sam/config/genesis.json','w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
-    def nodeosRun(self):
+    def nodeosRun(self,privatekey,producername):
         subprocess.run(["killall","nodeos","-q"])
         #Delete exist data directory
         if os.path.exists(self.dataDir):
@@ -59,10 +59,10 @@ class Bios:
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.dataDir,"nodeos.log")),'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
-            subprocess.Popen(self.nodeosCmdList)
+            subprocess.Popen(self.nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
 
 
-biosInstance = Bios("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","/home/sam/data","/home/sam/config")
+biosInstance = Nodeos("eosio","EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg","/home/sam/data","/home/sam/config")
 biosInstance.createGenisisfile()
 #time.sleep(10)
-biosInstance.nodeosRun()
+biosInstance.nodeosRun("[\"EOS6vizDzpZMxtt27WVVCUVYEFHXgaLhEfPuLQAXfpAJaf2oWAcwg\",\"5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5\"]","eosio")
