@@ -50,7 +50,8 @@ class Nodeos:
         with open("%s/%s" % (self.configdir,"genesis.json"),'w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
-    def nodeosRun(self,privatekey,producername):
+    def nodeosRun(self,publickey,privatekey,producername):
+        privatekey = "%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]")
         subprocess.run(["killall","nodeos","-q"])
         #Delete exist data directory
         if os.path.exists(self.datadir):
