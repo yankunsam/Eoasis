@@ -41,14 +41,13 @@ class Bios:
         year, month, day, hour, minute = datetime.datetime.utcnow().strftime("%Y,%m,%d,%H,%M").split(',')
         # 4 is for the different time zone
         #self.__conf['initial_timestamp'] = "%s-%s-%sT%s:%s:55" % (year ,month,day,hour,minute)
-        print(self.__conf['initial_timestamp'])
+        #print(self.__conf['initial_timestamp'])
         self.__conf['initial_timestamp'] = "2018-05-01T18:07:59"
         with open('/home/sam/config/genesis.json','w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
     def nodeosRun(self):
-        #If nodeos has run,kill it
-        subprocess.run(["killall","nodeos"])
+        subprocess.run(["killall","nodeos","-q"])
         #Delete exist data directory
         if os.path.exists(self.dataDir):
             shutil.rmtree(self.dataDir)
