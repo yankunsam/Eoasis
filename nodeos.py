@@ -35,7 +35,7 @@ class Nodeos:
     nodeosCmdList = ["nodeos","--data-dir","/home/sam/data","--config-dir","/home/sam/config"]
 
     def __init__(self, producername,datadir,configdir):
-        self.producerName = producername
+        self.producername = producername
         self.datadir = datadir
         self.configdir = configdir
 
