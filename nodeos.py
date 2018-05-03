@@ -50,7 +50,8 @@ class Nodeos:
         with open("%s/%s" % (self.configdir,"genesis.json"),'w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
-    def nodeosRun(self,publickey,privatekey,producername):
+    def nodeosRun(self,publickey,privatekey,producername,stale=0):
+        #parameter check for ***ALL***
         privatekey = "%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]")
         subprocess.run(["killall","nodeos","-q"])
         #Delete exist data directory
@@ -60,5 +61,8 @@ class Nodeos:
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         with daemon.DaemonContext(stdout=log,stderr=log):
-            nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir]
+            if stale is 0:
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir]
+            else:
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir,"-e"]
             subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
