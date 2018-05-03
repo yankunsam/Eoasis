@@ -26,7 +26,9 @@ def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
     parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount',
-    'setprods','setcontract','pushaction','createwallet','importbiosprivatekey','startnode','setprods','setbioscontract','setsystemcontract','settokencontract'])
+    'setprods','setcontract','pushaction','createwallet',
+    'importbiosprivatekey','startnode','setprods',
+    'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -48,6 +50,7 @@ def main():
         nodeosInstance = Nodeos(biosaccountname,nodeosdatadir,nodeosconfigdir)
         #nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]"),biosaccountname)
         nodeosInstance.nodeosRun(publickey,privatekey,biosaccountname,stale=1)
+        #print("[INFO]: Next you should create a wallet")
     elif args.command == "startnode":
         print("[INFO]: in startnode\n")
         print(args.command)
@@ -92,8 +95,24 @@ def main():
         #abifile = "%s/%s" % (contractdir,"eosio.bios.abi")
         abifile = "%s/%s" % (contractdir, config['bioscontract']['abifile'])
         cleosinstance.setContract(contractdir,wastfile,abifile)
-    elif args.command == "pushacction":
+    elif args.command == "pushaction":
         print(args.command)
+    elif args.command == "createtoken":
+        print(args.command)
+        cleosinstance.pushaction(config['createtoken']['contract'],
+                                config['createtoken']['action'],
+                                config['createtoken']['data'],
+                                config['createtoken']['account'],
+                                config['createtoken']['permission']
+                                )
+    elif args.command == "issuetoken":
+        print(args.command)
+        cleosinstance.pushaction(config['issuetoken']['contract'],
+                                config['issuetoken']['action'],
+                                config['issuetoken']['data'],
+                                config['issuetoken']['account'],
+                                config['issuetoken']['permission']
+                                )
     elif args.command == "createwallet":
         print(args.command)
         #TODO: with a specific name
@@ -128,8 +147,8 @@ def main():
         with open('setprods.json', 'w') as f:
           tmp = json.dump(data, f, ensure_ascii=False)
         #pushaction(self,contract,action,data,account,permission)
-        cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
-        #cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
+        #cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
+        cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
 
     #test
     #test()
