@@ -26,7 +26,7 @@ def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
     parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount',
-    'setprods','setcontract','pushaction','createwallet','importbiosprivatekey','startnode','setprods','setbioscontract','setsystemcontract'])
+    'setprods','setcontract','pushaction','createwallet','importbiosprivatekey','startnode','setprods','setbioscontract','setsystemcontract','settokencontract'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -71,6 +71,12 @@ def main():
         print(args.command)
     elif args.command == "setcontract":
         print(args.command)
+    if args.command == "settokencontract":
+        print(args.command)
+        contractdir = config['tokencontract']['contractdir']
+        wastfile = "%s/%s" % (contractdir,config['tokencontract']['wastfile'])
+        abifile = "%s/%s" % (contractdir,config['tokencontract']['abifile'])
+        cleosinstance.setContract(contractdir,wastfile,abifile)
     elif args.command == "setsystemcontract":
         print(args.command)
         contractdir = config['systemcontract']['contractdir']
