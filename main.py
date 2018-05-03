@@ -2,6 +2,7 @@ from nodeos import Nodeos
 from cleos import Cleos
 import argparse
 import configparser
+import json
 
 
 def parseconfigfile():
@@ -25,11 +26,12 @@ def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
     parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount',
-    'setprods','setcontract','pushaction','createwallet','importbiosprivatekey','startnode'])
+    'setprods','setcontract','pushaction','createwallet','importbiosprivatekey','startnode','setprods','setbioscontract'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
-
+    #For test
+    cleosinstance = Cleos("eosio")
     #parse configfile
     config = parseconfigfile()
 
@@ -60,17 +62,24 @@ def main():
         nodeosInstance.nodeosRun(publickey,privatekey,nodeaccountname)
     elif args.command == "createbpaccount":
         print("[INFO]: in createbpaccount\n")
-        accountfile = config['wallet']['accountfile']
+        accountfile = config['wallet']['bpaccountfile']
         cleosinstance = Cleos("eosio")
         #TODO add wallet section in config.ini
 
-        cleosinstance.createAccountByFile("eosio","accounts.conf")
+        cleosinstance.createAccountByFile("eosio",accountfile)
 
-        print(args.command)
-    elif args.command == "setprods":
         print(args.command)
     elif args.command == "setcontract":
         print(args.command)
+    elif args.command == "setbioscontract":
+        print(args.command)
+        #contractdir = "/home/sam/Public/Porridge/imagebios/contracts/eosio.bios"
+        contractdir = config['bioscontract']['contractdir']
+        #wastfile = "%s/%s" % (contractdir,"eosio.bios.wast")
+        wastfile = "%s/%s" % (contractdir,config['bioscontract']['wastfile'])
+        #abifile = "%s/%s" % (contractdir,"eosio.bios.abi")
+        abifile = "%s/%s" % (contractdir, config['bioscontract']['abifile'])
+        cleosinstance.setContract(contractdir,wastfile,abifile)
     elif args.command == "pushacction":
         print(args.command)
     elif args.command == "createwallet":
@@ -82,6 +91,33 @@ def main():
         print(args.command)
         cleosinstance = Cleos("eosio")
         cleosinstance.importPrivatekey(config['biosnode']['privatekey'])
+    elif args.command == "setprods":
+        print("You should install bios contract")
+        print(args.command)
+        #TODO check the file exist
+        data = {}
+        producer = {}
+        producers = []
+        with open(config['setprods']['bpaccountfile']) as f:
+            content = f.read().splitlines()
+            #print content
+        for item in content:
+            tmp = item.split(':', 1)
+            producers_tmp = {"producer_name": tmp[0],"block_signing_key": tmp[1]}
+            producers.append(producers_tmp)
+            print(producers)
+
+        # you may also want to remove whitespace characters like `\n` at the end of each line
+        data['version'] = '12348'
+        data['producers'] = producers
+        print("data")
+        print(data)
+        #json_data = json.dumps(data)
+        with open('setprods.json', 'w') as f:
+          tmp = json.dump(data, f, ensure_ascii=False)
+        #pushaction(self,contract,action,data,account,permission)
+        cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
+        #cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
 
     #test
     #test()

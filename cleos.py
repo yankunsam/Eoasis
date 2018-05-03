@@ -1,9 +1,5 @@
 import subprocess
 
-
-contractdir = "/home/sam/Public/Porridge/imagebios/contracts/eosio.bios"
-wastfile = "%s/%s" % (contractdir,"eosio.bios.wast")
-abifile = "%s/%s" % (contractdir,"eosio.bios.abi")
 privatekey = "5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"
 class Cleos:
     setcontractcmdlist = ["cleos","set","contract"]
@@ -31,10 +27,10 @@ class Cleos:
     def importPrivatekey(self,privatekey):
         subprocess.run(self.importprivatekeycmdlist + [privatekey])
 
-    def setContract(self):
+    def setContract(self,contractdir,wastfile,abifile):
         subprocess.run(self.setcontractcmdlist + [self.account,contractdir,wastfile,abifile])
 
-        #TODO check wallet exist
+    #TODO check wallet exist
     def createAccount(self,creator,accountname,ownerkey,activekey):
         subprocess.run(self.createaccountcmdlist + [creator,accountname,ownerkey,activekey])
 
