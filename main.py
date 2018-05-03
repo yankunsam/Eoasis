@@ -1,5 +1,6 @@
 from nodeos import Nodeos
 from cleos import Cleos
+import argparse
 import configparser
 
 
@@ -22,17 +23,34 @@ def test():
 
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
+    parser = argparse.ArgumentParser()
+    parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount','setprods','setcontract','pushaction'])
+    #parse.add_argument("--createbpaccount",type=int,)
+    args = parser.parse_args()
+    print(args)
+
     #parse configfile
     config = parseconfigfile()
-    print(config.sections())
-    biosaccountname = config['biosnode']['accountname']
-    nodeosdatadir = config['nodeos']['datadir']
-    nodeosconfigdir = config['nodeos']['configdir']
-    publickey = config['nodeos']['publickey']
-    privatekey = config['nodeos']['privatekey']
-    nodeosInstance = Nodeos(biosaccountname,nodeosdatadir,nodeosconfigdir)
-    #nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]"),biosaccountname)
-    nodeosInstance.nodeosRun(publickey,privatekey,biosaccountname)
+
+    #start a bios node
+    if args.command == "startbios":
+        print(args.command)
+        biosaccountname = config['biosnode']['accountname']
+        nodeosdatadir = config['nodeos']['datadir']
+        nodeosconfigdir = config['nodeos']['configdir']
+        publickey = config['nodeos']['publickey']
+        privatekey = config['nodeos']['privatekey']
+        nodeosInstance = Nodeos(biosaccountname,nodeosdatadir,nodeosconfigdir)
+        #nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]"),biosaccountname)
+        nodeosInstance.nodeosRun(publickey,privatekey,biosaccountname)
+    elif args.command == "createbpaccount":
+        print(args.command)
+    elif args.command == "setprods":
+        print(args.command)
+    elif args.command == "setcontract":
+        print(args.command)
+    elif args.command == "pushacction":
+        print(args.command)
 
     #test
     #test()
