@@ -8,6 +8,7 @@ class Cleos:
     createkeycmdlist = ["cleos","create","key"]
     createaccountcmdlist = ["cleos","create","account"]
     pushactioncmdlist = ["cleos","push","action"]
+    getbalancecmdlist = ['cleos','get','currency','balance']
     def __init__(self,account):
         self.account = account
 
@@ -44,10 +45,11 @@ class Cleos:
                 #print(ownerkey)
                 self.createAccount(creator,accountname,ownerkey,ownerkey)
 
-
-
     def pushaction(self,contract,action,data,account,permission):
         subprocess.run(self.pushactioncmdlist + [contract,action,data,"-p","%s@%s" % (account,permission)])
+
+    def getbalance(self,contract,account,symbol):
+        subprocess.run(self.getbalancecmdlist + [contract,account,symbol])
 
 #cleosinstance = Cleos("eosio")
 #cleosinstance.createWallet()
