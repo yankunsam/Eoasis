@@ -50,19 +50,23 @@ class Nodeos:
         with open("%s/%s" % (self.configdir,"genesis.json"),'w') as f:
             json.dump(self.__conf,f,ensure_ascii=False)
 
-    def nodeosRun(self,publickey,privatekey,producername,stale=0):
+    def nodeosRun(self,publickey,privatekey,producername,p2paddresslist,stale=0):
         #parameter check for ***ALL***
         privatekey = "%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]")
         subprocess.run(["killall","nodeos","-q"])
+        p2paddresstemp = []
         #Delete exist data directory
         if os.path.exists(self.datadir):
             shutil.rmtree(self.datadir)
         os.mkdir(self.datadir)
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
+        for item in p2paddresslist:
+            p2paddresstemp = p2paddresstemp + ["--p2p-peer-address",item]
+        print(p2paddresstemp)
         with daemon.DaemonContext(stdout=log,stderr=log):
             if stale is 0:
-                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir]
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir] + p2paddresstemp
             else:
-                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir,"-e"]
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir,"-e"] + p2paddresstemp
             subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])

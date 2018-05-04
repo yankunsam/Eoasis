@@ -30,7 +30,7 @@ def startbios(config):
     privatekey = config['biosnode']['privatekey']
     nodeosInstance = Nodeos(biosaccountname,nodeosdatadir,nodeosconfigdir)
     #nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]"),biosaccountname)
-    nodeosInstance.nodeosRun(publickey,privatekey,biosaccountname,stale=1)
+    nodeosInstance.nodeosRun(publickey,privatekey,biosaccountname,(config['biosnode']['p2paddress']).split(','),stale=1)
     #print("[INFO]: Next you should create a wallet")
 
 def createwallet(config,cleosinstance):
@@ -134,7 +134,7 @@ def main():
     cleosinstance = Cleos("eosio")
     #parse configfile
     config = parseconfigfile()
-
+    #print((config['biosnode']['p2paddress']).split(','))
     #start a bios node
     if args.command == "startbios":
         print("[INFO]: in startbios\n")
