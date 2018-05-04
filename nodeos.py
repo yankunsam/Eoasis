@@ -64,9 +64,17 @@ class Nodeos:
         for item in p2paddresslist:
             p2paddresstemp = p2paddresstemp + ["--p2p-peer-address",item]
         print(p2paddresstemp)
+        pluginlist = ['--plugin',"eosio::producer_plugin",
+        "--plugin","eosio::wallet_plugin",
+        "--plugin","eosio::chain_api_plugin",
+        "--plugin","eosio::http_plugin",
+        "--plugin","eosio::net_api_plugin",
+        "--plugin","eosio::account_history_plugin",
+        "--plugin","eosio::account_history_api_plugin",
+        "--plugin","eosio::wallet_api_plugin"]
         with daemon.DaemonContext(stdout=log,stderr=log):
             if stale is 0:
-                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir] + p2paddresstemp
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir] + p2paddresstemp + pluginlist
             else:
-                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir,"-e"] + p2paddresstemp
+                nodeosCmdList = ["nodeos","--data-dir",self.datadir,"--config-dir",self.configdir,"-e"] + p2paddresstemp + pluginlist
             subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
