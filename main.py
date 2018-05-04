@@ -113,8 +113,8 @@ def setprods(config,cleosinstance):
     print("data")
     print(data)
     #json_data = json.dumps(data)
-    #with open('setprods.json', 'w') as f:
-    #  tmp = json.dump(data, f, ensure_ascii=False)
+    with open('setprods.json', 'w') as f:
+      tmp = json.dump(data, f, ensure_ascii=False)
     #pushaction(self,contract,action,data,account,permission)
     #cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
     cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
