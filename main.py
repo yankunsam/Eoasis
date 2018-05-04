@@ -123,13 +123,17 @@ def getbalance(config,cleosinstance):
     #getbalance(contract,account,symbol):
     cleosinstance.getbalance(config['balance']['contract'],config['balance']['account'],config['balance']['symbol'])
 
+def createkey(cleosinstance):
+    tmp = cleosinstance.createKey()
+    print(tmp)
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
     parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount',
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
-    'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance'])
+    'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
+    'createkey'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -189,6 +193,9 @@ def main():
     elif args.command == "getbalance":
         print(args.command)
         getbalance(config,cleosinstance)
+    elif args.command == "createkey":
+        print(args.command)
+        createkey(cleosinstance)
 
     #test
     #test()
