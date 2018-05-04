@@ -126,6 +126,10 @@ def getbalance(config,cleosinstance):
 def createkey(cleosinstance):
     tmp = cleosinstance.createKey()
     print(tmp)
+
+def importbpprivatekey(config,cleosinstance):
+    cleosinstance.importPrivatekey(config['nodeos']['privatekey'])
+
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
@@ -133,7 +137,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey'])
+    'createkey','importbpprivatekey'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -167,24 +171,24 @@ def main():
     elif args.command == "setbioscontract":
         print(args.command)
         setbioscontract(config,cleosinstance)
-
     elif args.command == "pushaction":
         print(args.command)
     elif args.command == "createtoken":
         print(args.command)
         createtoken(config,cleosinstance)
-
     elif args.command == "issuetoken":
         print(args.command)
         issuetoken(config,cleosinstance)
-
     elif args.command == "createwallet":
         print(args.command)
         createwallet(config,cleosinstance)
-
     elif args.command == "importbiosprivatekey":
         print(args.command)
         importbiosprivatekey(config,cleosinstance)
+    elif args.command == "importbpprivatekey":
+        print(args.command)
+        importbpprivatekey(config,cleosinstance)
+
 
     elif args.command == "setprods":
         print("You should install bios contract")
