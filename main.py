@@ -67,7 +67,7 @@ def startnode(config):
     privatekey = config['nodeos']['privatekey']
     nodeosInstance = Nodeos(nodeaccountname,nodeosdatadir,nodeosconfigdir)
     #nodeosInstance.nodeosRun("%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]"),biosaccountname)
-    nodeosInstance.nodeosRun(publickey,privatekey,nodeaccountname)
+    nodeosInstance.nodeosRun(publickey,privatekey,nodeaccountname,config['nodeos']['p2paddress']).split(','))
 
 def createbpaccount(config,cleosinstance):
     accountfile = config['wallet']['bpaccountfile']
