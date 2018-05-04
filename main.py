@@ -122,6 +122,7 @@ def setprods(config,cleosinstance):
 def getbalance(config,cleosinstance):
     #getbalance(contract,account,symbol):
     for item in ((config['balance']['account']).split(',')):
+        print("%s balance" % item)
         cleosinstance.getbalance(config['balance']['contract'],item,config['balance']['symbol'])
 
 def createkey(cleosinstance):
