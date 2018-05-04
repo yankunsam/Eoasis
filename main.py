@@ -132,6 +132,12 @@ def createkey(cleosinstance):
 def importbpprivatekey(config,cleosinstance):
     cleosinstance.importPrivatekey(config['nodeos']['privatekey'])
 
+def currencytransfer(config,cleosinstance):
+    for item in config['transfer']['item'].split(";"):
+        tmp = item.split(" ")
+        cleosinstance.currencytransfer(tmp[0],tmp[1],tmp[2],tmp[3])
+
+
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
@@ -139,7 +145,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey','importbpprivatekey'])
+    'createkey','importbpprivatekey','currencytransfer'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -191,7 +197,6 @@ def main():
         print(args.command)
         importbpprivatekey(config,cleosinstance)
 
-
     elif args.command == "setprods":
         print("You should install bios contract")
         print(args.command)
@@ -202,6 +207,8 @@ def main():
     elif args.command == "createkey":
         print(args.command)
         createkey(cleosinstance)
+    elif args.command == "currencytransfer":
+        currencytransfer(config,cleosinstance)
 
     #test
     #test()

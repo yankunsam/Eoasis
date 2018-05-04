@@ -9,6 +9,7 @@ class Cleos:
     createaccountcmdlist = ["cleos","create","account"]
     pushactioncmdlist = ["cleos","push","action"]
     getbalancecmdlist = ['cleos','get','currency','balance']
+    currencytransfercmdlist = ['cleos','transfer']
     def __init__(self,account):
         self.account = account
 
@@ -51,6 +52,9 @@ class Cleos:
 
     def getbalance(self,contract,account,symbol):
         subprocess.run(self.getbalancecmdlist + [contract,account,symbol])
+
+    def currencytransfer(self,sender,recipient,amount,memo):
+        subprocess.run(self.currencytransfercmdlist + [sender,recipient,amount,memo])
 
 #cleosinstance = Cleos("eosio")
 #cleosinstance.createWallet()
