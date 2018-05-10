@@ -108,8 +108,8 @@ def setprods(config,cleosinstance):
         print(producers)
 
     # you may also want to remove whitespace characters like `\n` at the end of each line
-    data['version'] = '12348'
-    data['producers'] = producers
+    #data['version'] = '12348'
+    data['schedule'] = producers
     print("data")
     print(data)
     #json_data = json.dumps(data)
