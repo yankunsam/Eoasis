@@ -13,6 +13,46 @@ _ZeqRK11checksum256S1_:
 .Lfunc_end0:
 	.size	_ZeqRK11checksum256S1_, .Lfunc_end0-_ZeqRK11checksum256S1_
 
+	.hidden	_ZeqRK11checksum160S1_
+	.globl	_ZeqRK11checksum160S1_
+	.type	_ZeqRK11checksum160S1_,@function
+_ZeqRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.eqz 	$push2=, $pop1
+	.endfunc
+.Lfunc_end1:
+	.size	_ZeqRK11checksum160S1_, .Lfunc_end1-_ZeqRK11checksum160S1_
+
+	.hidden	_ZneRK11checksum160S1_
+	.globl	_ZneRK11checksum160S1_
+	.type	_ZneRK11checksum160S1_,@function
+_ZneRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.const	$push2=, 0
+	i32.ne  	$push3=, $pop1, $pop2
+	.endfunc
+.Lfunc_end2:
+	.size	_ZneRK11checksum160S1_, .Lfunc_end2-_ZneRK11checksum160S1_
+
+	.hidden	now
+	.globl	now
+	.type	now,@function
+now:
+	.result 	i32
+	i64.call	$push1=, current_time@FUNCTION
+	i64.const	$push0=, 1000000
+	i64.div_u	$push2=, $pop1, $pop0
+	i32.wrap/i64	$push3=, $pop2
+	.endfunc
+.Lfunc_end3:
+	.size	now, .Lfunc_end3-now
+
 	.hidden	apply
 	.globl	apply
 	.type	apply,@function
@@ -20,17 +60,17 @@ apply:
 	.param  	i64, i64, i64
 	.local  	i64
 	i64.const	$3=, 0
-.LBB1_1:
+.LBB4_1:
 	loop    	
 	call    	printi@FUNCTION, $3
 	i64.const	$push0=, 1
 	i64.add 	$3=, $3, $pop0
 	br      	0
-.LBB1_2:
+.LBB4_2:
 	end_loop
 	.endfunc
-.Lfunc_end1:
-	.size	apply, .Lfunc_end1-apply
+.Lfunc_end4:
+	.size	apply, .Lfunc_end4-apply
 
 	.hidden	memcmp
 	.globl	memcmp
@@ -43,7 +83,7 @@ memcmp:
 	block   	
 	i32.eqz 	$push10=, $2
 	br_if   	0, $pop10
-.LBB2_2:
+.LBB5_2:
 	block   	
 	loop    	
 	i32.load8_u	$push4=, 0($0)
@@ -61,16 +101,16 @@ memcmp:
 	tee_local	$push5=, $2=, $pop6
 	br_if   	0, $pop5
 	br      	2
-.LBB2_4:
+.LBB5_4:
 	end_loop
 	end_block
 	i32.sub 	$5=, $3, $4
-.LBB2_5:
+.LBB5_5:
 	end_block
 	copy_local	$push11=, $5
 	.endfunc
-.Lfunc_end2:
-	.size	memcmp, .Lfunc_end2-memcmp
+.Lfunc_end5:
+	.size	memcmp, .Lfunc_end5-memcmp
 
 
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
@@ -630,4 +670,5 @@ memcmp:
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
+	.functype	current_time, i64
 	.functype	printi, void, i64

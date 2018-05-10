@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,86 +6,12 @@
 
 #IncludeRegexTransform: 
 
-../contracts/eosio.system/common.hpp
+../contracts/eosio.token/eosio.token.hpp
+eosiolib/asset.hpp
+-
 eosiolib/eosio.hpp
 -
-eosiolib/generic_currency.hpp
--
-eosiolib/multi_index.hpp
--
-eosiolib/privileged.hpp
--
-eosiolib/singleton.hpp
--
-
-../contracts/eosio.system/delegate_bandwidth.hpp
-common.hpp
-../contracts/eosio.system/common.hpp
-voting.hpp
-../contracts/eosio.system/voting.hpp
-eosiolib/eosio.hpp
--
-eosiolib/token.hpp
--
-eosiolib/print.hpp
--
-eosiolib/generic_currency.hpp
--
-eosiolib/datastream.hpp
--
-eosiolib/serialize.hpp
--
-eosiolib/multi_index.hpp
--
-eosiolib/privileged.h
--
-eosiolib/transaction.hpp
--
-map
--
-
-../contracts/eosio.system/eosio.system.hpp
-delegate_bandwidth.hpp
-../contracts/eosio.system/delegate_bandwidth.hpp
-native.hpp
-../contracts/eosio.system/native.hpp
-eosiolib/optional.hpp
--
-eosiolib/generic_currency.hpp
--
-
-../contracts/eosio.system/native.hpp
-eosiolib/types.hpp
--
-
-../contracts/eosio.system/voting.hpp
-common.hpp
-../contracts/eosio.system/common.hpp
-eosiolib/eosio.hpp
--
-eosiolib/token.hpp
--
-eosiolib/print.hpp
--
-eosiolib/generic_currency.hpp
--
-eosiolib/datastream.hpp
--
-eosiolib/serialize.hpp
--
-eosiolib/multi_index.hpp
--
-eosiolib/privileged.hpp
--
-eosiolib/singleton.hpp
--
-eosiolib/transaction.hpp
--
-algorithm
--
-array
--
-cmath
+string
 -
 
 ../contracts/eosiolib/action.h
@@ -98,6 +24,14 @@ eosiolib/action.h
 eosiolib/datastream.hpp
 -
 eosiolib/serialize.hpp
+-
+boost/preprocessor/variadic/size.hpp
+-
+boost/preprocessor/variadic/to_tuple.hpp
+-
+boost/preprocessor/tuple/enum.hpp
+-
+boost/preprocessor/facilities/overload.hpp
 -
 
 ../contracts/eosiolib/asset.hpp
@@ -114,14 +48,6 @@ limits
 
 ../contracts/eosiolib/contract.hpp
 
-../contracts/eosiolib/currency.hpp
-eosiolib/eosio.hpp
--
-eosiolib/asset.hpp
--
-eosiolib/multi_index.hpp
--
-
 ../contracts/eosiolib/datastream.hpp
 eosiolib/system.h
 -
@@ -129,11 +55,15 @@ eosiolib/memory.h
 -
 eosiolib/vector.hpp
 -
+boost/container/flat_set.hpp
+-
 boost/container/flat_map.hpp
 -
 eosiolib/varint.hpp
 -
 array
+-
+set
 -
 map
 -
@@ -169,8 +99,6 @@ eosiolib/action.hpp
 -
 eosiolib/print.hpp
 -
-eosiolib/math.hpp
--
 eosiolib/multi_index.hpp
 -
 eosiolib/dispatcher.hpp
@@ -186,30 +114,6 @@ algorithm
 type_traits
 -
 eosiolib/system.h
--
-
-../contracts/eosiolib/generic_currency.hpp
-eosiolib/multi_index.hpp
--
-eosiolib/token.hpp
--
-eosiolib/asset.hpp
--
-eosiolib/dispatcher.hpp
--
-eosiolib/serialize.hpp
--
-eosiolib/action.hpp
--
-string
--
-
-../contracts/eosiolib/math.h
-eosiolib/system.h
--
-
-../contracts/eosiolib/math.hpp
-eosiolib/math.h
 -
 
 ../contracts/eosiolib/memory.h
@@ -247,6 +151,8 @@ memory
 -
 boost/multi_index/mem_fun.hpp
 -
+eosiolib/action.h
+-
 eosiolib/types.hpp
 -
 eosiolib/serialize.hpp
@@ -258,10 +164,6 @@ eosiolib/db.h
 eosiolib/fixed_key.hpp
 -
 
-../contracts/eosiolib/optional.hpp
-utility
--
-
 ../contracts/eosiolib/print.h
 eosiolib/types.h
 -
@@ -271,35 +173,11 @@ eosiolib/print.h
 -
 eosiolib/types.hpp
 -
-eosiolib/math.hpp
--
 eosiolib/fixed_key.hpp
 -
 utility
 -
 
-../contracts/eosiolib/privileged.h
-
-../contracts/eosiolib/privileged.hpp
-privileged.h
-../contracts/eosiolib/privileged.h
-serialize.hpp
-../contracts/eosiolib/serialize.hpp
-types.h
-../contracts/eosiolib/types.h
-
-../contracts/eosiolib/reflect.hpp
-boost/preprocessor/seq/for_each.hpp
--
-boost/preprocessor/seq/enum.hpp
--
-boost/preprocessor/seq/size.hpp
--
-boost/preprocessor/seq/seq.hpp
--
-boost/preprocessor/stringize.hpp
--
-
 ../contracts/eosiolib/serialize.hpp
 boost/preprocessor/seq/for_each.hpp
 -
@@ -310,12 +188,6 @@ boost/preprocessor/seq/size.hpp
 boost/preprocessor/seq/seq.hpp
 -
 boost/preprocessor/stringize.hpp
--
-
-../contracts/eosiolib/singleton.hpp
-eosiolib/multi_index.hpp
--
-eosiolib/system.h
 -
 
 ../contracts/eosiolib/stdlib.hpp
@@ -328,18 +200,6 @@ memory
 
 ../contracts/eosiolib/system.h
 eosiolib/types.h
--
-
-../contracts/eosiolib/token.hpp
-eosiolib/math.hpp
--
-eosiolib/print.hpp
--
-eosiolib/reflect.hpp
--
-eosiolib/asset.hpp
--
-eosiolib/serialize.hpp
 -
 
 ../contracts/eosiolib/transaction.h
@@ -745,11 +605,9 @@ boost/pfr/detail/fields_count.hpp
 /home/sam/eos/contracts/proxy/proxy.cpp
 proxy/proxy.hpp
 -
-eosio.system/eosio.system.hpp
--
 eosiolib/transaction.hpp
 -
-eosiolib/currency.hpp
+eosio.token/eosio.token.hpp
 -
 
 /home/sam/opt/boost_1_66_0/include/boost/assert.hpp
@@ -1626,6 +1484,40 @@ boost/intrusive/detail/minimal_pair_header.hpp
 boost/intrusive/detail/minimal_less_equal_header.hpp
 -
 boost/core/no_exceptions_support.hpp
+-
+initializer_list
+-
+boost/container/detail/config_end.hpp
+-
+
+/home/sam/opt/boost_1_66_0/include/boost/container/flat_set.hpp
+boost/config.hpp
+-
+boost/container/detail/config_begin.hpp
+-
+boost/container/detail/workaround.hpp
+-
+boost/container/allocator_traits.hpp
+-
+boost/container/container_fwd.hpp
+-
+boost/container/new_allocator.hpp
+-
+boost/container/detail/flat_tree.hpp
+-
+boost/container/detail/mpl.hpp
+-
+boost/move/traits.hpp
+-
+boost/move/utility_core.hpp
+-
+boost/move/detail/fwd_macros.hpp
+-
+boost/move/detail/move_helpers.hpp
+-
+boost/intrusive/detail/minimal_pair_header.hpp
+-
+boost/intrusive/detail/minimal_less_equal_header.hpp
 -
 initializer_list
 -
@@ -12276,6 +12168,10 @@ boost/preprocessor/variadic/elem.hpp
 boost/preprocessor/tuple/detail/is_single_return.hpp
 -
 
+/home/sam/opt/boost_1_66_0/include/boost/preprocessor/tuple/enum.hpp
+boost/preprocessor/tuple/rem.hpp
+-
+
 /home/sam/opt/boost_1_66_0/include/boost/preprocessor/tuple/rem.hpp
 boost/preprocessor/cat.hpp
 -
@@ -12317,6 +12213,10 @@ boost/preprocessor/config/config.hpp
 /home/sam/opt/boost_1_66_0/include/boost/preprocessor/variadic/size.hpp
 boost/preprocessor/cat.hpp
 -
+boost/preprocessor/config/config.hpp
+-
+
+/home/sam/opt/boost_1_66_0/include/boost/preprocessor/variadic/to_tuple.hpp
 boost/preprocessor/config/config.hpp
 -
 

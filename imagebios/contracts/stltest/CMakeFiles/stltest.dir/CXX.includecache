@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -17,17 +17,13 @@ eosiolib/datastream.hpp
 -
 eosiolib/serialize.hpp
 -
-
-../contracts/eosiolib/asset.hpp
-eosiolib/serialize.hpp
+boost/preprocessor/variadic/size.hpp
 -
-eosiolib/print.hpp
+boost/preprocessor/variadic/to_tuple.hpp
 -
-eosiolib/system.h
+boost/preprocessor/tuple/enum.hpp
 -
-tuple
--
-limits
+boost/preprocessor/facilities/overload.hpp
 -
 
 ../contracts/eosiolib/datastream.hpp
@@ -37,11 +33,15 @@ eosiolib/memory.h
 -
 eosiolib/vector.hpp
 -
+boost/container/flat_set.hpp
+-
 boost/container/flat_map.hpp
 -
 eosiolib/varint.hpp
 -
 array
+-
+set
 -
 map
 -
@@ -76,14 +76,6 @@ type_traits
 eosiolib/system.h
 -
 
-../contracts/eosiolib/math.h
-eosiolib/system.h
--
-
-../contracts/eosiolib/math.hpp
-eosiolib/math.h
--
-
 ../contracts/eosiolib/memory.h
 string.h
 -
@@ -105,23 +97,9 @@ eosiolib/print.h
 -
 eosiolib/types.hpp
 -
-eosiolib/math.hpp
--
 eosiolib/fixed_key.hpp
 -
 utility
--
-
-../contracts/eosiolib/reflect.hpp
-boost/preprocessor/seq/for_each.hpp
--
-boost/preprocessor/seq/enum.hpp
--
-boost/preprocessor/seq/size.hpp
--
-boost/preprocessor/seq/seq.hpp
--
-boost/preprocessor/stringize.hpp
 -
 
 ../contracts/eosiolib/serialize.hpp
@@ -146,18 +124,6 @@ memory
 
 ../contracts/eosiolib/system.h
 eosiolib/types.h
--
-
-../contracts/eosiolib/token.hpp
-eosiolib/math.hpp
--
-eosiolib/print.hpp
--
-eosiolib/reflect.hpp
--
-eosiolib/asset.hpp
--
-eosiolib/serialize.hpp
 -
 
 ../contracts/eosiolib/types.h
@@ -766,8 +732,6 @@ unordered_set
 string
 -
 stdexcept
--
-eosiolib/token.hpp
 -
 eosiolib/dispatcher.hpp
 -

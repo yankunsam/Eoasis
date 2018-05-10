@@ -13,6 +13,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../contracts"
   "../externals/magic_get/include"
   "/home/sam/opt/boost_1_66_0/include"
+  "../contracts/proxy/.."
   )
 
 # Targets to which this target links.

@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -16,14 +16,6 @@ type_traits
 eosiolib/system.h
 -
 
-../contracts/eosiolib/math.h
-eosiolib/system.h
--
-
-../contracts/eosiolib/math.hpp
-eosiolib/math.h
--
-
 ../contracts/eosiolib/print.h
 eosiolib/types.h
 -
@@ -32,8 +24,6 @@ eosiolib/types.h
 eosiolib/print.h
 -
 eosiolib/types.hpp
--
-eosiolib/math.hpp
 -
 eosiolib/fixed_key.hpp
 -

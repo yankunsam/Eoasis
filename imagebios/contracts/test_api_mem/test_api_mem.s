@@ -13,6 +13,46 @@ _ZeqRK11checksum256S1_:
 .Lfunc_end0:
 	.size	_ZeqRK11checksum256S1_, .Lfunc_end0-_ZeqRK11checksum256S1_
 
+	.hidden	_ZeqRK11checksum160S1_
+	.globl	_ZeqRK11checksum160S1_
+	.type	_ZeqRK11checksum160S1_,@function
+_ZeqRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.eqz 	$push2=, $pop1
+	.endfunc
+.Lfunc_end1:
+	.size	_ZeqRK11checksum160S1_, .Lfunc_end1-_ZeqRK11checksum160S1_
+
+	.hidden	_ZneRK11checksum160S1_
+	.globl	_ZneRK11checksum160S1_
+	.type	_ZneRK11checksum160S1_,@function
+_ZneRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.const	$push2=, 0
+	i32.ne  	$push3=, $pop1, $pop2
+	.endfunc
+.Lfunc_end2:
+	.size	_ZneRK11checksum160S1_, .Lfunc_end2-_ZneRK11checksum160S1_
+
+	.hidden	now
+	.globl	now
+	.type	now,@function
+now:
+	.result 	i32
+	i64.call	$push1=, current_time@FUNCTION
+	i64.const	$push0=, 1000000
+	i64.div_u	$push2=, $pop1, $pop0
+	i32.wrap/i64	$push3=, $pop2
+	.endfunc
+.Lfunc_end3:
+	.size	now, .Lfunc_end3-now
+
 	.hidden	_ZN5eosio12require_authERKNS_16permission_levelE
 	.globl	_ZN5eosio12require_authERKNS_16permission_levelE
 	.type	_ZN5eosio12require_authERKNS_16permission_levelE,@function
@@ -22,8 +62,8 @@ _ZN5eosio12require_authERKNS_16permission_levelE:
 	i64.load	$push0=, 8($0)
 	call    	require_auth2@FUNCTION, $pop1, $pop0
 	.endfunc
-.Lfunc_end1:
-	.size	_ZN5eosio12require_authERKNS_16permission_levelE, .Lfunc_end1-_ZN5eosio12require_authERKNS_16permission_levelE
+.Lfunc_end4:
+	.size	_ZN5eosio12require_authERKNS_16permission_levelE, .Lfunc_end4-_ZN5eosio12require_authERKNS_16permission_levelE
 
 	.hidden	_Z6verifyPKvmm
 	.globl	_Z6verifyPKvmm
@@ -33,7 +73,7 @@ _Z6verifyPKvmm:
 	block   	
 	i32.eqz 	$push7=, $2
 	br_if   	0, $pop7
-.LBB2_2:
+.LBB5_2:
 	loop    	
 	i32.load8_u	$push0=, 0($0)
 	i32.eq  	$push1=, $pop0, $1
@@ -45,12 +85,12 @@ _Z6verifyPKvmm:
 	i32.add 	$push3=, $2, $pop4
 	tee_local	$push2=, $2=, $pop3
 	br_if   	0, $pop2
-.LBB2_3:
+.LBB5_3:
 	end_loop
 	end_block
 	.endfunc
-.Lfunc_end2:
-	.size	_Z6verifyPKvmm, .Lfunc_end2-_Z6verifyPKvmm
+.Lfunc_end5:
+	.size	_Z6verifyPKvmm, .Lfunc_end5-_Z6verifyPKvmm
 
 	.hidden	_ZN20test_extended_memory16test_page_memoryEv
 	.globl	_ZN20test_extended_memory16test_page_memoryEv
@@ -129,8 +169,8 @@ _ZN20test_extended_memory16test_page_memoryEv:
 	i32.const	$push54=, .L.str.12
 	call    	eosio_assert@FUNCTION, $pop53, $pop54
 	.endfunc
-.Lfunc_end3:
-	.size	_ZN20test_extended_memory16test_page_memoryEv, .Lfunc_end3-_ZN20test_extended_memory16test_page_memoryEv
+.Lfunc_end6:
+	.size	_ZN20test_extended_memory16test_page_memoryEv, .Lfunc_end6-_ZN20test_extended_memory16test_page_memoryEv
 
 	.hidden	_ZN20test_extended_memory25test_page_memory_exceededEv
 	.globl	_ZN20test_extended_memory25test_page_memory_exceededEv
@@ -155,8 +195,8 @@ _ZN20test_extended_memory25test_page_memory_exceededEv:
 	i32.const	$push13=, .L.str.14
 	call    	eosio_assert@FUNCTION, $pop12, $pop13
 	.endfunc
-.Lfunc_end4:
-	.size	_ZN20test_extended_memory25test_page_memory_exceededEv, .Lfunc_end4-_ZN20test_extended_memory25test_page_memory_exceededEv
+.Lfunc_end7:
+	.size	_ZN20test_extended_memory25test_page_memory_exceededEv, .Lfunc_end7-_ZN20test_extended_memory25test_page_memory_exceededEv
 
 	.hidden	_ZN20test_extended_memory31test_page_memory_negative_bytesEv
 	.globl	_ZN20test_extended_memory31test_page_memory_negative_bytesEv
@@ -169,8 +209,8 @@ _ZN20test_extended_memory31test_page_memory_negative_bytesEv:
 	i32.const	$push3=, .L.str.15
 	call    	eosio_assert@FUNCTION, $pop2, $pop3
 	.endfunc
-.Lfunc_end5:
-	.size	_ZN20test_extended_memory31test_page_memory_negative_bytesEv, .Lfunc_end5-_ZN20test_extended_memory31test_page_memory_negative_bytesEv
+.Lfunc_end8:
+	.size	_ZN20test_extended_memory31test_page_memory_negative_bytesEv, .Lfunc_end8-_ZN20test_extended_memory31test_page_memory_negative_bytesEv
 
 	.hidden	_ZN20test_extended_memory19test_initial_bufferEv
 	.globl	_ZN20test_extended_memory19test_initial_bufferEv
@@ -277,8 +317,8 @@ _ZN20test_extended_memory19test_initial_bufferEv:
 	i32.const	$push53=, .L.str
 	call    	eosio_assert@FUNCTION, $pop52, $pop53
 	.endfunc
-.Lfunc_end6:
-	.size	_ZN20test_extended_memory19test_initial_bufferEv, .Lfunc_end6-_ZN20test_extended_memory19test_initial_bufferEv
+.Lfunc_end9:
+	.size	_ZN20test_extended_memory19test_initial_bufferEv, .Lfunc_end9-_ZN20test_extended_memory19test_initial_bufferEv
 
 	.hidden	_Z10verify_memPKvmm
 	.globl	_Z10verify_memPKvmm
@@ -288,7 +328,7 @@ _Z10verify_memPKvmm:
 	block   	
 	i32.eqz 	$push7=, $2
 	br_if   	0, $pop7
-.LBB7_2:
+.LBB10_2:
 	loop    	
 	i32.load8_u	$push0=, 0($0)
 	i32.eq  	$push1=, $pop0, $1
@@ -300,12 +340,12 @@ _Z10verify_memPKvmm:
 	i32.add 	$push3=, $2, $pop4
 	tee_local	$push2=, $2=, $pop3
 	br_if   	0, $pop2
-.LBB7_3:
+.LBB10_3:
 	end_loop
 	end_block
 	.endfunc
-.Lfunc_end7:
-	.size	_Z10verify_memPKvmm, .Lfunc_end7-_Z10verify_memPKvmm
+.Lfunc_end10:
+	.size	_Z10verify_memPKvmm, .Lfunc_end10-_Z10verify_memPKvmm
 
 	.hidden	_ZN11test_memory18test_memory_allocsEv
 	.globl	_ZN11test_memory18test_memory_allocsEv
@@ -427,7 +467,7 @@ _ZN11test_memory18test_memory_allocsEv:
 	i32.lt_u	$push54=, $pop53, $1
 	i32.const	$push55=, .L.str.25
 	call    	eosio_assert@FUNCTION, $pop54, $pop55
-.LBB8_1:
+.LBB11_1:
 	loop    	
 	i32.add 	$push56=, $0, $3
 	i32.load8_u	$push57=, 0($pop56)
@@ -639,8 +679,8 @@ _ZN11test_memory18test_memory_allocsEv:
 	i32.const	$push172=, .L.str.44
 	call    	eosio_assert@FUNCTION, $pop171, $pop172
 	.endfunc
-.Lfunc_end8:
-	.size	_ZN11test_memory18test_memory_allocsEv, .Lfunc_end8-_ZN11test_memory18test_memory_allocsEv
+.Lfunc_end11:
+	.size	_ZN11test_memory18test_memory_allocsEv, .Lfunc_end11-_ZN11test_memory18test_memory_allocsEv
 
 	.hidden	_ZN11test_memory16test_memory_hunkEv
 	.globl	_ZN11test_memory16test_memory_hunkEv
@@ -653,8 +693,8 @@ _ZN11test_memory16test_memory_hunkEv:
 	i32.const	$push4=, .L.str.45
 	call    	eosio_assert@FUNCTION, $pop3, $pop4
 	.endfunc
-.Lfunc_end9:
-	.size	_ZN11test_memory16test_memory_hunkEv, .Lfunc_end9-_ZN11test_memory16test_memory_hunkEv
+.Lfunc_end12:
+	.size	_ZN11test_memory16test_memory_hunkEv, .Lfunc_end12-_ZN11test_memory16test_memory_hunkEv
 
 	.hidden	_ZN11test_memory17test_memory_hunksEv
 	.globl	_ZN11test_memory17test_memory_hunksEv
@@ -670,7 +710,7 @@ _ZN11test_memory17test_memory_hunksEv:
 	call    	eosio_assert@FUNCTION, $pop1, $pop2
 	i32.const	$2=, 96
 	i32.const	$3=, 0
-.LBB10_1:
+.LBB13_1:
 	loop    	
 	i32.const	$push38=, 10225
 	i32.call	$push37=, malloc@FUNCTION, $pop38
@@ -687,7 +727,7 @@ _ZN11test_memory17test_memory_hunksEv:
 	i32.eq  	$push5=, $pop4, $1
 	i32.const	$push39=, .L.str.48
 	call    	eosio_assert@FUNCTION, $pop5, $pop39
-.LBB10_3:
+.LBB13_3:
 	end_block
 	copy_local	$3=, $1
 	i32.const	$push43=, -1
@@ -737,8 +777,8 @@ _ZN11test_memory17test_memory_hunksEv:
 	i32.const	$push30=, .L.str.55
 	call    	eosio_assert@FUNCTION, $pop29, $pop30
 	.endfunc
-.Lfunc_end10:
-	.size	_ZN11test_memory17test_memory_hunksEv, .Lfunc_end10-_ZN11test_memory17test_memory_hunksEv
+.Lfunc_end13:
+	.size	_ZN11test_memory17test_memory_hunksEv, .Lfunc_end13-_ZN11test_memory17test_memory_hunksEv
 
 	.hidden	_ZN11test_memory26test_memory_hunks_disjointEv
 	.globl	_ZN11test_memory26test_memory_hunks_disjointEv
@@ -760,7 +800,7 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	i32.const	$push2=, .L.str.56
 	call    	eosio_assert@FUNCTION, $pop1, $pop2
 	i32.const	$3=, 0
-.LBB11_1:
+.LBB14_1:
 	loop    	
 	i32.const	$push64=, 384
 	i32.add 	$push65=, $4, $pop64
@@ -794,7 +834,7 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	i32.const	$push10=, .L.str.59
 	call    	eosio_assert@FUNCTION, $pop9, $pop10
 	i32.const	$3=, 0
-.LBB11_3:
+.LBB14_3:
 	loop    	
 	i32.const	$push66=, 320
 	i32.add 	$push67=, $4, $pop66
@@ -863,7 +903,7 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	i32.const	$push105=, 4
 	i32.call	$3=, malloc@FUNCTION, $pop105
 	i32.const	$1=, 0
-.LBB11_5:
+.LBB14_5:
 	loop    	
 	i32.const	$push70=, 256
 	i32.add 	$push71=, $4, $pop70
@@ -902,7 +942,7 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	i32.load	$push43=, 268($4)
 	call    	free@FUNCTION, $pop43
 	i32.const	$3=, 0
-.LBB11_7:
+.LBB14_7:
 	loop    	
 	i32.const	$push141=, 2
 	i32.shl 	$push44=, $3, $pop141
@@ -924,7 +964,7 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	call    	eosio_assert@FUNCTION, $pop56, $pop133
 	i32.const	$3=, 1
 	br      	1
-.LBB11_9:
+.LBB14_9:
 	end_block
 	i32.const	$push148=, -4
 	i32.add 	$push46=, $2, $pop148
@@ -951,8 +991,8 @@ _ZN11test_memory26test_memory_hunks_disjointEv:
 	i32.add 	$push62=, $4, $pop61
 	i32.store	__stack_pointer($pop63), $pop62
 	.endfunc
-.Lfunc_end11:
-	.size	_ZN11test_memory26test_memory_hunks_disjointEv, .Lfunc_end11-_ZN11test_memory26test_memory_hunks_disjointEv
+.Lfunc_end14:
+	.size	_ZN11test_memory26test_memory_hunks_disjointEv, .Lfunc_end14-_ZN11test_memory26test_memory_hunks_disjointEv
 
 	.hidden	_ZN11test_memory18test_memset_memcpyEv
 	.globl	_ZN11test_memory18test_memset_memcpyEv
@@ -980,7 +1020,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push323=, .L.str.19
 	call    	eosio_assert@FUNCTION, $pop324, $pop323
 	i32.const	$2=, 1
-.LBB12_1:
+.LBB15_1:
 	loop    	
 	i32.const	$push309=, 112
 	i32.add 	$push310=, $3, $pop309
@@ -1000,7 +1040,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push335=, .L.str.19
 	call    	eosio_assert@FUNCTION, $pop336, $pop335
 	i32.const	$2=, 1
-.LBB12_3:
+.LBB15_3:
 	loop    	
 	i32.const	$push311=, 64
 	i32.add 	$push312=, $3, $pop311
@@ -1646,7 +1686,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push278=, 238
 	i32.const	$push342=, 25
 	i32.call	$drop=, memset@FUNCTION, $pop343, $pop278, $pop342
-.LBB12_5:
+.LBB15_5:
 	loop    	
 	i32.add 	$push279=, $3, $2
 	i32.load8_u	$push280=, 0($pop279)
@@ -1663,7 +1703,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push283=, 25
 	i32.call	$drop=, memcpy@FUNCTION, $3, $0, $pop283
 	i32.const	$2=, 0
-.LBB12_7:
+.LBB15_7:
 	loop    	
 	i32.add 	$push284=, $3, $2
 	i32.load8_u	$push285=, 0($pop284)
@@ -1684,7 +1724,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push567=, 25
 	i32.add 	$1=, $3, $pop567
 	i32.const	$2=, -25
-.LBB12_9:
+.LBB15_9:
 	loop    	
 	i32.add 	$push289=, $1, $2
 	i32.const	$push574=, 25
@@ -1702,7 +1742,7 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.const	$push293=, 25
 	i32.call	$drop=, memcpy@FUNCTION, $0, $3, $pop293
 	i32.const	$2=, 0
-.LBB12_11:
+.LBB15_11:
 	loop    	
 	i32.add 	$push294=, $3, $2
 	i32.load8_u	$push295=, 0($pop294)
@@ -1721,8 +1761,8 @@ _ZN11test_memory18test_memset_memcpyEv:
 	i32.add 	$push303=, $3, $pop302
 	i32.store	__stack_pointer($pop304), $pop303
 	.endfunc
-.Lfunc_end12:
-	.size	_ZN11test_memory18test_memset_memcpyEv, .Lfunc_end12-_ZN11test_memory18test_memset_memcpyEv
+.Lfunc_end15:
+	.size	_ZN11test_memory18test_memset_memcpyEv, .Lfunc_end15-_ZN11test_memory18test_memset_memcpyEv
 
 	.hidden	_ZN11test_memory25test_memcpy_overlap_startEv
 	.globl	_ZN11test_memory25test_memcpy_overlap_startEv
@@ -1757,8 +1797,8 @@ _ZN11test_memory25test_memcpy_overlap_startEv:
 	i32.add 	$push13=, $0, $pop12
 	i32.store	__stack_pointer($pop14), $pop13
 	.endfunc
-.Lfunc_end13:
-	.size	_ZN11test_memory25test_memcpy_overlap_startEv, .Lfunc_end13-_ZN11test_memory25test_memcpy_overlap_startEv
+.Lfunc_end16:
+	.size	_ZN11test_memory25test_memcpy_overlap_startEv, .Lfunc_end16-_ZN11test_memory25test_memcpy_overlap_startEv
 
 	.hidden	_ZN11test_memory23test_memcpy_overlap_endEv
 	.globl	_ZN11test_memory23test_memcpy_overlap_endEv
@@ -1793,8 +1833,8 @@ _ZN11test_memory23test_memcpy_overlap_endEv:
 	i32.add 	$push13=, $0, $pop12
 	i32.store	__stack_pointer($pop14), $pop13
 	.endfunc
-.Lfunc_end14:
-	.size	_ZN11test_memory23test_memcpy_overlap_endEv, .Lfunc_end14-_ZN11test_memory23test_memcpy_overlap_endEv
+.Lfunc_end17:
+	.size	_ZN11test_memory23test_memcpy_overlap_endEv, .Lfunc_end17-_ZN11test_memory23test_memcpy_overlap_endEv
 
 	.hidden	_ZN11test_memory11test_memcmpEv
 	.globl	_ZN11test_memory11test_memcmpEv
@@ -1886,8 +1926,8 @@ _ZN11test_memory11test_memcmpEv:
 	i32.add 	$push24=, $4, $pop23
 	i32.store	__stack_pointer($pop25), $pop24
 	.endfunc
-.Lfunc_end15:
-	.size	_ZN11test_memory11test_memcmpEv, .Lfunc_end15-_ZN11test_memory11test_memcmpEv
+.Lfunc_end18:
+	.size	_ZN11test_memory11test_memcmpEv, .Lfunc_end18-_ZN11test_memory11test_memcmpEv
 
 	.hidden	_ZN11test_memory17test_outofbound_0Ev
 	.globl	_ZN11test_memory17test_outofbound_0Ev
@@ -1898,8 +1938,8 @@ _ZN11test_memory17test_outofbound_0Ev:
 	i32.const	$push0=, 1073741824
 	i32.call	$drop=, memset@FUNCTION, $pop2, $pop1, $pop0
 	.endfunc
-.Lfunc_end16:
-	.size	_ZN11test_memory17test_outofbound_0Ev, .Lfunc_end16-_ZN11test_memory17test_outofbound_0Ev
+.Lfunc_end19:
+	.size	_ZN11test_memory17test_outofbound_0Ev, .Lfunc_end19-_ZN11test_memory17test_outofbound_0Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_1Ev
 	.globl	_ZN11test_memory17test_outofbound_1Ev
@@ -1910,8 +1950,8 @@ _ZN11test_memory17test_outofbound_1Ev:
 	i32.const	$push0=, -1
 	i32.call	$drop=, memset@FUNCTION, $pop2, $pop1, $pop0
 	.endfunc
-.Lfunc_end17:
-	.size	_ZN11test_memory17test_outofbound_1Ev, .Lfunc_end17-_ZN11test_memory17test_outofbound_1Ev
+.Lfunc_end20:
+	.size	_ZN11test_memory17test_outofbound_1Ev, .Lfunc_end20-_ZN11test_memory17test_outofbound_1Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_2Ev
 	.globl	_ZN11test_memory17test_outofbound_2Ev
@@ -1938,8 +1978,8 @@ _ZN11test_memory17test_outofbound_2Ev:
 	i32.add 	$push9=, $0, $pop8
 	i32.store	__stack_pointer($pop10), $pop9
 	.endfunc
-.Lfunc_end18:
-	.size	_ZN11test_memory17test_outofbound_2Ev, .Lfunc_end18-_ZN11test_memory17test_outofbound_2Ev
+.Lfunc_end21:
+	.size	_ZN11test_memory17test_outofbound_2Ev, .Lfunc_end21-_ZN11test_memory17test_outofbound_2Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_3Ev
 	.globl	_ZN11test_memory17test_outofbound_3Ev
@@ -1951,8 +1991,8 @@ _ZN11test_memory17test_outofbound_3Ev:
 	i32.const	$push2=, 1048576
 	i32.call	$drop=, memset@FUNCTION, $pop1, $pop3, $pop2
 	.endfunc
-.Lfunc_end19:
-	.size	_ZN11test_memory17test_outofbound_3Ev, .Lfunc_end19-_ZN11test_memory17test_outofbound_3Ev
+.Lfunc_end22:
+	.size	_ZN11test_memory17test_outofbound_3Ev, .Lfunc_end22-_ZN11test_memory17test_outofbound_3Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_4Ev
 	.globl	_ZN11test_memory17test_outofbound_4Ev
@@ -1962,8 +2002,8 @@ _ZN11test_memory17test_outofbound_4Ev:
 	i32.const	$push0=, 1
 	i32.store8	8388607($pop1), $pop0
 	.endfunc
-.Lfunc_end20:
-	.size	_ZN11test_memory17test_outofbound_4Ev, .Lfunc_end20-_ZN11test_memory17test_outofbound_4Ev
+.Lfunc_end23:
+	.size	_ZN11test_memory17test_outofbound_4Ev, .Lfunc_end23-_ZN11test_memory17test_outofbound_4Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_5Ev
 	.globl	_ZN11test_memory17test_outofbound_5Ev
@@ -1973,8 +2013,8 @@ _ZN11test_memory17test_outofbound_5Ev:
 	i32.const	$push0=, 1
 	i32.store16	8388607($pop1), $pop0
 	.endfunc
-.Lfunc_end21:
-	.size	_ZN11test_memory17test_outofbound_5Ev, .Lfunc_end21-_ZN11test_memory17test_outofbound_5Ev
+.Lfunc_end24:
+	.size	_ZN11test_memory17test_outofbound_5Ev, .Lfunc_end24-_ZN11test_memory17test_outofbound_5Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_6Ev
 	.globl	_ZN11test_memory17test_outofbound_6Ev
@@ -1984,8 +2024,8 @@ _ZN11test_memory17test_outofbound_6Ev:
 	i32.const	$push0=, 1
 	i32.store	8388607($pop1), $pop0
 	.endfunc
-.Lfunc_end22:
-	.size	_ZN11test_memory17test_outofbound_6Ev, .Lfunc_end22-_ZN11test_memory17test_outofbound_6Ev
+.Lfunc_end25:
+	.size	_ZN11test_memory17test_outofbound_6Ev, .Lfunc_end25-_ZN11test_memory17test_outofbound_6Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_7Ev
 	.globl	_ZN11test_memory17test_outofbound_7Ev
@@ -1995,68 +2035,80 @@ _ZN11test_memory17test_outofbound_7Ev:
 	i64.const	$push0=, 4607182418800017408
 	i64.store	8388607($pop1), $pop0
 	.endfunc
-.Lfunc_end23:
-	.size	_ZN11test_memory17test_outofbound_7Ev, .Lfunc_end23-_ZN11test_memory17test_outofbound_7Ev
+.Lfunc_end26:
+	.size	_ZN11test_memory17test_outofbound_7Ev, .Lfunc_end26-_ZN11test_memory17test_outofbound_7Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_8Ev
 	.globl	_ZN11test_memory17test_outofbound_8Ev
 	.type	_ZN11test_memory17test_outofbound_8Ev,@function
 _ZN11test_memory17test_outofbound_8Ev:
+	.local  	i32
 	i32.const	$push2=, 0
 	i32.load	$push3=, __stack_pointer($pop2)
 	i32.const	$push4=, 16
-	i32.sub 	$push5=, $pop3, $pop4
+	i32.sub 	$push6=, $pop3, $pop4
+	tee_local	$push5=, $0=, $pop6
 	i32.const	$push0=, 0
 	i32.load8_u	$push1=, 8388607($pop0)
 	i32.store8	15($pop5), $pop1
+	i32.load8_u	$drop=, 15($0)
 	.endfunc
-.Lfunc_end24:
-	.size	_ZN11test_memory17test_outofbound_8Ev, .Lfunc_end24-_ZN11test_memory17test_outofbound_8Ev
+.Lfunc_end27:
+	.size	_ZN11test_memory17test_outofbound_8Ev, .Lfunc_end27-_ZN11test_memory17test_outofbound_8Ev
 
 	.hidden	_ZN11test_memory17test_outofbound_9Ev
 	.globl	_ZN11test_memory17test_outofbound_9Ev
 	.type	_ZN11test_memory17test_outofbound_9Ev,@function
 _ZN11test_memory17test_outofbound_9Ev:
+	.local  	i32
 	i32.const	$push2=, 0
 	i32.load	$push3=, __stack_pointer($pop2)
 	i32.const	$push4=, 16
-	i32.sub 	$push5=, $pop3, $pop4
+	i32.sub 	$push6=, $pop3, $pop4
+	tee_local	$push5=, $0=, $pop6
 	i32.const	$push0=, 0
 	i32.load16_u	$push1=, 8388607($pop0)
 	i32.store16	14($pop5), $pop1
+	i32.load16_u	$drop=, 14($0)
 	.endfunc
-.Lfunc_end25:
-	.size	_ZN11test_memory17test_outofbound_9Ev, .Lfunc_end25-_ZN11test_memory17test_outofbound_9Ev
+.Lfunc_end28:
+	.size	_ZN11test_memory17test_outofbound_9Ev, .Lfunc_end28-_ZN11test_memory17test_outofbound_9Ev
 
 	.hidden	_ZN11test_memory18test_outofbound_10Ev
 	.globl	_ZN11test_memory18test_outofbound_10Ev
 	.type	_ZN11test_memory18test_outofbound_10Ev,@function
 _ZN11test_memory18test_outofbound_10Ev:
+	.local  	i32
 	i32.const	$push2=, 0
 	i32.load	$push3=, __stack_pointer($pop2)
 	i32.const	$push4=, 16
-	i32.sub 	$push5=, $pop3, $pop4
+	i32.sub 	$push6=, $pop3, $pop4
+	tee_local	$push5=, $0=, $pop6
 	i32.const	$push0=, 0
 	i32.load	$push1=, 8388607($pop0)
 	i32.store	12($pop5), $pop1
+	i32.load	$drop=, 12($0)
 	.endfunc
-.Lfunc_end26:
-	.size	_ZN11test_memory18test_outofbound_10Ev, .Lfunc_end26-_ZN11test_memory18test_outofbound_10Ev
+.Lfunc_end29:
+	.size	_ZN11test_memory18test_outofbound_10Ev, .Lfunc_end29-_ZN11test_memory18test_outofbound_10Ev
 
 	.hidden	_ZN11test_memory18test_outofbound_11Ev
 	.globl	_ZN11test_memory18test_outofbound_11Ev
 	.type	_ZN11test_memory18test_outofbound_11Ev,@function
 _ZN11test_memory18test_outofbound_11Ev:
+	.local  	i32
 	i32.const	$push2=, 0
 	i32.load	$push3=, __stack_pointer($pop2)
 	i32.const	$push4=, 16
-	i32.sub 	$push5=, $pop3, $pop4
+	i32.sub 	$push6=, $pop3, $pop4
+	tee_local	$push5=, $0=, $pop6
 	i32.const	$push0=, 0
 	i64.load	$push1=, 8388607($pop0)
 	i64.store	8($pop5), $pop1
+	i64.load	$drop=, 8($0)
 	.endfunc
-.Lfunc_end27:
-	.size	_ZN11test_memory18test_outofbound_11Ev, .Lfunc_end27-_ZN11test_memory18test_outofbound_11Ev
+.Lfunc_end30:
+	.size	_ZN11test_memory18test_outofbound_11Ev, .Lfunc_end30-_ZN11test_memory18test_outofbound_11Ev
 
 	.hidden	_ZN11test_memory18test_outofbound_12Ev
 	.globl	_ZN11test_memory18test_outofbound_12Ev
@@ -2074,8 +2126,8 @@ _ZN11test_memory18test_outofbound_12Ev:
 	i64.const	$push1=, 4607182418800017408
 	i64.store	0($pop2), $pop1
 	.endfunc
-.Lfunc_end28:
-	.size	_ZN11test_memory18test_outofbound_12Ev, .Lfunc_end28-_ZN11test_memory18test_outofbound_12Ev
+.Lfunc_end31:
+	.size	_ZN11test_memory18test_outofbound_12Ev, .Lfunc_end31-_ZN11test_memory18test_outofbound_12Ev
 
 	.hidden	_ZN11test_memory18test_outofbound_13Ev
 	.globl	_ZN11test_memory18test_outofbound_13Ev
@@ -2092,9 +2144,10 @@ _ZN11test_memory18test_outofbound_13Ev:
 	i32.load	$push1=, 12($0)
 	i64.load	$push2=, 0($pop1)
 	i64.store	0($0), $pop2
+	i64.load	$drop=, 0($0)
 	.endfunc
-.Lfunc_end29:
-	.size	_ZN11test_memory18test_outofbound_13Ev, .Lfunc_end29-_ZN11test_memory18test_outofbound_13Ev
+.Lfunc_end32:
+	.size	_ZN11test_memory18test_outofbound_13Ev, .Lfunc_end32-_ZN11test_memory18test_outofbound_13Ev
 
 	.hidden	apply
 	.globl	apply
@@ -2152,13 +2205,13 @@ apply:
 	block   	
 	i32.wrap/i64	$push3=, $1
 	br_table 	$pop3, 0, 17, 18, 19, 20, 21, 22, 23, 9, 9, 9, 9, 9, 9, 24, 25, 0
-.LBB30_4:
+.LBB33_4:
 	end_block
 	i32.const	$push60=, 0
 	i32.const	$push59=, 1
 	i32.store	8388607($pop60), $pop59
 	br      	26
-.LBB30_5:
+.LBB33_5:
 	end_block
 	i64.const	$push11=, 7792854416736093146
 	i64.gt_s	$push12=, $2, $pop11
@@ -2175,15 +2228,16 @@ apply:
 	block   	
 	i32.wrap/i64	$push7=, $2
 	br_table 	$pop7, 0, 9, 10, 11, 0
-.LBB30_9:
+.LBB33_9:
 	end_block
 	i32.const	$push43=, -1
 	i32.store	1064($7), $pop43
 	i32.load	$push44=, 1064($7)
 	i64.load	$push45=, 0($pop44)
 	i64.store	0($7), $pop45
+	i64.load	$drop=, 0($7)
 	br      	25
-.LBB30_10:
+.LBB33_10:
 	end_block
 	i64.const	$push37=, -8214783469575734291
 	i64.eq  	$push38=, $2, $pop37
@@ -2213,7 +2267,7 @@ apply:
 	i32.const	$push136=, .L.str.14
 	call    	eosio_assert@FUNCTION, $pop135, $pop136
 	br      	24
-.LBB30_14:
+.LBB33_14:
 	end_block
 	i64.const	$push13=, 7792854416965679704
 	i64.gt_s	$push14=, $2, $pop13
@@ -2241,7 +2295,7 @@ apply:
 	i32.const	$push173=, 50
 	i32.call	$drop=, memcpy@FUNCTION, $3, $pop105, $pop173
 	br      	23
-.LBB30_18:
+.LBB33_18:
 	end_block
 	i64.const	$push25=, 7792854415331153655
 	i64.eq  	$push26=, $2, $pop25
@@ -2269,7 +2323,7 @@ apply:
 	i32.const	$push178=, 50
 	i32.call	$drop=, memcpy@FUNCTION, $pop113, $3, $pop178
 	br      	22
-.LBB30_22:
+.LBB33_22:
 	end_block
 	i64.const	$push15=, 7792854416965679705
 	i64.eq  	$push16=, $2, $pop15
@@ -2284,7 +2338,7 @@ apply:
 	i32.const	$push118=, .L.str.45
 	call    	eosio_assert@FUNCTION, $pop117, $pop118
 	br      	21
-.LBB30_25:
+.LBB33_25:
 	end_block
 	i64.const	$push33=, -8214783466807040677
 	i64.eq  	$push34=, $2, $pop33
@@ -2294,21 +2348,21 @@ apply:
 	br_if   	2, $pop36
 	call    	_ZN11test_memory26test_memory_hunks_disjointEv@FUNCTION
 	br      	20
-.LBB30_28:
+.LBB33_28:
 	end_block
 	call    	_ZN20test_extended_memory19test_initial_bufferEv@FUNCTION
 	br      	19
-.LBB30_29:
+.LBB33_29:
 	end_block
 	call    	_ZN20test_extended_memory16test_page_memoryEv@FUNCTION
 	br      	18
-.LBB30_30:
+.LBB33_30:
 	end_block
 	i32.const	$push138=, 0
 	i32.const	$push137=, .L.str.100
 	call    	eosio_assert@FUNCTION, $pop138, $pop137
 	br      	17
-.LBB30_31:
+.LBB33_31:
 	end_block
 	i32.const	$push46=, -1
 	i32.store	0($7), $pop46
@@ -2316,23 +2370,25 @@ apply:
 	i64.const	$push47=, 4607182418800017408
 	i64.store	0($pop48), $pop47
 	br      	16
-.LBB30_32:
+.LBB33_32:
 	end_block
 	i32.const	$push49=, 0
 	i64.load	$push50=, 8388607($pop49)
 	i64.store	0($7), $pop50
+	i64.load	$drop=, 0($7)
 	br      	15
-.LBB30_33:
+.LBB33_33:
 	end_block
 	i32.const	$push51=, 0
 	i32.load	$push52=, 8388607($pop51)
 	i32.store	0($7), $pop52
+	i32.load	$drop=, 0($7)
 	br      	14
-.LBB30_34:
+.LBB33_34:
 	end_block
 	call    	_ZN11test_memory18test_memset_memcpyEv@FUNCTION
 	br      	13
-.LBB30_35:
+.LBB33_35:
 	end_block
 	i32.const	$push80=, 4
 	i32.add 	$push81=, $7, $pop80
@@ -2408,33 +2464,33 @@ apply:
 	i32.const	$push97=, .L.str.71
 	call    	eosio_assert@FUNCTION, $pop96, $pop97
 	br      	12
-.LBB30_36:
+.LBB33_36:
 	end_block
 	call    	_ZN11test_memory18test_memory_allocsEv@FUNCTION
 	br      	11
-.LBB30_37:
+.LBB33_37:
 	end_block
 	call    	_ZN11test_memory17test_memory_hunksEv@FUNCTION
 	br      	10
-.LBB30_38:
+.LBB33_38:
 	end_block
 	i32.const	$push58=, 0
 	i64.const	$push57=, 4607182418800017408
 	i64.store	8388607($pop58), $pop57
 	br      	9
-.LBB30_39:
+.LBB33_39:
 	end_block
 	i32.const	$push64=, 0
 	i32.const	$push63=, 1
 	i32.store8	8388607($pop64), $pop63
 	br      	8
-.LBB30_40:
+.LBB33_40:
 	end_block
 	i32.const	$push62=, 0
 	i32.const	$push61=, 1
 	i32.store16	8388607($pop62), $pop61
 	br      	7
-.LBB30_41:
+.LBB33_41:
 	end_block
 	i32.const	$push70=, 0
 	i32.const	$push69=, 1024
@@ -2444,7 +2500,7 @@ apply:
 	i32.const	$push202=, 1048576
 	i32.call	$drop=, memcpy@FUNCTION, $pop0, $pop72, $pop202
 	br      	6
-.LBB30_42:
+.LBB33_42:
 	end_block
 	i32.const	$push65=, 128
 	i32.call	$push66=, malloc@FUNCTION, $pop65
@@ -2452,33 +2508,35 @@ apply:
 	i32.const	$push67=, 1048576
 	i32.call	$drop=, memset@FUNCTION, $pop66, $pop68, $pop67
 	br      	5
-.LBB30_43:
+.LBB33_43:
 	end_block
 	i32.const	$push78=, 0
 	i32.const	$push77=, 255
 	i32.const	$push76=, 1073741824
 	i32.call	$drop=, memset@FUNCTION, $pop78, $pop77, $pop76
 	br      	4
-.LBB30_44:
+.LBB33_44:
 	end_block
 	i32.const	$push75=, 16
 	i32.const	$push74=, 255
 	i32.const	$push73=, -1
 	i32.call	$drop=, memset@FUNCTION, $pop75, $pop74, $pop73
 	br      	3
-.LBB30_45:
+.LBB33_45:
 	end_block
 	i32.const	$push55=, 0
 	i32.load8_u	$push56=, 8388607($pop55)
 	i32.store8	0($7), $pop56
+	i32.load8_u	$drop=, 0($7)
 	br      	2
-.LBB30_46:
+.LBB33_46:
 	end_block
 	i32.const	$push53=, 0
 	i32.load16_u	$push54=, 8388607($pop53)
 	i32.store16	0($7), $pop54
+	i32.load16_u	$drop=, 0($7)
 	br      	1
-.LBB30_47:
+.LBB33_47:
 	end_block
 	i32.const	$push119=, -1
 	i32.call	$push120=, _Z4sbrkj@FUNCTION, $pop119
@@ -2486,15 +2544,15 @@ apply:
 	i32.eq  	$push121=, $pop120, $pop203
 	i32.const	$push122=, .L.str.15
 	call    	eosio_assert@FUNCTION, $pop121, $pop122
-.LBB30_48:
+.LBB33_48:
 	end_block
 	i32.const	$push145=, 0
 	i32.const	$push143=, 1072
 	i32.add 	$push144=, $7, $pop143
 	i32.store	__stack_pointer($pop145), $pop144
 	.endfunc
-.Lfunc_end30:
-	.size	apply, .Lfunc_end30-apply
+.Lfunc_end33:
+	.size	apply, .Lfunc_end33-apply
 
 	.hidden	_Z4sbrkj
 	.globl	_Z4sbrkj
@@ -2515,7 +2573,7 @@ _Z4sbrkj:
 	i32.const	$push2=, 16
 	i32.shl 	$push3=, $5, $pop2
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop19), $pop3
-.LBB31_2:
+.LBB34_2:
 	end_block
 	i32.const	$5=, -1
 	block   	
@@ -2549,18 +2607,18 @@ _Z4sbrkj:
 	br_if   	1, $pop15
 	i32.const	$push16=, 0
 	i32.load	$4=, _ZZ4sbrkjE10sbrk_bytes($pop16)
-.LBB31_6:
+.LBB34_6:
 	end_block
 	i32.const	$push31=, 0
 	i32.add 	$push17=, $4, $2
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop31), $pop17
 	copy_local	$5=, $3
-.LBB31_7:
+.LBB34_7:
 	end_block
 	copy_local	$push32=, $5
 	.endfunc
-.Lfunc_end31:
-	.size	_Z4sbrkj, .Lfunc_end31-_Z4sbrkj
+.Lfunc_end34:
+	.size	_Z4sbrkj, .Lfunc_end34-_Z4sbrkj
 
 	.hidden	malloc
 	.globl	malloc
@@ -2571,8 +2629,8 @@ malloc:
 	i32.const	$push0=, _ZN5eosio11memory_heapE
 	i32.call	$push1=, _ZN5eosio14memory_manager6mallocEm@FUNCTION, $pop0, $0
 	.endfunc
-.Lfunc_end32:
-	.size	malloc, .Lfunc_end32-malloc
+.Lfunc_end35:
+	.size	malloc, .Lfunc_end35-malloc
 
 	.section	.text._ZN5eosio14memory_manager6mallocEm,"axG",@progbits,_ZN5eosio14memory_manager6mallocEm,comdat
 	.hidden	_ZN5eosio14memory_manager6mallocEm
@@ -2594,7 +2652,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.add 	$push1=, $0, $pop0
 	i32.const	$push64=, 16
 	i32.store	0($pop1), $pop64
-.LBB33_3:
+.LBB36_3:
 	end_block
 	i32.const	$push2=, 8
 	i32.add 	$push3=, $1, $pop2
@@ -2627,11 +2685,11 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.const	$push14=, 8192
 	i32.store	0($1), $pop14
 	i32.store	0($13), $0
-.LBB33_7:
+.LBB36_7:
 	end_block
 	i32.const	$push72=, 4
 	i32.add 	$10=, $2, $pop72
-.LBB33_8:
+.LBB36_8:
 	loop    	
 	block   	
 	i32.load	$push74=, 8($1)
@@ -2662,12 +2720,12 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.add 	$push76=, $13, $pop77
 	tee_local	$push75=, $1=, $pop76
 	br_if   	3, $pop75
-.LBB33_10:
+.LBB36_10:
 	end_block
 	i32.call	$push86=, _ZN5eosio14memory_manager16next_active_heapEv@FUNCTION, $0
 	tee_local	$push85=, $1=, $pop86
 	br_if   	0, $pop85
-.LBB33_11:
+.LBB36_11:
 	end_loop
 	end_block
 	i32.const	$push26=, 2147483644
@@ -2679,7 +2737,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.load	$push88=, 8392($0)
 	tee_local	$push87=, $3=, $pop88
 	copy_local	$13=, $pop87
-.LBB33_12:
+.LBB36_12:
 	loop    	
 	i32.const	$push100=, 12
 	i32.mul 	$push27=, $13, $pop100
@@ -2701,7 +2759,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	tee_local	$push90=, $6=, $pop91
 	i32.const	$push89=, 4
 	i32.add 	$13=, $pop90, $pop89
-.LBB33_13:
+.LBB36_13:
 	loop    	
 	i32.load	$push33=, 0($5)
 	i32.add 	$7=, $6, $pop33
@@ -2719,7 +2777,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	block   	
 	i32.ge_u	$push35=, $1, $2
 	br_if   	0, $pop35
-.LBB33_15:
+.LBB36_15:
 	loop    	
 	i32.add 	$push109=, $13, $1
 	tee_local	$push108=, $10=, $pop109
@@ -2738,7 +2796,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	tee_local	$push113=, $1=, $pop114
 	i32.lt_u	$push40=, $pop113, $2
 	br_if   	0, $pop40
-.LBB33_18:
+.LBB36_18:
 	end_loop
 	end_block
 	i32.lt_u	$push41=, $1, $2
@@ -2755,11 +2813,11 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.const	$push118=, 2147483647
 	i32.and 	$push48=, $pop47, $pop118
 	i32.store	0($pop46), $pop48
-.LBB33_20:
+.LBB36_20:
 	end_block
 	i32.ge_u	$push49=, $1, $2
 	br_if   	4, $pop49
-.LBB33_21:
+.LBB36_21:
 	end_block
 	i32.add 	$push53=, $13, $1
 	i32.const	$push121=, 4
@@ -2781,23 +2839,23 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.store	0($11), $pop122
 	i32.ne  	$push60=, $13, $3
 	br_if   	0, $pop60
-.LBB33_23:
+.LBB36_23:
 	end_loop
 	end_block
 	return  	$1
-.LBB33_24:
+.LBB36_24:
 	end_block
 	i32.load	$push50=, 0($8)
 	i32.const	$push51=, -2147483648
 	i32.or  	$push52=, $pop50, $pop51
 	i32.store	0($8), $pop52
 	return  	$13
-.LBB33_25:
+.LBB36_25:
 	end_block
 	i32.const	$push61=, 0
 	.endfunc
-.Lfunc_end33:
-	.size	_ZN5eosio14memory_manager6mallocEm, .Lfunc_end33-_ZN5eosio14memory_manager6mallocEm
+.Lfunc_end36:
+	.size	_ZN5eosio14memory_manager6mallocEm, .Lfunc_end36-_ZN5eosio14memory_manager6mallocEm
 
 	.section	.text._ZN5eosio14memory_manager16next_active_heapEv,"axG",@progbits,_ZN5eosio14memory_manager16next_active_heapEv,comdat
 	.hidden	_ZN5eosio14memory_manager16next_active_heapEv
@@ -2817,7 +2875,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push95=, 0
 	i32.load	$7=, _ZZ4sbrkjE10sbrk_bytes($pop95)
 	br      	1
-.LBB34_2:
+.LBB37_2:
 	end_block
 	current_memory	$7=
 	i32.const	$push99=, 0
@@ -2828,7 +2886,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.shl 	$push97=, $7, $pop4
 	tee_local	$push96=, $7=, $pop97
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop98), $pop96
-.LBB34_3:
+.LBB37_3:
 	end_block
 	copy_local	$3=, $7
 	block   	
@@ -2852,7 +2910,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	br_if   	1, $pop11
 	i32.const	$push12=, 0
 	i32.load	$3=, _ZZ4sbrkjE10sbrk_bytes($pop12)
-.LBB34_6:
+.LBB37_6:
 	end_block
 	i32.const	$8=, 0
 	i32.const	$push105=, 0
@@ -2891,7 +2949,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.shl 	$push112=, $3, $pop26
 	tee_local	$push111=, $3=, $pop112
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop113), $pop111
-.LBB34_9:
+.LBB37_9:
 	end_block
 	i32.const	$push116=, 8192
 	i32.add 	$2=, $2, $pop116
@@ -2922,7 +2980,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	br_if   	2, $pop38
 	i32.const	$push39=, 0
 	i32.load	$6=, _ZZ4sbrkjE10sbrk_bytes($pop39)
-.LBB34_13:
+.LBB37_13:
 	end_block
 	i32.const	$push41=, 0
 	i32.add 	$push40=, $6, $5
@@ -2967,7 +3025,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push61=, 2147483647
 	i32.and 	$push62=, $pop60, $pop61
 	i32.store	0($6), $pop62
-.LBB34_17:
+.LBB37_17:
 	end_block
 	i32.const	$push63=, 8388
 	i32.add 	$push142=, $0, $pop63
@@ -2988,10 +3046,10 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.add 	$push136=, $0, $pop70
 	tee_local	$push135=, $8=, $pop136
 	i32.store	0($pop135), $7
-.LBB34_18:
+.LBB37_18:
 	end_block
 	return  	$8
-.LBB34_19:
+.LBB37_19:
 	end_block
 	block   	
 	i32.load	$push150=, 0($2)
@@ -3026,7 +3084,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push88=, 2147483647
 	i32.and 	$push89=, $pop87, $pop88
 	i32.store	0($3), $pop89
-.LBB34_21:
+.LBB37_21:
 	end_block
 	i32.const	$push90=, 8388
 	i32.add 	$push156=, $0, $pop90
@@ -3039,14 +3097,14 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.store	0($7), $3
 	i32.const	$push93=, 0
 	return  	$pop93
-.LBB34_22:
+.LBB37_22:
 	end_block
 	i32.add 	$push71=, $8, $7
 	i32.store	0($2), $pop71
 	copy_local	$push158=, $2
 	.endfunc
-.Lfunc_end34:
-	.size	_ZN5eosio14memory_manager16next_active_heapEv, .Lfunc_end34-_ZN5eosio14memory_manager16next_active_heapEv
+.Lfunc_end37:
+	.size	_ZN5eosio14memory_manager16next_active_heapEv, .Lfunc_end37-_ZN5eosio14memory_manager16next_active_heapEv
 
 	.text
 	.hidden	realloc
@@ -3058,8 +3116,8 @@ realloc:
 	i32.const	$push0=, _ZN5eosio11memory_heapE
 	i32.call	$push1=, _ZN5eosio14memory_manager7reallocEPvm@FUNCTION, $pop0, $0, $1
 	.endfunc
-.Lfunc_end35:
-	.size	realloc, .Lfunc_end35-realloc
+.Lfunc_end38:
+	.size	realloc, .Lfunc_end38-realloc
 
 	.section	.text._ZN5eosio14memory_manager7reallocEPvm,"axG",@progbits,_ZN5eosio14memory_manager7reallocEPvm,comdat
 	.hidden	_ZN5eosio14memory_manager7reallocEPvm
@@ -3107,7 +3165,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.const	$push64=, 12
 	i32.mul 	$push9=, $5, $pop64
 	i32.add 	$4=, $pop65, $pop9
-.LBB36_4:
+.LBB39_4:
 	loop    	
 	i32.const	$push69=, 4
 	i32.add 	$push11=, $2, $pop69
@@ -3124,7 +3182,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.add 	$push15=, $5, $pop14
 	i32.gt_u	$push16=, $pop15, $1
 	br_if   	3, $pop16
-.LBB36_7:
+.LBB39_7:
 	end_block
 	i32.const	$push73=, 12
 	i32.add 	$push72=, $2, $pop73
@@ -3132,7 +3190,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.lt_u	$push17=, $pop71, $4
 	br_if   	0, $pop17
 	br      	4
-.LBB36_8:
+.LBB39_8:
 	end_loop
 	end_block
 	i32.const	$4=, 0
@@ -3149,7 +3207,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.const	$push94=, 12
 	i32.mul 	$push36=, $5, $pop94
 	i32.add 	$0=, $pop95, $pop36
-.LBB36_11:
+.LBB39_11:
 	loop    	
 	i32.const	$push99=, 4
 	i32.add 	$push38=, $2, $pop99
@@ -3166,7 +3224,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.add 	$push42=, $5, $pop41
 	i32.gt_u	$push43=, $pop42, $1
 	br_if   	3, $pop43
-.LBB36_14:
+.LBB39_14:
 	end_block
 	i32.const	$push103=, 12
 	i32.add 	$push102=, $2, $pop103
@@ -3174,7 +3232,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.lt_u	$push48=, $pop101, $0
 	br_if   	0, $pop48
 	br      	4
-.LBB36_15:
+.LBB39_15:
 	end_loop
 	end_block
 	i32.const	$push56=, 12
@@ -3183,7 +3241,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	tee_local	$push104=, $4=, $pop105
 	br_if   	2, $pop104
 	br      	1
-.LBB36_16:
+.LBB39_16:
 	end_block
 	i32.const	$push44=, -4
 	i32.add 	$push107=, $1, $pop44
@@ -3193,7 +3251,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.and 	$push47=, $pop45, $pop46
 	i32.store	0($pop106), $pop47
 	br      	1
-.LBB36_17:
+.LBB39_17:
 	end_block
 	i32.const	$4=, 0
 	i32.call	$push75=, _ZN5eosio14memory_manager6mallocEm@FUNCTION, $0, $3
@@ -3222,7 +3280,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.const	$push82=, 12
 	i32.mul 	$push21=, $5, $pop82
 	i32.add 	$4=, $pop83, $pop21
-.LBB36_22:
+.LBB39_22:
 	loop    	
 	i32.const	$push87=, 4
 	i32.add 	$push23=, $2, $pop87
@@ -3240,7 +3298,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.add 	$push27=, $5, $pop26
 	i32.gt_u	$push28=, $pop27, $1
 	br_if   	1, $pop28
-.LBB36_25:
+.LBB39_25:
 	end_block
 	i32.const	$push91=, 12
 	i32.add 	$push90=, $2, $pop91
@@ -3248,7 +3306,7 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.lt_u	$push33=, $pop89, $4
 	br_if   	1, $pop33
 	br      	2
-.LBB36_26:
+.LBB39_26:
 	end_block
 	end_loop
 	i32.const	$push29=, -4
@@ -3258,10 +3316,10 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.const	$push31=, 2147483647
 	i32.and 	$push32=, $pop30, $pop31
 	i32.store	0($pop108), $pop32
-.LBB36_27:
+.LBB39_27:
 	end_block
 	copy_local	$4=, $6
-.LBB36_28:
+.LBB39_28:
 	end_block
 	i32.const	$push55=, 0
 	i32.const	$push53=, 16
@@ -3269,8 +3327,8 @@ _ZN5eosio14memory_manager7reallocEPvm:
 	i32.store	__stack_pointer($pop55), $pop54
 	copy_local	$push119=, $4
 	.endfunc
-.Lfunc_end36:
-	.size	_ZN5eosio14memory_manager7reallocEPvm, .Lfunc_end36-_ZN5eosio14memory_manager7reallocEPvm
+.Lfunc_end39:
+	.size	_ZN5eosio14memory_manager7reallocEPvm, .Lfunc_end39-_ZN5eosio14memory_manager7reallocEPvm
 
 	.section	.text._ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm,"axG",@progbits,_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm,comdat
 	.hidden	_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm
@@ -3303,7 +3361,7 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	i32.store	0($3), $pop42
 	i32.const	$push55=, 0
 	return  	$pop55
-.LBB37_2:
+.LBB40_2:
 	end_block
 	i32.const	$10=, 0
 	block   	
@@ -3320,7 +3378,7 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	i32.and 	$push41=, $pop39, $pop40
 	i32.store	0($pop38), $pop41
 	br      	1
-.LBB37_5:
+.LBB40_5:
 	end_block
 	block   	
 	i32.load	$push6=, 8($0)
@@ -3335,7 +3393,7 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	block   	
 	i32.ge_u	$push12=, $7, $2
 	br_if   	0, $pop12
-.LBB37_10:
+.LBB40_10:
 	loop    	
 	i32.add 	$push57=, $1, $7
 	tee_local	$push56=, $0=, $pop57
@@ -3354,7 +3412,7 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	tee_local	$push61=, $7=, $pop62
 	i32.lt_u	$push17=, $pop61, $2
 	br_if   	0, $pop17
-.LBB37_13:
+.LBB40_13:
 	end_loop
 	end_block
 	i32.lt_u	$push18=, $7, $2
@@ -3376,13 +3434,13 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	i32.and 	$push27=, $pop25, $pop26
 	i32.store	0($pop22), $pop27
 	i32.load	$0=, 0($5)
-.LBB37_16:
+.LBB40_16:
 	end_block
 	i32.const	$push68=, -2147483648
 	i32.or  	$push28=, $0, $pop68
 	i32.store	0($5), $pop28
 	br      	1
-.LBB37_17:
+.LBB40_17:
 	end_block
 	i32.load	$push29=, 0($5)
 	i32.const	$push30=, -2147483648
@@ -3397,15 +3455,15 @@ _ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm:
 	i32.load	$push36=, 0($0)
 	i32.add 	$push37=, $pop34, $pop36
 	i32.store	0($pop69), $pop37
-.LBB37_18:
+.LBB40_18:
 	end_block
 	copy_local	$10=, $1
-.LBB37_19:
+.LBB40_19:
 	end_block
 	copy_local	$push71=, $10
 	.endfunc
-.Lfunc_end37:
-	.size	_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm, .Lfunc_end37-_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm
+.Lfunc_end40:
+	.size	_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm, .Lfunc_end40-_ZN5eosio14memory_manager6memory16realloc_in_placeEPcmPm
 
 	.text
 	.hidden	free
@@ -3429,7 +3487,7 @@ free:
 	i32.mul 	$push3=, $2, $pop18
 	i32.const	$push17=, _ZN5eosio11memory_heapE+8192
 	i32.add 	$1=, $pop3, $pop17
-.LBB38_3:
+.LBB41_3:
 	loop    	
 	i32.const	$push21=, 4
 	i32.add 	$push4=, $3, $pop21
@@ -3446,18 +3504,18 @@ free:
 	i32.add 	$push8=, $2, $pop7
 	i32.gt_u	$push9=, $pop8, $0
 	br_if   	3, $pop9
-.LBB38_6:
+.LBB41_6:
 	end_block
 	i32.const	$push25=, 12
 	i32.add 	$push24=, $3, $pop25
 	tee_local	$push23=, $3=, $pop24
 	i32.lt_u	$push14=, $pop23, $1
 	br_if   	0, $pop14
-.LBB38_7:
+.LBB41_7:
 	end_loop
 	end_block
 	return
-.LBB38_8:
+.LBB41_8:
 	end_block
 	i32.const	$push10=, -4
 	i32.add 	$push27=, $0, $pop10
@@ -3467,8 +3525,8 @@ free:
 	i32.and 	$push13=, $pop11, $pop12
 	i32.store	0($pop26), $pop13
 	.endfunc
-.Lfunc_end38:
-	.size	free, .Lfunc_end38-free
+.Lfunc_end41:
+	.size	free, .Lfunc_end41-free
 
 	.type	.L.str,@object
 	.section	.rodata.str1.1,"aMS",@progbits,1
@@ -3869,6 +3927,7 @@ _ZN5eosio11memory_heapE:
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.functype	memcmp, i32, i32, i32, i32
+	.functype	current_time, i64
 	.functype	require_auth2, void, i64, i64
 	.functype	eosio_assert, void, i32, i32
 	.functype	memset, i32, i32, i32, i32

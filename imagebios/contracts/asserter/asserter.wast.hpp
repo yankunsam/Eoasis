@@ -1,6 +1,7 @@
 const char* const asserter_wast = R"=====(
 (module
  (type $FUNCSIG$v (func))
+ (type $FUNCSIG$j (func (result i64)))
  (type $FUNCSIG$vjj (func (param i64 i64)))
  (type $FUNCSIG$vj (func (param i64)))
  (type $FUNCSIG$vii (func (param i32 i32)))
@@ -9,6 +10,7 @@ const char* const asserter_wast = R"=====(
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
  (import "env" "abort" (func $abort))
  (import "env" "action_data_size" (func $action_data_size (result i32)))
+ (import "env" "current_time" (func $current_time (result i64)))
  (import "env" "eosio_assert" (func $eosio_assert (param i32 i32)))
  (import "env" "memcpy" (func $memcpy (param i32 i32 i32) (result i32)))
  (import "env" "read_action_data" (func $read_action_data (param i32 i32) (result i32)))
@@ -16,7 +18,7 @@ const char* const asserter_wast = R"=====(
  (import "env" "require_auth2" (func $require_auth2 (param i64 i64)))
  (table 0 anyfunc)
  (memory $0 1)
- (data (i32.const 4) "\c01\00\00")
+ (data (i32.const 4) "\c0I\00\00")
  (data (i32.const 16) "asserter\00")
  (data (i32.const 32) "procassert\00")
  (data (i32.const 48) "provereset\00")
@@ -26,6 +28,9 @@ const char* const asserter_wast = R"=====(
  (data (i32.const 8544) "malloc_from_freed was designed to only be called after _heap was completely allocated\00")
  (export "memory" (memory $0))
  (export "_ZeqRK11checksum256S1_" (func $_ZeqRK11checksum256S1_))
+ (export "_ZeqRK11checksum160S1_" (func $_ZeqRK11checksum160S1_))
+ (export "_ZneRK11checksum160S1_" (func $_ZneRK11checksum160S1_))
+ (export "now" (func $now))
  (export "_ZN5eosio12require_authERKNS_16permission_levelE" (func $_ZN5eosio12require_authERKNS_16permission_levelE))
  (export "apply" (func $apply))
  (export "memcmp" (func $memcmp))
@@ -37,6 +42,33 @@ const char* const asserter_wast = R"=====(
     (get_local $0)
     (get_local $1)
     (i32.const 32)
+   )
+  )
+ )
+ (func $_ZeqRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.eqz
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+  )
+ )
+ (func $_ZneRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.ne
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+   (i32.const 0)
+  )
+ )
+ (func $now (result i32)
+  (i32.wrap/i64
+   (i64.div_u
+    (call $current_time)
+    (i64.const 1000000)
    )
   )
  )
@@ -1521,7 +1553,7 @@ const char* const asserter_wast = R"=====(
       )
      )
     )
-    (call_indirect $FUNCSIG$v
+    (call_indirect (type $FUNCSIG$v)
      (get_local $2)
     )
     (br_if $label$1

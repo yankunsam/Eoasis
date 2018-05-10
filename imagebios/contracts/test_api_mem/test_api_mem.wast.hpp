@@ -1,9 +1,11 @@
 const char* const test_api_mem_wast = R"=====(
 (module
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
+ (type $FUNCSIG$j (func (result i64)))
  (type $FUNCSIG$vjj (func (param i64 i64)))
  (type $FUNCSIG$vii (func (param i32 i32)))
  (type $FUNCSIG$vj (func (param i64)))
+ (import "env" "current_time" (func $current_time (result i64)))
  (import "env" "eosio_assert" (func $eosio_assert (param i32 i32)))
  (import "env" "memcmp" (func $memcmp (param i32 i32 i32) (result i32)))
  (import "env" "memcpy" (func $memcpy (param i32 i32 i32) (result i32)))
@@ -12,7 +14,7 @@ const char* const test_api_mem_wast = R"=====(
  (import "env" "require_auth2" (func $require_auth2 (param i64 i64)))
  (table 0 anyfunc)
  (memory $0 1 16)
- (data (i32.const 4) "p@\00\00")
+ (data (i32.const 4) "pX\00\00")
  (data (i32.const 16) "buffer slot doesn\'t match\00")
  (data (i32.const 48) "Should initially have 1 64K page allocated\00")
  (data (i32.const 96) "Should still be pointing to the end of the 1st 64K page\00")
@@ -91,6 +93,9 @@ const char* const test_api_mem_wast = R"=====(
  (data (i32.const 12304) "malloc_from_freed was designed to only be called after _heap was completely allocated\00")
  (export "memory" (memory $0))
  (export "_ZeqRK11checksum256S1_" (func $_ZeqRK11checksum256S1_))
+ (export "_ZeqRK11checksum160S1_" (func $_ZeqRK11checksum160S1_))
+ (export "_ZneRK11checksum160S1_" (func $_ZneRK11checksum160S1_))
+ (export "now" (func $now))
  (export "_ZN5eosio12require_authERKNS_16permission_levelE" (func $_ZN5eosio12require_authERKNS_16permission_levelE))
  (export "_Z6verifyPKvmm" (func $_Z6verifyPKvmm))
  (export "_ZN20test_extended_memory16test_page_memoryEv" (func $_ZN20test_extended_memory16test_page_memoryEv))
@@ -131,6 +136,33 @@ const char* const test_api_mem_wast = R"=====(
     (get_local $0)
     (get_local $1)
     (i32.const 32)
+   )
+  )
+ )
+ (func $_ZeqRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.eqz
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+  )
+ )
+ (func $_ZneRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.ne
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+   (i32.const 0)
+  )
+ )
+ (func $now (result i32)
+  (i32.wrap/i64
+   (i64.div_u
+    (call $current_time)
+    (i64.const 1000000)
    )
   )
  )
@@ -3492,54 +3524,86 @@ const char* const test_api_mem_wast = R"=====(
   )
  )
  (func $_ZN11test_memory17test_outofbound_8Ev
+  (local $0 i32)
   (i32.store8 offset=15
-   (i32.sub
-    (i32.load offset=4
-     (i32.const 0)
+   (tee_local $0
+    (i32.sub
+     (i32.load offset=4
+      (i32.const 0)
+     )
+     (i32.const 16)
     )
-    (i32.const 16)
    )
    (i32.load8_u offset=8388607
     (i32.const 0)
    )
   )
+  (drop
+   (i32.load8_u offset=15
+    (get_local $0)
+   )
+  )
  )
  (func $_ZN11test_memory17test_outofbound_9Ev
+  (local $0 i32)
   (i32.store16 offset=14
-   (i32.sub
-    (i32.load offset=4
-     (i32.const 0)
+   (tee_local $0
+    (i32.sub
+     (i32.load offset=4
+      (i32.const 0)
+     )
+     (i32.const 16)
     )
-    (i32.const 16)
    )
    (i32.load16_u offset=8388607
     (i32.const 0)
    )
   )
+  (drop
+   (i32.load16_u offset=14
+    (get_local $0)
+   )
+  )
  )
  (func $_ZN11test_memory18test_outofbound_10Ev
+  (local $0 i32)
   (i32.store offset=12
-   (i32.sub
-    (i32.load offset=4
-     (i32.const 0)
+   (tee_local $0
+    (i32.sub
+     (i32.load offset=4
+      (i32.const 0)
+     )
+     (i32.const 16)
     )
-    (i32.const 16)
    )
    (i32.load offset=8388607
     (i32.const 0)
    )
   )
+  (drop
+   (i32.load offset=12
+    (get_local $0)
+   )
+  )
  )
  (func $_ZN11test_memory18test_outofbound_11Ev
+  (local $0 i32)
   (i64.store offset=8
-   (i32.sub
-    (i32.load offset=4
-     (i32.const 0)
+   (tee_local $0
+    (i32.sub
+     (i32.load offset=4
+      (i32.const 0)
+     )
+     (i32.const 16)
     )
-    (i32.const 16)
    )
    (i64.load offset=8388607
     (i32.const 0)
+   )
+  )
+  (drop
+   (i64.load offset=8
+    (get_local $0)
    )
   )
  )
@@ -3582,6 +3646,11 @@ const char* const test_api_mem_wast = R"=====(
     (i32.load offset=12
      (get_local $0)
     )
+   )
+  )
+  (drop
+   (i64.load
+    (get_local $0)
    )
   )
  )
@@ -3708,6 +3777,11 @@ const char* const test_api_mem_wast = R"=====(
                               (i32.load offset=1064
                                (get_local $7)
                               )
+                             )
+                            )
+                            (drop
+                             (i64.load
+                              (get_local $7)
                              )
                             )
                             (br $label$0)
@@ -3933,12 +4007,22 @@ const char* const test_api_mem_wast = R"=====(
                     (i32.const 0)
                    )
                   )
+                  (drop
+                   (i64.load
+                    (get_local $7)
+                   )
+                  )
                   (br $label$0)
                  )
                  (i32.store
                   (get_local $7)
                   (i32.load offset=8388607
                    (i32.const 0)
+                  )
+                 )
+                 (drop
+                  (i32.load
+                   (get_local $7)
                   )
                  )
                  (br $label$0)
@@ -4166,12 +4250,22 @@ const char* const test_api_mem_wast = R"=====(
        (i32.const 0)
       )
      )
+     (drop
+      (i32.load8_u
+       (get_local $7)
+      )
+     )
      (br $label$0)
     )
     (i32.store16
      (get_local $7)
      (i32.load16_u offset=8388607
       (i32.const 0)
+     )
+    )
+    (drop
+     (i32.load16_u
+      (get_local $7)
      )
     )
     (br $label$0)

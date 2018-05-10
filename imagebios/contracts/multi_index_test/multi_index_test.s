@@ -13,6 +13,46 @@ _ZeqRK11checksum256S1_:
 .Lfunc_end0:
 	.size	_ZeqRK11checksum256S1_, .Lfunc_end0-_ZeqRK11checksum256S1_
 
+	.hidden	_ZeqRK11checksum160S1_
+	.globl	_ZeqRK11checksum160S1_
+	.type	_ZeqRK11checksum160S1_,@function
+_ZeqRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.eqz 	$push2=, $pop1
+	.endfunc
+.Lfunc_end1:
+	.size	_ZeqRK11checksum160S1_, .Lfunc_end1-_ZeqRK11checksum160S1_
+
+	.hidden	_ZneRK11checksum160S1_
+	.globl	_ZneRK11checksum160S1_
+	.type	_ZneRK11checksum160S1_,@function
+_ZneRK11checksum160S1_:
+	.param  	i32, i32
+	.result 	i32
+	i32.const	$push0=, 32
+	i32.call	$push1=, memcmp@FUNCTION, $0, $1, $pop0
+	i32.const	$push2=, 0
+	i32.ne  	$push3=, $pop1, $pop2
+	.endfunc
+.Lfunc_end2:
+	.size	_ZneRK11checksum160S1_, .Lfunc_end2-_ZneRK11checksum160S1_
+
+	.hidden	now
+	.globl	now
+	.type	now,@function
+now:
+	.result 	i32
+	i64.call	$push1=, current_time@FUNCTION
+	i64.const	$push0=, 1000000
+	i64.div_u	$push2=, $pop1, $pop0
+	i32.wrap/i64	$push3=, $pop2
+	.endfunc
+.Lfunc_end3:
+	.size	now, .Lfunc_end3-now
+
 	.hidden	_ZN5eosio12require_authERKNS_16permission_levelE
 	.globl	_ZN5eosio12require_authERKNS_16permission_levelE
 	.type	_ZN5eosio12require_authERKNS_16permission_levelE,@function
@@ -22,8 +62,8 @@ _ZN5eosio12require_authERKNS_16permission_levelE:
 	i64.load	$push0=, 8($0)
 	call    	require_auth2@FUNCTION, $pop1, $pop0
 	.endfunc
-.Lfunc_end1:
-	.size	_ZN5eosio12require_authERKNS_16permission_levelE, .Lfunc_end1-_ZN5eosio12require_authERKNS_16permission_levelE
+.Lfunc_end4:
+	.size	_ZN5eosio12require_authERKNS_16permission_levelE, .Lfunc_end4-_ZN5eosio12require_authERKNS_16permission_levelE
 
 	.hidden	apply
 	.globl	apply
@@ -53,7 +93,7 @@ apply:
 	i32.add 	$push14=, $4, $pop13
 	call    	_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE@FUNCTION, $pop14
 	i32.const	$3=, 1
-.LBB2_3:
+.LBB5_3:
 	end_block
 	i32.const	$push5=, .L.str
 	call    	eosio_assert@FUNCTION, $3, $pop5
@@ -62,8 +102,8 @@ apply:
 	i32.add 	$push11=, $4, $pop10
 	i32.store	__stack_pointer($pop12), $pop11
 	.endfunc
-.Lfunc_end2:
-	.size	apply, .Lfunc_end2-apply
+.Lfunc_end5:
+	.size	apply, .Lfunc_end5-apply
 
 	.section	.text._ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v,"axG",@progbits,_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v,comdat
 	.hidden	_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v
@@ -110,8 +150,8 @@ _ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_
 	i32.store	__stack_pointer($pop16), $pop15
 	copy_local	$push28=, $0
 	.endfunc
-.Lfunc_end3:
-	.size	_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v, .Lfunc_end3-_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v
+.Lfunc_end6:
+	.size	_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v, .Lfunc_end6-_ZN5eosio18unpack_action_dataIN16multi_index_test16multi_index_test7triggerEEET_v
 
 	.section	.text._ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE,"axG",@progbits,_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE,comdat
 	.hidden	_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE
@@ -150,7 +190,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i64.const	$5=, 59
 	i32.const	$0=, .L.str.3
 	i64.const	$7=, 0
-.LBB4_3:
+.LBB7_3:
 	loop    	
 	block   	
 	block   	
@@ -172,14 +212,14 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push318=, 165
 	i32.add 	$1=, $1, $pop318
 	br      	2
-.LBB4_6:
+.LBB7_6:
 	end_block
 	i64.const	$8=, 0
 	i64.const	$push319=, 11
 	i64.le_u	$push121=, $6, $pop319
 	br_if   	2, $pop121
 	br      	3
-.LBB4_7:
+.LBB7_7:
 	end_block
 	i32.const	$push324=, 208
 	i32.add 	$push125=, $1, $pop324
@@ -191,21 +231,21 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push320=, 5
 	i32.lt_u	$push128=, $pop127, $pop320
 	i32.select	$1=, $pop125, $pop323, $pop128
-.LBB4_8:
+.LBB7_8:
 	end_block
 	i64.extend_u/i32	$push129=, $1
 	i64.const	$push326=, 56
 	i64.shl 	$push130=, $pop129, $pop326
 	i64.const	$push325=, 56
 	i64.shr_s	$8=, $pop130, $pop325
-.LBB4_9:
+.LBB7_9:
 	end_block
 	i64.const	$push328=, 31
 	i64.and 	$push132=, $8, $pop328
 	i64.const	$push327=, 4294967295
 	i64.and 	$push131=, $5, $pop327
 	i64.shl 	$8=, $pop132, $pop131
-.LBB4_10:
+.LBB7_10:
 	end_block
 	i32.const	$push334=, 1
 	i32.add 	$0=, $0, $pop334
@@ -223,7 +263,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i64.const	$5=, 59
 	i32.const	$0=, .L.str.3
 	i64.const	$9=, 0
-.LBB4_12:
+.LBB7_12:
 	loop    	
 	block   	
 	block   	
@@ -245,14 +285,14 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push341=, 165
 	i32.add 	$1=, $1, $pop341
 	br      	2
-.LBB4_15:
+.LBB7_15:
 	end_block
 	i64.const	$8=, 0
 	i64.const	$push342=, 11
 	i64.le_u	$push135=, $6, $pop342
 	br_if   	2, $pop135
 	br      	3
-.LBB4_16:
+.LBB7_16:
 	end_block
 	i32.const	$push347=, 208
 	i32.add 	$push139=, $1, $pop347
@@ -264,21 +304,21 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push343=, 5
 	i32.lt_u	$push142=, $pop141, $pop343
 	i32.select	$1=, $pop139, $pop346, $pop142
-.LBB4_17:
+.LBB7_17:
 	end_block
 	i64.extend_u/i32	$push143=, $1
 	i64.const	$push349=, 56
 	i64.shl 	$push144=, $pop143, $pop349
 	i64.const	$push348=, 56
 	i64.shr_s	$8=, $pop144, $pop348
-.LBB4_18:
+.LBB7_18:
 	end_block
 	i64.const	$push351=, 31
 	i64.and 	$push146=, $8, $pop351
 	i64.const	$push350=, 4294967295
 	i64.and 	$push145=, $5, $pop350
 	i64.shl 	$8=, $pop146, $pop145
-.LBB4_19:
+.LBB7_19:
 	end_block
 	i32.const	$push357=, 1
 	i32.add 	$0=, $0, $pop357
@@ -335,7 +375,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push301=, 40
 	i32.add 	$push302=, $10, $pop301
 	i32.call	$0=, _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop302, $0
-.LBB4_22:
+.LBB7_22:
 	loop    	
 	i64.load	$6=, 40($0)
 	i32.const	$push373=, .L.str.5
@@ -366,7 +406,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$push306=, $10, $pop305
 	i32.call	$0=, _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop306, $0
 	br      	0
-.LBB4_24:
+.LBB7_24:
 	end_loop
 	end_block
 	i32.const	$push273=, 40
@@ -388,7 +428,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	tee_local	$push374=, $0=, $pop375
 	i32.eqz 	$push551=, $pop374
 	br_if   	0, $pop551
-.LBB4_26:
+.LBB7_26:
 	loop    	
 	i64.load	$6=, 40($0)
 	i32.const	$push383=, .L.str.5
@@ -410,7 +450,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.load	$push379=, 28($10)
 	tee_local	$push378=, $0=, $pop379
 	br_if   	0, $pop378
-.LBB4_27:
+.LBB7_27:
 	end_loop
 	end_block
 	i32.const	$push164=, .L.str.10
@@ -443,7 +483,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	tee_local	$push384=, $0=, $pop385
 	i32.eqz 	$push552=, $pop384
 	br_if   	0, $pop552
-.LBB4_29:
+.LBB7_29:
 	loop    	
 	i64.load	$6=, 40($0)
 	i32.const	$push394=, .L.str.5
@@ -465,7 +505,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.load	$push390=, 28($10)
 	tee_local	$push389=, $0=, $pop390
 	br_if   	0, $pop389
-.LBB4_30:
+.LBB7_30:
 	end_loop
 	end_block
 	i64.const	$push172=, 100
@@ -500,7 +540,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	tee_local	$push399=, $0=, $pop400
 	i32.eq  	$push178=, $pop399, $2
 	br_if   	4, $pop178
-.LBB4_33:
+.LBB7_33:
 	loop    	
 	i32.const	$push406=, -24
 	i32.add 	$push405=, $0, $pop406
@@ -512,7 +552,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.eqz 	$push554=, $1
 	br_if   	0, $pop554
 	call    	_ZdlPv@FUNCTION, $1
-.LBB4_35:
+.LBB7_35:
 	end_block
 	i32.ne  	$push179=, $2, $0
 	br_if   	0, $pop179
@@ -521,7 +561,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$push181=, $10, $pop180
 	i32.load	$0=, 0($pop181)
 	br      	5
-.LBB4_37:
+.LBB7_37:
 	end_block
 	i32.const	$push2=, .L.str.13
 	call    	prints@FUNCTION, $pop2
@@ -529,7 +569,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i64.const	$5=, 59
 	i32.const	$0=, .L.str.3
 	i64.const	$7=, 0
-.LBB4_38:
+.LBB7_38:
 	loop    	
 	block   	
 	block   	
@@ -551,14 +591,14 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push413=, 165
 	i32.add 	$1=, $1, $pop413
 	br      	2
-.LBB4_41:
+.LBB7_41:
 	end_block
 	i64.const	$8=, 0
 	i64.const	$push414=, 11
 	i64.le_u	$push4=, $6, $pop414
 	br_if   	2, $pop4
 	br      	3
-.LBB4_42:
+.LBB7_42:
 	end_block
 	i32.const	$push419=, 208
 	i32.add 	$push8=, $1, $pop419
@@ -570,21 +610,21 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push415=, 5
 	i32.lt_u	$push11=, $pop10, $pop415
 	i32.select	$1=, $pop8, $pop418, $pop11
-.LBB4_43:
+.LBB7_43:
 	end_block
 	i64.extend_u/i32	$push12=, $1
 	i64.const	$push421=, 56
 	i64.shl 	$push13=, $pop12, $pop421
 	i64.const	$push420=, 56
 	i64.shr_s	$8=, $pop13, $pop420
-.LBB4_44:
+.LBB7_44:
 	end_block
 	i64.const	$push423=, 31
 	i64.and 	$push15=, $8, $pop423
 	i64.const	$push422=, 4294967295
 	i64.and 	$push14=, $5, $pop422
 	i64.shl 	$8=, $pop15, $pop14
-.LBB4_45:
+.LBB7_45:
 	end_block
 	i32.const	$push429=, 1
 	i32.add 	$0=, $0, $pop429
@@ -602,7 +642,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i64.const	$5=, 59
 	i32.const	$0=, .L.str.14
 	i64.const	$9=, 0
-.LBB4_47:
+.LBB7_47:
 	loop    	
 	block   	
 	block   	
@@ -624,14 +664,14 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push436=, 165
 	i32.add 	$1=, $1, $pop436
 	br      	2
-.LBB4_50:
+.LBB7_50:
 	end_block
 	i64.const	$8=, 0
 	i64.const	$push437=, 11
 	i64.le_u	$push18=, $6, $pop437
 	br_if   	2, $pop18
 	br      	3
-.LBB4_51:
+.LBB7_51:
 	end_block
 	i32.const	$push442=, 208
 	i32.add 	$push22=, $1, $pop442
@@ -643,21 +683,21 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push438=, 5
 	i32.lt_u	$push25=, $pop24, $pop438
 	i32.select	$1=, $pop22, $pop441, $pop25
-.LBB4_52:
+.LBB7_52:
 	end_block
 	i64.extend_u/i32	$push26=, $1
 	i64.const	$push444=, 56
 	i64.shl 	$push27=, $pop26, $pop444
 	i64.const	$push443=, 56
 	i64.shr_s	$8=, $pop27, $pop443
-.LBB4_53:
+.LBB7_53:
 	end_block
 	i64.const	$push446=, 31
 	i64.and 	$push29=, $8, $pop446
 	i64.const	$push445=, 4294967295
 	i64.and 	$push28=, $5, $pop445
 	i64.shl 	$8=, $pop29, $pop28
-.LBB4_54:
+.LBB7_54:
 	end_block
 	i32.const	$push452=, 1
 	i32.add 	$0=, $0, $pop452
@@ -720,7 +760,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$0=, $2, $pop462
 	i32.const	$push461=, 0
 	i32.sub 	$4=, $pop461, $3
-.LBB4_57:
+.LBB7_57:
 	loop    	
 	i32.load	$push39=, 0($0)
 	i64.load	$push40=, 0($pop39)
@@ -736,7 +776,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push464=, -24
 	i32.ne  	$push43=, $pop42, $pop464
 	br_if   	0, $pop43
-.LBB4_59:
+.LBB7_59:
 	end_loop
 	end_block
 	i32.eq  	$push44=, $2, $3
@@ -752,13 +792,13 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push49=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop48, $pop49
 	br      	2
-.LBB4_61:
+.LBB7_61:
 	end_block
 	i32.const	$push183=, 0
 	i32.const	$push182=, .L.str.23
 	call    	eosio_assert@FUNCTION, $pop183, $pop182
 	br      	6
-.LBB4_62:
+.LBB7_62:
 	end_block
 	i32.const	$1=, 0
 	i64.load	$push53=, 40($10)
@@ -782,7 +822,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.eq  	$push58=, $pop57, $pop258
 	i32.const	$push59=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop58, $pop59
-.LBB4_64:
+.LBB7_64:
 	end_block
 	i32.const	$push60=, .L.str.4
 	call    	prints@FUNCTION, $pop60
@@ -801,7 +841,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push249=, 40
 	i32.add 	$push250=, $10, $pop249
 	i32.call	$0=, _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop250, $0
-.LBB4_66:
+.LBB7_66:
 	loop    	
 	i64.load	$6=, 0($0)
 	i32.const	$push486=, .L.str.5
@@ -829,7 +869,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$push254=, $10, $pop253
 	i32.call	$0=, _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop254, $0
 	br      	0
-.LBB4_68:
+.LBB7_68:
 	end_loop
 	end_block
 	i32.const	$push209=, 40
@@ -907,7 +947,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	br_if   	0, $pop84
 	i32.const	$push85=, .L.str.19
 	call    	prints@FUNCTION, $pop85
-.LBB4_70:
+.LBB7_70:
 	end_block
 	i32.const	$push86=, .L.str.20
 	call    	prints@FUNCTION, $pop86
@@ -935,7 +975,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	tee_local	$push504=, $0=, $pop505
 	i32.eqz 	$push555=, $pop504
 	br_if   	0, $pop555
-.LBB4_72:
+.LBB7_72:
 	loop    	
 	i64.load	$6=, 0($0)
 	i32.const	$push516=, .L.str.5
@@ -954,7 +994,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.load	$push512=, 12($10)
 	tee_local	$push511=, $0=, $pop512
 	br_if   	0, $pop511
-.LBB4_73:
+.LBB7_73:
 	end_loop
 	end_block
 	i32.const	$push531=, 1
@@ -1027,7 +1067,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.const	$push241=, 40
 	i32.add 	$push242=, $10, $pop241
 	i32.call	$0=, _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop242, $0
-.LBB4_75:
+.LBB7_75:
 	loop    	
 	i64.load	$6=, 0($0)
 	i32.const	$push540=, .L.str.5
@@ -1055,7 +1095,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$push246=, $10, $pop245
 	i32.call	$0=, _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl@FUNCTION, $pop246, $0
 	br      	0
-.LBB4_77:
+.LBB7_77:
 	end_loop
 	end_block
 	i32.load	$push542=, 64($10)
@@ -1069,7 +1109,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	tee_local	$push543=, $0=, $pop544
 	i32.eq  	$push115=, $pop543, $2
 	br_if   	2, $pop115
-.LBB4_80:
+.LBB7_80:
 	loop    	
 	i32.const	$push550=, -24
 	i32.add 	$push549=, $0, $pop550
@@ -1081,7 +1121,7 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.eqz 	$push557=, $1
 	br_if   	0, $pop557
 	call    	_ZdlPv@FUNCTION, $1
-.LBB4_82:
+.LBB7_82:
 	end_block
 	i32.ne  	$push116=, $2, $0
 	br_if   	0, $pop116
@@ -1090,30 +1130,30 @@ _ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE:
 	i32.add 	$push118=, $10, $pop117
 	i32.load	$0=, 0($pop118)
 	br      	3
-.LBB4_84:
+.LBB7_84:
 	end_block
 	copy_local	$0=, $2
-.LBB4_85:
+.LBB7_85:
 	end_block
 	i32.store	0($4), $2
 	call    	_ZdlPv@FUNCTION, $0
 	br      	2
-.LBB4_86:
+.LBB7_86:
 	end_block
 	copy_local	$0=, $2
-.LBB4_87:
+.LBB7_87:
 	end_block
 	i32.store	0($4), $2
 	call    	_ZdlPv@FUNCTION, $0
-.LBB4_88:
+.LBB7_88:
 	end_block
 	i32.const	$push190=, 0
 	i32.const	$push188=, 112
 	i32.add 	$push189=, $10, $pop188
 	i32.store	__stack_pointer($pop190), $pop189
 	.endfunc
-.Lfunc_end4:
-	.size	_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE, .Lfunc_end4-_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE
+.Lfunc_end7:
+	.size	_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE, .Lfunc_end7-_ZN16multi_index_test16multi_index_test2onERKNS0_7triggerE
 
 	.section	.text._ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_
@@ -1177,7 +1217,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.add 	$push15=, $5, $pop14
 	i32.store	0($6), $pop15
 	br      	1
-.LBB5_2:
+.LBB8_2:
 	end_block
 	i32.const	$push11=, 24
 	i32.add 	$push12=, $1, $pop11
@@ -1188,7 +1228,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.const	$push32=, 12
 	i32.add 	$push33=, $7, $pop32
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop12, $pop29, $pop31, $pop33
-.LBB5_3:
+.LBB8_3:
 	end_block
 	i32.store	4($0), $3
 	i32.store	0($0), $1
@@ -1199,15 +1239,15 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.eqz 	$push46=, $1
 	br_if   	0, $pop46
 	call    	_ZdlPv@FUNCTION, $1
-.LBB5_5:
+.LBB8_5:
 	end_block
 	i32.const	$push23=, 0
 	i32.const	$push21=, 48
 	i32.add 	$push22=, $7, $pop21
 	i32.store	__stack_pointer($pop23), $pop22
 	.endfunc
-.Lfunc_end5:
-	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_, .Lfunc_end5-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_
+.Lfunc_end8:
+	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_, .Lfunc_end8-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_
 
 	.section	.text._ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_
@@ -1271,7 +1311,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.add 	$push15=, $5, $pop14
 	i32.store	0($6), $pop15
 	br      	1
-.LBB6_2:
+.LBB9_2:
 	end_block
 	i32.const	$push11=, 24
 	i32.add 	$push12=, $1, $pop11
@@ -1282,7 +1322,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.const	$push32=, 12
 	i32.add 	$push33=, $7, $pop32
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop12, $pop29, $pop31, $pop33
-.LBB6_3:
+.LBB9_3:
 	end_block
 	i32.store	4($0), $3
 	i32.store	0($0), $1
@@ -1293,15 +1333,15 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.eqz 	$push46=, $1
 	br_if   	0, $pop46
 	call    	_ZdlPv@FUNCTION, $1
-.LBB6_5:
+.LBB9_5:
 	end_block
 	i32.const	$push23=, 0
 	i32.const	$push21=, 48
 	i32.add 	$push22=, $7, $pop21
 	i32.store	__stack_pointer($pop23), $pop22
 	.endfunc
-.Lfunc_end6:
-	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_, .Lfunc_end6-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_
+.Lfunc_end9:
+	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_, .Lfunc_end9-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_
 
 	.section	.text._ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl,"axG",@progbits,_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl,comdat
 	.hidden	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl
@@ -1332,7 +1372,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.sub 	$3=, $pop5, $2
 	i32.const	$push64=, -24
 	i32.add 	$6=, $7, $pop64
-.LBB7_2:
+.LBB10_2:
 	loop    	
 	i32.const	$push65=, 16
 	i32.add 	$push6=, $6, $pop65
@@ -1348,7 +1388,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push66=, -24
 	i32.ne  	$push10=, $pop9, $pop66
 	br_if   	0, $pop10
-.LBB7_4:
+.LBB10_4:
 	end_loop
 	end_block
 	block   	
@@ -1359,7 +1399,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$push13=, $7, $pop12
 	i32.load	$6=, 0($pop13)
 	br      	1
-.LBB7_6:
+.LBB10_6:
 	end_block
 	i32.const	$push14=, 0
 	i32.const	$push72=, 0
@@ -1378,7 +1418,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	br_if   	0, $pop21
 	i32.call	$4=, malloc@FUNCTION, $6
 	br      	1
-.LBB7_8:
+.LBB10_8:
 	end_block
 	i32.const	$push41=, 0
 	i32.const	$push22=, 15
@@ -1389,7 +1429,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	tee_local	$push73=, $4=, $pop74
 	copy_local	$push57=, $pop73
 	i32.store	__stack_pointer($pop41), $pop57
-.LBB7_9:
+.LBB10_9:
 	end_block
 	i32.call	$drop=, db_get_i64@FUNCTION, $1, $4, $6
 	i32.store	36($8), $4
@@ -1401,7 +1441,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.lt_u	$push28=, $6, $pop27
 	br_if   	0, $pop28
 	call    	free@FUNCTION, $4
-.LBB7_11:
+.LBB10_11:
 	end_block
 	i32.const	$push29=, 64
 	i32.call	$push85=, _Znwj@FUNCTION, $pop29
@@ -1445,7 +1485,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$push39=, $4, $pop38
 	i32.store	0($1), $pop39
 	br      	1
-.LBB7_13:
+.LBB10_13:
 	end_block
 	i32.const	$push1=, 24
 	i32.add 	$push0=, $0, $pop1
@@ -1456,7 +1496,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push55=, 12
 	i32.add 	$push56=, $8, $pop55
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop0, $pop52, $pop54, $pop56
-.LBB7_14:
+.LBB10_14:
 	end_block
 	i32.load	$4=, 24($8)
 	i32.const	$push40=, 0
@@ -1464,7 +1504,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.eqz 	$push86=, $4
 	br_if   	0, $pop86
 	call    	_ZdlPv@FUNCTION, $4
-.LBB7_16:
+.LBB10_16:
 	end_block
 	i32.const	$push48=, 0
 	i32.const	$push46=, 48
@@ -1472,8 +1512,8 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.store	__stack_pointer($pop48), $pop47
 	copy_local	$push87=, $6
 	.endfunc
-.Lfunc_end7:
-	.size	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl, .Lfunc_end7-_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl
+.Lfunc_end10:
+	.size	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl, .Lfunc_end10-_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE31load_object_by_primary_iteratorEl
 
 	.section	.text._ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy,"axG",@progbits,_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy,comdat
 	.hidden	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy
@@ -1523,7 +1563,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$2=, $9, $pop52
 	i32.const	$push9=, 0
 	i32.sub 	$7=, $pop9, $6
-.LBB8_3:
+.LBB11_3:
 	loop    	
 	i32.load	$push10=, 0($2)
 	i64.load	$push11=, 0($pop10)
@@ -1538,7 +1578,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push53=, -24
 	i32.ne  	$push14=, $pop13, $pop53
 	br_if   	0, $pop14
-.LBB8_5:
+.LBB11_5:
 	end_loop
 	end_block
 	block   	
@@ -1554,7 +1594,7 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push20=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop19, $pop20
 	br      	1
-.LBB8_7:
+.LBB11_7:
 	end_block
 	i64.load	$push22=, 0($4)
 	i64.load	$push21=, 8($4)
@@ -1566,12 +1606,12 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.eq  	$push26=, $pop25, $4
 	i32.const	$push27=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop26, $pop27
-.LBB8_8:
+.LBB11_8:
 	end_block
 	i32.const	$push28=, 56
 	i32.add 	$push29=, $2, $pop28
 	i32.store	0($pop29), $3
-.LBB8_9:
+.LBB11_9:
 	end_block
 	i32.store	4($0), $2
 	i32.store	0($0), $1
@@ -1580,8 +1620,8 @@ _ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$push35=, $10, $pop34
 	i32.store	__stack_pointer($pop36), $pop35
 	.endfunc
-.Lfunc_end8:
-	.size	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy, .Lfunc_end8-_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy
+.Lfunc_end11:
+	.size	_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy, .Lfunc_end11-_ZNK5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE11lower_boundERKy
 
 	.section	.text._ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_
@@ -1677,7 +1717,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i64.gt_u	$push30=, $5, $pop29
 	i64.select	$push34=, $pop33, $pop32, $pop30
 	i64.store	0($pop35), $pop34
-.LBB9_2:
+.LBB12_2:
 	end_block
 	i32.store	52($6), $1
 	i32.store	48($6), $0
@@ -1704,8 +1744,8 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.add 	$push42=, $6, $pop41
 	i32.store	__stack_pointer($pop43), $pop42
 	.endfunc
-.Lfunc_end9:
-	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_, .Lfunc_end9-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_
+.Lfunc_end12:
+	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_, .Lfunc_end12-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE6modifyIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E1_EEvRKS2_yOSH_
 
 	.section	.text._ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv,"axG",@progbits,_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv,comdat
 	.hidden	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv
@@ -1749,7 +1789,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.add 	$push11=, $0, $pop10
 	i32.load	$push12=, 0($pop11)
 	i32.store	56($pop12), $7
-.LBB10_2:
+.LBB13_2:
 	end_block
 	i64.const	$push13=, 0
 	i64.store	8($9), $pop13
@@ -1781,7 +1821,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.add 	$7=, $8, $pop74
 	i32.const	$push19=, 0
 	i32.sub 	$5=, $pop19, $4
-.LBB10_5:
+.LBB13_5:
 	loop    	
 	i32.load	$push20=, 0($7)
 	i64.load	$push21=, 0($pop20)
@@ -1796,7 +1836,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.const	$push75=, -24
 	i32.ne  	$push24=, $pop23, $pop75
 	br_if   	0, $pop24
-.LBB10_7:
+.LBB13_7:
 	end_loop
 	end_block
 	i32.eq  	$push25=, $8, $4
@@ -1810,14 +1850,14 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.const	$push30=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop29, $pop30
 	br      	2
-.LBB10_9:
+.LBB13_9:
 	end_block
 	i32.const	$push42=, 4
 	i32.add 	$push43=, $0, $pop42
 	i32.const	$push44=, 0
 	i32.store	0($pop43), $pop44
 	br      	2
-.LBB10_10:
+.LBB13_10:
 	end_block
 	i64.load	$push32=, 0($2)
 	i64.load	$push31=, 8($2)
@@ -1829,7 +1869,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.eq  	$push36=, $pop35, $2
 	i32.const	$push37=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop36, $pop37
-.LBB10_11:
+.LBB13_11:
 	end_block
 	i32.const	$push38=, 4
 	i32.add 	$push39=, $0, $pop38
@@ -1837,7 +1877,7 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.const	$push40=, 56
 	i32.add 	$push41=, $7, $pop40
 	i32.store	0($pop41), $1
-.LBB10_12:
+.LBB13_12:
 	end_block
 	i32.const	$push51=, 0
 	i32.const	$push49=, 16
@@ -1845,8 +1885,8 @@ _ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJ
 	i32.store	__stack_pointer($pop51), $pop50
 	copy_local	$push83=, $0
 	.endfunc
-.Lfunc_end10:
-	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv, .Lfunc_end10-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv
+.Lfunc_end13:
+	.size	_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv, .Lfunc_end13-_ZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE5indexILy4581808439210016768ES7_Ly0ELb0EE14const_iteratorppEv
 
 	.section	.text._ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_
@@ -1922,7 +1962,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.add 	$push17=, $5, $pop53
 	i32.store	0($6), $pop17
 	br      	1
-.LBB11_2:
+.LBB14_2:
 	end_block
 	i32.const	$push54=, 24
 	i32.add 	$push15=, $1, $pop54
@@ -1933,7 +1973,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push34=, 12
 	i32.add 	$push35=, $7, $pop34
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop15, $pop31, $pop33, $pop35
-.LBB11_3:
+.LBB14_3:
 	end_block
 	i32.store	4($0), $3
 	i32.store	0($0), $1
@@ -1944,15 +1984,15 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eqz 	$push55=, $3
 	br_if   	0, $pop55
 	call    	_ZdlPv@FUNCTION, $3
-.LBB11_5:
+.LBB14_5:
 	end_block
 	i32.const	$push25=, 0
 	i32.const	$push23=, 48
 	i32.add 	$push24=, $7, $pop23
 	i32.store	__stack_pointer($pop25), $pop24
 	.endfunc
-.Lfunc_end11:
-	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_, .Lfunc_end11-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_
+.Lfunc_end14:
+	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_, .Lfunc_end14-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_
 
 	.section	.text._ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_
@@ -2028,7 +2068,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.add 	$push17=, $5, $pop53
 	i32.store	0($6), $pop17
 	br      	1
-.LBB12_2:
+.LBB15_2:
 	end_block
 	i32.const	$push54=, 24
 	i32.add 	$push15=, $1, $pop54
@@ -2039,7 +2079,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push34=, 12
 	i32.add 	$push35=, $7, $pop34
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop15, $pop31, $pop33, $pop35
-.LBB12_3:
+.LBB15_3:
 	end_block
 	i32.store	4($0), $3
 	i32.store	0($0), $1
@@ -2050,15 +2090,15 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eqz 	$push55=, $3
 	br_if   	0, $pop55
 	call    	_ZdlPv@FUNCTION, $3
-.LBB12_5:
+.LBB15_5:
 	end_block
 	i32.const	$push25=, 0
 	i32.const	$push23=, 48
 	i32.add 	$push24=, $7, $pop23
 	i32.store	__stack_pointer($pop25), $pop24
 	.endfunc
-.Lfunc_end12:
-	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_, .Lfunc_end12-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_
+.Lfunc_end15:
+	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_, .Lfunc_end15-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_
 
 	.section	.text._ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_,"axG",@progbits,_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_,comdat
 	.hidden	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_
@@ -2134,7 +2174,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.add 	$push17=, $5, $pop53
 	i32.store	0($6), $pop17
 	br      	1
-.LBB13_2:
+.LBB16_2:
 	end_block
 	i32.const	$push54=, 24
 	i32.add 	$push15=, $1, $pop54
@@ -2145,7 +2185,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push34=, 12
 	i32.add 	$push35=, $7, $pop34
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop15, $pop31, $pop33, $pop35
-.LBB13_3:
+.LBB16_3:
 	end_block
 	i32.store	4($0), $3
 	i32.store	0($0), $1
@@ -2156,15 +2196,15 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eqz 	$push55=, $3
 	br_if   	0, $pop55
 	call    	_ZdlPv@FUNCTION, $3
-.LBB13_5:
+.LBB16_5:
 	end_block
 	i32.const	$push25=, 0
 	i32.const	$push23=, 48
 	i32.add 	$push24=, $7, $pop23
 	i32.store	__stack_pointer($pop25), $pop24
 	.endfunc
-.Lfunc_end13:
-	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_, .Lfunc_end13-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_
+.Lfunc_end16:
+	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_, .Lfunc_end16-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_
 
 	.section	.text._ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl,"axG",@progbits,_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl,comdat
 	.hidden	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl
@@ -2195,7 +2235,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.sub 	$3=, $pop5, $2
 	i32.const	$push73=, -24
 	i32.add 	$6=, $7, $pop73
-.LBB14_2:
+.LBB17_2:
 	loop    	
 	i32.const	$push74=, 16
 	i32.add 	$push6=, $6, $pop74
@@ -2211,7 +2251,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push75=, -24
 	i32.ne  	$push10=, $pop9, $pop75
 	br_if   	0, $pop10
-.LBB14_4:
+.LBB17_4:
 	end_loop
 	end_block
 	block   	
@@ -2222,7 +2262,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push13=, $7, $pop12
 	i32.load	$6=, 0($pop13)
 	br      	1
-.LBB14_6:
+.LBB17_6:
 	end_block
 	i32.const	$push14=, 0
 	i32.const	$push81=, 0
@@ -2244,7 +2284,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.call	$drop=, db_get_i64@FUNCTION, $1, $pop82, $4
 	call    	free@FUNCTION, $7
 	br      	1
-.LBB14_8:
+.LBB17_8:
 	end_block
 	i32.const	$push52=, 0
 	i32.const	$push22=, 15
@@ -2256,7 +2296,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	copy_local	$push66=, $pop84
 	i32.store	__stack_pointer($pop52), $pop66
 	i32.call	$drop=, db_get_i64@FUNCTION, $1, $7, $4
-.LBB14_9:
+.LBB17_9:
 	end_block
 	i32.const	$push26=, 64
 	i32.call	$push103=, _Znwj@FUNCTION, $pop26
@@ -2325,7 +2365,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push50=, $4, $pop104
 	i32.store	0($1), $pop50
 	br      	1
-.LBB14_11:
+.LBB17_11:
 	end_block
 	i32.const	$push1=, 24
 	i32.add 	$push0=, $0, $pop1
@@ -2336,7 +2376,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push64=, 12
 	i32.add 	$push65=, $8, $pop64
 	call    	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_@FUNCTION, $pop0, $pop61, $pop63, $pop65
-.LBB14_12:
+.LBB17_12:
 	end_block
 	i32.load	$4=, 24($8)
 	i32.const	$push51=, 0
@@ -2344,7 +2384,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.eqz 	$push105=, $4
 	br_if   	0, $pop105
 	call    	_ZdlPv@FUNCTION, $4
-.LBB14_14:
+.LBB17_14:
 	end_block
 	i32.const	$push59=, 0
 	i32.const	$push57=, 32
@@ -2352,8 +2392,8 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.store	__stack_pointer($pop59), $pop58
 	copy_local	$push106=, $6
 	.endfunc
-.Lfunc_end14:
-	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl, .Lfunc_end14-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl
+.Lfunc_end17:
+	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl, .Lfunc_end17-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE31load_object_by_primary_iteratorEl
 
 	.section	.text._ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_,"axG",@progbits,_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_,comdat
 	.hidden	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_
@@ -2420,7 +2460,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$2=, $9, $pop66
 	i32.const	$push21=, 0
 	i32.sub 	$7=, $pop21, $6
-.LBB15_3:
+.LBB18_3:
 	loop    	
 	i32.load	$push22=, 0($2)
 	i64.load	$push23=, 0($pop22)
@@ -2435,7 +2475,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push67=, -24
 	i32.ne  	$push26=, $pop25, $pop67
 	br_if   	0, $pop26
-.LBB15_5:
+.LBB18_5:
 	end_loop
 	end_block
 	block   	
@@ -2451,7 +2491,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push32=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop31, $pop32
 	br      	1
-.LBB15_7:
+.LBB18_7:
 	end_block
 	i64.load	$push34=, 0($4)
 	i64.load	$push33=, 8($4)
@@ -2463,12 +2503,12 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.eq  	$push38=, $pop37, $4
 	i32.const	$push39=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop38, $pop39
-.LBB15_8:
+.LBB18_8:
 	end_block
 	i32.const	$push40=, 56
 	i32.add 	$push41=, $2, $pop40
 	i32.store	0($pop41), $3
-.LBB15_9:
+.LBB18_9:
 	end_block
 	i32.store	4($0), $2
 	i32.store	0($0), $1
@@ -2477,8 +2517,8 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push47=, $10, $pop46
 	i32.store	__stack_pointer($pop48), $pop47
 	.endfunc
-.Lfunc_end15:
-	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_, .Lfunc_end15-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_
+.Lfunc_end18:
+	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_, .Lfunc_end18-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11lower_boundERKS8_
 
 	.section	.text._ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE,"axG",@progbits,_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE,comdat
 	.hidden	_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE
@@ -2609,8 +2649,8 @@ _ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE:
 	i32.add 	$push44=, $4, $pop43
 	i32.store	__stack_pointer($pop45), $pop44
 	.endfunc
-.Lfunc_end16:
-	.size	_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE, .Lfunc_end16-_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE
+.Lfunc_end19:
+	.size	_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE, .Lfunc_end19-_ZN5eosio5printILj32EEEvRKNS_9fixed_keyIXT_EEE
 
 	.section	.text._ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_,"axG",@progbits,_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_,comdat
 	.hidden	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_
@@ -2677,7 +2717,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$2=, $9, $pop66
 	i32.const	$push21=, 0
 	i32.sub 	$7=, $pop21, $6
-.LBB17_3:
+.LBB20_3:
 	loop    	
 	i32.load	$push22=, 0($2)
 	i64.load	$push23=, 0($pop22)
@@ -2692,7 +2732,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push67=, -24
 	i32.ne  	$push26=, $pop25, $pop67
 	br_if   	0, $pop26
-.LBB17_5:
+.LBB20_5:
 	end_loop
 	end_block
 	block   	
@@ -2708,7 +2748,7 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.const	$push32=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop31, $pop32
 	br      	1
-.LBB17_7:
+.LBB20_7:
 	end_block
 	i64.load	$push34=, 0($4)
 	i64.load	$push33=, 8($4)
@@ -2720,12 +2760,12 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.eq  	$push38=, $pop37, $4
 	i32.const	$push39=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop38, $pop39
-.LBB17_8:
+.LBB20_8:
 	end_block
 	i32.const	$push40=, 56
 	i32.add 	$push41=, $2, $pop40
 	i32.store	0($pop41), $3
-.LBB17_9:
+.LBB20_9:
 	end_block
 	i32.store	4($0), $2
 	i32.store	0($0), $1
@@ -2734,8 +2774,8 @@ _ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push47=, $10, $pop46
 	i32.store	__stack_pointer($pop48), $pop47
 	.endfunc
-.Lfunc_end17:
-	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_, .Lfunc_end17-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_
+.Lfunc_end20:
+	.size	_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_, .Lfunc_end20-_ZNK5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE11upper_boundERKS8_
 
 	.section	.text._ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv,"axG",@progbits,_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv,comdat
 	.hidden	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv
@@ -2790,7 +2830,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.add 	$push17=, $0, $pop16
 	i32.load	$push18=, 0($pop17)
 	i32.store	56($pop18), $7
-.LBB18_2:
+.LBB21_2:
 	end_block
 	i64.const	$push19=, 0
 	i64.store	0($9), $pop19
@@ -2820,7 +2860,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.add 	$7=, $8, $pop79
 	i32.const	$push25=, 0
 	i32.sub 	$5=, $pop25, $4
-.LBB18_5:
+.LBB21_5:
 	loop    	
 	i32.load	$push26=, 0($7)
 	i64.load	$push27=, 0($pop26)
@@ -2835,7 +2875,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push80=, -24
 	i32.ne  	$push30=, $pop29, $pop80
 	br_if   	0, $pop30
-.LBB18_7:
+.LBB21_7:
 	end_loop
 	end_block
 	i32.eq  	$push31=, $8, $4
@@ -2849,14 +2889,14 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push36=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop35, $pop36
 	br      	2
-.LBB18_9:
+.LBB21_9:
 	end_block
 	i32.const	$push48=, 4
 	i32.add 	$push49=, $0, $pop48
 	i32.const	$push50=, 0
 	i32.store	0($pop49), $pop50
 	br      	2
-.LBB18_10:
+.LBB21_10:
 	end_block
 	i64.load	$push38=, 0($2)
 	i64.load	$push37=, 8($2)
@@ -2868,7 +2908,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eq  	$push42=, $pop41, $2
 	i32.const	$push43=, .L.str.32
 	call    	eosio_assert@FUNCTION, $pop42, $pop43
-.LBB18_11:
+.LBB21_11:
 	end_block
 	i32.const	$push44=, 4
 	i32.add 	$push45=, $0, $pop44
@@ -2876,7 +2916,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push46=, 56
 	i32.add 	$push47=, $7, $pop46
 	i32.store	0($pop47), $1
-.LBB18_12:
+.LBB21_12:
 	end_block
 	i32.const	$push57=, 0
 	i32.const	$push55=, 32
@@ -2884,8 +2924,8 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.store	__stack_pointer($pop57), $pop56
 	copy_local	$push88=, $0
 	.endfunc
-.Lfunc_end18:
-	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv, .Lfunc_end18-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv
+.Lfunc_end21:
+	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv, .Lfunc_end21-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5indexILy4590971769115901952ES9_Ly0ELb0EE14const_iteratorppEv
 
 	.section	.text._ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_,"axG",@progbits,_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_,comdat
 	.hidden	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_
@@ -2925,7 +2965,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.sub 	$6=, $pop9, $3
 	i32.const	$push64=, -24
 	i32.add 	$8=, $7, $pop64
-.LBB19_2:
+.LBB22_2:
 	loop    	
 	i32.load	$push10=, 0($8)
 	i64.load	$push11=, 0($pop10)
@@ -2940,7 +2980,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push65=, -24
 	i32.ne  	$push14=, $pop13, $pop65
 	br_if   	0, $pop14
-.LBB19_4:
+.LBB22_4:
 	end_loop
 	end_block
 	i32.ne  	$push15=, $7, $3
@@ -2957,7 +2997,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push72=, 0
 	i32.sub 	$3=, $pop72, $4
 	copy_local	$7=, $8
-.LBB19_6:
+.LBB22_6:
 	loop    	
 	i32.const	$push76=, 24
 	i32.add 	$push75=, $7, $pop76
@@ -2971,7 +3011,7 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eqz 	$push95=, $4
 	br_if   	0, $pop95
 	call    	_ZdlPv@FUNCTION, $4
-.LBB19_8:
+.LBB22_8:
 	end_block
 	i32.const	$push81=, 16
 	i32.add 	$push18=, $7, $pop81
@@ -2997,9 +3037,9 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	tee_local	$push82=, $7=, $pop83
 	i32.eq  	$push28=, $pop82, $8
 	br_if   	1, $pop28
-.LBB19_10:
+.LBB22_10:
 	end_block
-.LBB19_11:
+.LBB22_11:
 	loop    	
 	i32.const	$push87=, -24
 	i32.add 	$push86=, $7, $pop87
@@ -3011,11 +3051,11 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.eqz 	$push96=, $4
 	br_if   	0, $pop96
 	call    	_ZdlPv@FUNCTION, $4
-.LBB19_13:
+.LBB22_13:
 	end_block
 	i32.ne  	$push29=, $8, $7
 	br_if   	0, $pop29
-.LBB19_14:
+.LBB22_14:
 	end_loop
 	end_block
 	i32.const	$push30=, 28
@@ -3054,18 +3094,18 @@ _ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_
 	i32.const	$push47=, 0
 	i32.lt_s	$push48=, $pop90, $pop47
 	br_if   	1, $pop48
-.LBB19_16:
+.LBB22_16:
 	end_block
 	call    	db_idx256_remove@FUNCTION, $7
-.LBB19_17:
+.LBB22_17:
 	end_block
 	i32.const	$push55=, 0
 	i32.const	$push53=, 32
 	i32.add 	$push54=, $9, $pop53
 	i32.store	__stack_pointer($pop55), $pop54
 	.endfunc
-.Lfunc_end19:
-	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_, .Lfunc_end19-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_
+.Lfunc_end22:
+	.size	_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_, .Lfunc_end22-_ZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE5eraseERKS2_
 
 	.section	.text._ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_,"axG",@progbits,_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_,comdat
 	.hidden	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
@@ -3108,22 +3148,22 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test
 	tee_local	$push50=, $7=, $pop51
 	i32.eqz 	$push79=, $pop50
 	br_if   	1, $pop79
-.LBB20_3:
+.LBB23_3:
 	end_block
 	i32.const	$push11=, 24
 	i32.mul 	$push12=, $7, $pop11
 	i32.call	$6=, _Znwj@FUNCTION, $pop12
 	br      	2
-.LBB20_4:
+.LBB23_4:
 	end_block
 	i32.const	$7=, 0
 	i32.const	$6=, 0
 	br      	1
-.LBB20_5:
+.LBB23_5:
 	end_block
 	call    	_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv@FUNCTION, $0
 	unreachable
-.LBB20_6:
+.LBB23_6:
 	end_block
 	i32.load	$5=, 0($1)
 	i32.const	$push62=, 0
@@ -3152,7 +3192,7 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test
 	tee_local	$push54=, $7=, $pop55
 	i32.eq  	$push20=, $pop56, $pop54
 	br_if   	0, $pop20
-.LBB20_8:
+.LBB23_8:
 	loop    	
 	i32.const	$push74=, -24
 	i32.add 	$push73=, $6, $pop74
@@ -3192,10 +3232,10 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test
 	i32.load	$7=, 0($pop33)
 	i32.load	$6=, 0($0)
 	br      	1
-.LBB20_10:
+.LBB23_10:
 	end_block
 	copy_local	$6=, $7
-.LBB20_11:
+.LBB23_11:
 	end_block
 	i32.store	0($0), $1
 	i32.const	$push34=, 4
@@ -3207,7 +3247,7 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test
 	block   	
 	i32.eq  	$push38=, $7, $6
 	br_if   	0, $pop38
-.LBB20_13:
+.LBB23_13:
 	loop    	
 	i32.const	$push78=, -24
 	i32.add 	$push77=, $7, $pop78
@@ -3219,22 +3259,22 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test
 	i32.eqz 	$push80=, $1
 	br_if   	0, $pop80
 	call    	_ZdlPv@FUNCTION, $1
-.LBB20_15:
+.LBB23_15:
 	end_block
 	i32.ne  	$push39=, $6, $7
 	br_if   	0, $pop39
-.LBB20_16:
+.LBB23_16:
 	end_loop
 	end_block
 	block   	
 	i32.eqz 	$push81=, $6
 	br_if   	0, $pop81
 	call    	_ZdlPv@FUNCTION, $6
-.LBB20_18:
+.LBB23_18:
 	end_block
 	.endfunc
-.Lfunc_end20:
-	.size	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_, .Lfunc_end20-_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
+.Lfunc_end23:
+	.size	_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_, .Lfunc_end23-_ZNSt3__16vectorIN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS1_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS4_NS1_9fixed_keyILj32EEEXadL_ZNKS4_7get_valEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
 
 	.section	.text._ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,"axG",@progbits,_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,comdat
 	.hidden	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
@@ -3310,7 +3350,7 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i64.gt_u	$push20=, $4, $pop19
 	i64.select	$push24=, $pop23, $pop22, $pop20
 	i64.store	0($pop25), $pop24
-.LBB21_2:
+.LBB24_2:
 	end_block
 	i32.const	$push80=, 8
 	i32.add 	$push26=, $2, $pop80
@@ -3353,8 +3393,8 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push44=, $7, $pop43
 	i32.store	__stack_pointer($pop45), $pop44
 	.endfunc
-.Lfunc_end21:
-	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end21-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
+.Lfunc_end24:
+	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end24-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E4_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
 
 	.section	.text._ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,"axG",@progbits,_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,comdat
 	.hidden	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
@@ -3430,7 +3470,7 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i64.gt_u	$push20=, $4, $pop19
 	i64.select	$push23=, $pop22, $pop21, $pop20
 	i64.store	0($pop24), $pop23
-.LBB22_2:
+.LBB25_2:
 	end_block
 	i32.const	$push80=, 8
 	i32.add 	$push25=, $2, $pop80
@@ -3473,8 +3513,8 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push43=, $7, $pop42
 	i32.store	__stack_pointer($pop44), $pop43
 	.endfunc
-.Lfunc_end22:
-	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end22-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
+.Lfunc_end25:
+	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end25-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E3_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
 
 	.section	.text._ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,"axG",@progbits,_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,comdat
 	.hidden	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
@@ -3550,7 +3590,7 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i64.gt_u	$push19=, $4, $pop18
 	i64.select	$push22=, $pop21, $pop20, $pop19
 	i64.store	0($pop23), $pop22
-.LBB23_2:
+.LBB26_2:
 	end_block
 	i32.const	$push80=, 8
 	i32.add 	$push24=, $2, $pop80
@@ -3593,8 +3633,8 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	i32.add 	$push42=, $7, $pop41
 	i32.store	__stack_pointer($pop43), $pop42
 	.endfunc
-.Lfunc_end23:
-	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end23-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
+.Lfunc_end26:
+	.size	_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end26-_ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS_10indexed_byILy4590971769115901952EN5boost11multi_index13const_mem_funIS2_NS_9fixed_keyILj32EEEXadL_ZNKS2_7get_valEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E2_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
 
 	.section	.text._ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_,"axG",@progbits,_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_,comdat
 	.hidden	_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_
@@ -3602,113 +3642,112 @@ _ZZN5eosio11multi_indexILy14605613945969442816EN16multi_index_test9test_k256EJNS
 	.type	_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_,@function
 _ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_:
 	.param  	i32, i32, i32
-	.local  	i32, i64, i64, i32, i32, i32
+	.local  	i32, i32, i32, i32
 	i32.const	$push44=, 0
 	i32.const	$push41=, 0
 	i32.load	$push42=, __stack_pointer($pop41)
 	i32.const	$push43=, 32
-	i32.sub 	$push57=, $pop42, $pop43
-	tee_local	$push56=, $8=, $pop57
-	i32.store	__stack_pointer($pop44), $pop56
-	i32.load	$push55=, 0($0)
-	tee_local	$push54=, $7=, $pop55
-	i32.load	$3=, 0($pop54)
-	i32.load	$push0=, 4($7)
-	i64.load	$push53=, 32($pop0)
-	tee_local	$push52=, $4=, $pop53
-	i64.store	16($8), $pop52
-	block   	
-	i32.load	$push1=, 8($7)
-	i64.load	$push2=, 0($pop1)
-	i64.eq  	$push3=, $4, $pop2
-	br_if   	0, $pop3
-	block   	
-	i32.load	$push4=, 12($7)
-	i32.load	$push59=, 56($pop4)
+	i32.sub 	$push59=, $pop42, $pop43
 	tee_local	$push58=, $6=, $pop59
-	i32.const	$push5=, -1
-	i32.gt_s	$push6=, $pop58, $pop5
-	br_if   	0, $pop6
-	i64.load	$push8=, 0($3)
-	i64.load	$push7=, 8($3)
-	i64.const	$push11=, -6497942333781180416
-	i32.load	$push9=, 16($7)
-	i64.load	$push10=, 0($pop9)
-	i32.call	$6=, db_idx64_find_primary@FUNCTION, $pop8, $pop7, $pop11, $8, $pop10
-	i32.const	$push12=, 12
-	i32.add 	$push13=, $7, $pop12
-	i32.load	$push14=, 0($pop13)
-	i32.store	56($pop14), $6
-.LBB24_3:
-	end_block
-	i32.load	$push15=, 20($7)
-	i64.load	$push16=, 0($pop15)
-	i32.const	$push50=, 16
-	i32.add 	$push51=, $8, $pop50
-	call    	db_idx64_update@FUNCTION, $6, $pop16, $pop51
-	i32.load	$7=, 0($0)
-.LBB24_4:
-	end_block
-	i32.load	$3=, 0($7)
-	i32.load	$push68=, 4($7)
-	tee_local	$push67=, $0=, $pop68
-	i32.const	$push17=, 24
-	i32.add 	$push18=, $pop67, $pop17
-	i64.load	$push66=, 0($pop18)
-	tee_local	$push65=, $4=, $pop66
-	i64.store	24($8), $pop65
-	i64.load	$push64=, 16($0)
-	tee_local	$push63=, $5=, $pop64
-	i64.store	16($8), $pop63
+	i32.store	__stack_pointer($pop44), $pop58
+	i32.load	$push57=, 0($0)
+	tee_local	$push56=, $3=, $pop57
+	i32.load	$4=, 0($pop56)
+	i32.load	$push0=, 4($3)
+	i64.load	$push1=, 32($pop0)
+	i64.store	16($6), $pop1
 	block   	
-	i32.load	$push62=, 8($7)
-	tee_local	$push61=, $0=, $pop62
-	i64.load	$push22=, 16($pop61)
-	i64.xor 	$push23=, $5, $pop22
-	i32.const	$push60=, 24
-	i32.add 	$push19=, $0, $pop60
-	i64.load	$push20=, 0($pop19)
-	i64.xor 	$push21=, $4, $pop20
-	i64.or  	$push24=, $pop23, $pop21
-	i64.eqz 	$push25=, $pop24
-	br_if   	0, $pop25
-	block   	
-	i32.load	$push26=, 12($7)
-	i32.const	$push71=, 60
-	i32.add 	$push27=, $pop26, $pop71
-	i32.load	$push70=, 0($pop27)
-	tee_local	$push69=, $0=, $pop70
-	i32.const	$push28=, -1
-	i32.gt_s	$push29=, $pop69, $pop28
-	br_if   	0, $pop29
-	i64.load	$push31=, 0($3)
-	i64.load	$push30=, 8($3)
-	i64.const	$push34=, -6497942333781180415
-	i32.load	$push32=, 16($7)
-	i64.load	$push33=, 0($pop32)
-	i32.call	$0=, db_idx128_find_primary@FUNCTION, $pop31, $pop30, $pop34, $8, $pop33
-	i32.const	$push35=, 12
-	i32.add 	$push36=, $7, $pop35
-	i32.load	$push37=, 0($pop36)
-	i32.const	$push72=, 60
-	i32.add 	$push38=, $pop37, $pop72
-	i32.store	0($pop38), $0
-.LBB24_7:
-	end_block
-	i32.load	$push39=, 20($7)
-	i64.load	$push40=, 0($pop39)
+	i32.load	$push2=, 8($3)
 	i32.const	$push48=, 16
-	i32.add 	$push49=, $8, $pop48
-	call    	db_idx128_update@FUNCTION, $0, $pop40, $pop49
-.LBB24_8:
+	i32.add 	$push49=, $6, $pop48
+	i32.const	$push3=, 8
+	i32.call	$push4=, memcmp@FUNCTION, $pop2, $pop49, $pop3
+	i32.eqz 	$push71=, $pop4
+	br_if   	0, $pop71
+	block   	
+	i32.load	$push5=, 12($3)
+	i32.load	$push61=, 56($pop5)
+	tee_local	$push60=, $5=, $pop61
+	i32.const	$push6=, -1
+	i32.gt_s	$push7=, $pop60, $pop6
+	br_if   	0, $pop7
+	i64.load	$push9=, 0($4)
+	i64.load	$push8=, 8($4)
+	i64.const	$push12=, -6497942333781180416
+	i32.load	$push10=, 16($3)
+	i64.load	$push11=, 0($pop10)
+	i32.call	$5=, db_idx64_find_primary@FUNCTION, $pop9, $pop8, $pop12, $6, $pop11
+	i32.const	$push13=, 12
+	i32.add 	$push14=, $3, $pop13
+	i32.load	$push15=, 0($pop14)
+	i32.store	56($pop15), $5
+.LBB27_3:
+	end_block
+	i32.load	$push16=, 20($3)
+	i64.load	$push17=, 0($pop16)
+	i32.const	$push54=, 16
+	i32.add 	$push55=, $6, $pop54
+	call    	db_idx64_update@FUNCTION, $5, $pop17, $pop55
+.LBB27_4:
+	end_block
+	i32.load	$push66=, 0($0)
+	tee_local	$push65=, $3=, $pop66
+	i32.load	$5=, 0($pop65)
+	i32.load	$push64=, 4($3)
+	tee_local	$push63=, $0=, $pop64
+	i32.const	$push18=, 24
+	i32.add 	$push19=, $pop63, $pop18
+	i64.load	$push20=, 0($pop19)
+	i64.store	24($6), $pop20
+	i64.load	$push21=, 16($0)
+	i64.store	16($6), $pop21
+	block   	
+	i32.load	$push22=, 8($3)
+	i32.const	$push23=, 16
+	i32.add 	$push24=, $pop22, $pop23
+	i32.const	$push50=, 16
+	i32.add 	$push51=, $6, $pop50
+	i32.const	$push62=, 16
+	i32.call	$push25=, memcmp@FUNCTION, $pop24, $pop51, $pop62
+	i32.eqz 	$push72=, $pop25
+	br_if   	0, $pop72
+	block   	
+	i32.load	$push26=, 12($3)
+	i32.const	$push69=, 60
+	i32.add 	$push27=, $pop26, $pop69
+	i32.load	$push68=, 0($pop27)
+	tee_local	$push67=, $0=, $pop68
+	i32.const	$push28=, -1
+	i32.gt_s	$push29=, $pop67, $pop28
+	br_if   	0, $pop29
+	i64.load	$push31=, 0($5)
+	i64.load	$push30=, 8($5)
+	i64.const	$push34=, -6497942333781180415
+	i32.load	$push32=, 16($3)
+	i64.load	$push33=, 0($pop32)
+	i32.call	$0=, db_idx128_find_primary@FUNCTION, $pop31, $pop30, $pop34, $6, $pop33
+	i32.const	$push35=, 12
+	i32.add 	$push36=, $3, $pop35
+	i32.load	$push37=, 0($pop36)
+	i32.const	$push70=, 60
+	i32.add 	$push38=, $pop37, $pop70
+	i32.store	0($pop38), $0
+.LBB27_7:
+	end_block
+	i32.load	$push39=, 20($3)
+	i64.load	$push40=, 0($pop39)
+	i32.const	$push52=, 16
+	i32.add 	$push53=, $6, $pop52
+	call    	db_idx128_update@FUNCTION, $0, $pop40, $pop53
+.LBB27_8:
 	end_block
 	i32.const	$push47=, 0
 	i32.const	$push45=, 32
-	i32.add 	$push46=, $8, $pop45
+	i32.add 	$push46=, $6, $pop45
 	i32.store	__stack_pointer($pop47), $pop46
 	.endfunc
-.Lfunc_end24:
-	.size	_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_, .Lfunc_end24-_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_
+.Lfunc_end27:
+	.size	_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_, .Lfunc_end27-_ZNK5boost4hana6detail7on_eachIPZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS3_10indexed_byILy4581808439210016768ENS_11multi_index13const_mem_funIS6_yXadL_ZNKS6_14get_expirationEvEEEEEENS7_ILy4587891630098350080ENS9_IS6_oXadL_ZNKS6_9get_priceEvEEEEEEEE6modifyIZNS5_16multi_index_test2onERKNSG_7triggerEEUlRT_E1_EEvRKS6_yOSK_EUlSL_E_EclIJRNS0_5tupleIJNS0_9type_implINSE_5indexILy4581808439210016768ESA_Ly0ELb0EEEE1_ENSV_INSW_ILy4581808439210016768ESA_Ly0ELb1EEEE1_EEEERNSU_IJNSV_INSW_ILy4587891630098350080ESC_Ly1ELb0EEEE1_ENSV_INSW_ILy4587891630098350080ESC_Ly1ELb1EEEE1_EEEEEEEvDpOT_
 
 	.section	.text._ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE,"axG",@progbits,_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE,comdat
 	.hidden	_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE
@@ -3782,8 +3821,8 @@ _ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE:
 	i32.store	4($0), $pop31
 	copy_local	$push50=, $0
 	.endfunc
-.Lfunc_end25:
-	.size	_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE, .Lfunc_end25-_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE
+.Lfunc_end28:
+	.size	_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE, .Lfunc_end28-_ZN16multi_index_testrsIN5eosio10datastreamIPKcEEEERT_S7_RNS_11limit_orderE
 
 	.section	.text._ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_,"axG",@progbits,_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_,comdat
 	.hidden	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
@@ -3826,22 +3865,22 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test
 	tee_local	$push50=, $7=, $pop51
 	i32.eqz 	$push79=, $pop50
 	br_if   	1, $pop79
-.LBB26_3:
+.LBB29_3:
 	end_block
 	i32.const	$push11=, 24
 	i32.mul 	$push12=, $7, $pop11
 	i32.call	$6=, _Znwj@FUNCTION, $pop12
 	br      	2
-.LBB26_4:
+.LBB29_4:
 	end_block
 	i32.const	$7=, 0
 	i32.const	$6=, 0
 	br      	1
-.LBB26_5:
+.LBB29_5:
 	end_block
 	call    	_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv@FUNCTION, $0
 	unreachable
-.LBB26_6:
+.LBB29_6:
 	end_block
 	i32.load	$5=, 0($1)
 	i32.const	$push62=, 0
@@ -3870,7 +3909,7 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test
 	tee_local	$push54=, $7=, $pop55
 	i32.eq  	$push20=, $pop56, $pop54
 	br_if   	0, $pop20
-.LBB26_8:
+.LBB29_8:
 	loop    	
 	i32.const	$push74=, -24
 	i32.add 	$push73=, $6, $pop74
@@ -3910,10 +3949,10 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test
 	i32.load	$7=, 0($pop33)
 	i32.load	$6=, 0($0)
 	br      	1
-.LBB26_10:
+.LBB29_10:
 	end_block
 	copy_local	$6=, $7
-.LBB26_11:
+.LBB29_11:
 	end_block
 	i32.store	0($0), $1
 	i32.const	$push34=, 4
@@ -3925,7 +3964,7 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test
 	block   	
 	i32.eq  	$push38=, $7, $6
 	br_if   	0, $pop38
-.LBB26_13:
+.LBB29_13:
 	loop    	
 	i32.const	$push78=, -24
 	i32.add 	$push77=, $7, $pop78
@@ -3937,22 +3976,22 @@ _ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test
 	i32.eqz 	$push80=, $1
 	br_if   	0, $pop80
 	call    	_ZdlPv@FUNCTION, $1
-.LBB26_15:
+.LBB29_15:
 	end_block
 	i32.ne  	$push39=, $6, $7
 	br_if   	0, $pop39
-.LBB26_16:
+.LBB29_16:
 	end_loop
 	end_block
 	block   	
 	i32.eqz 	$push81=, $6
 	br_if   	0, $pop81
 	call    	_ZdlPv@FUNCTION, $6
-.LBB26_18:
+.LBB29_18:
 	end_block
 	.endfunc
-.Lfunc_end26:
-	.size	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_, .Lfunc_end26-_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
+.Lfunc_end29:
+	.size	_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_, .Lfunc_end29-_ZNSt3__16vectorIN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS1_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS4_yXadL_ZNKS4_14get_expirationEvEEEEEENS5_ILy4587891630098350080ENS8_IS4_oXadL_ZNKS4_9get_priceEvEEEEEEEE8item_ptrENS_9allocatorISE_EEE24__emplace_back_slow_pathIJNS_10unique_ptrINSD_4itemENS_14default_deleteISK_EEEERyRlEEEvDpOT_
 
 	.section	.text._ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,"axG",@progbits,_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,comdat
 	.hidden	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
@@ -3980,7 +4019,7 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i64.const	$6=, 59
 	i32.const	$5=, .L.str.28
 	i64.const	$8=, 0
-.LBB27_1:
+.LBB30_1:
 	loop    	
 	block   	
 	block   	
@@ -4002,14 +4041,14 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push71=, 165
 	i32.add 	$4=, $4, $pop71
 	br      	2
-.LBB27_4:
+.LBB30_4:
 	end_block
 	i64.const	$9=, 0
 	i64.const	$push72=, 11
 	i64.le_u	$push4=, $7, $pop72
 	br_if   	2, $pop4
 	br      	3
-.LBB27_5:
+.LBB30_5:
 	end_block
 	i32.const	$push77=, 208
 	i32.add 	$push8=, $4, $pop77
@@ -4021,21 +4060,21 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push73=, 5
 	i32.lt_u	$push11=, $pop10, $pop73
 	i32.select	$4=, $pop8, $pop76, $pop11
-.LBB27_6:
+.LBB30_6:
 	end_block
 	i64.extend_u/i32	$push12=, $4
 	i64.const	$push79=, 56
 	i64.shl 	$push13=, $pop12, $pop79
 	i64.const	$push78=, 56
 	i64.shr_s	$9=, $pop13, $pop78
-.LBB27_7:
+.LBB30_7:
 	end_block
 	i64.const	$push81=, 31
 	i64.and 	$push15=, $9, $pop81
 	i64.const	$push80=, 4294967295
 	i64.and 	$push14=, $6, $pop80
 	i64.shl 	$9=, $pop15, $pop14
-.LBB27_8:
+.LBB30_8:
 	end_block
 	i32.const	$push87=, 1
 	i32.add 	$5=, $5, $pop87
@@ -4111,7 +4150,7 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i64.gt_u	$push35=, $7, $pop34
 	i64.select	$push39=, $pop38, $pop37, $pop35
 	i64.store	0($pop40), $pop39
-.LBB27_11:
+.LBB30_11:
 	end_block
 	i32.const	$push116=, 8
 	i32.add 	$push115=, $2, $pop116
@@ -4149,8 +4188,8 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$push60=, $10, $pop59
 	i32.store	__stack_pointer($pop61), $pop60
 	.endfunc
-.Lfunc_end27:
-	.size	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end27-_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
+.Lfunc_end30:
+	.size	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end30-_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E0_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
 
 	.section	.text._ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,"axG",@progbits,_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_,comdat
 	.hidden	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
@@ -4178,7 +4217,7 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i64.const	$6=, 59
 	i32.const	$5=, .L.str.25
 	i64.const	$8=, 0
-.LBB28_1:
+.LBB31_1:
 	loop    	
 	block   	
 	block   	
@@ -4200,14 +4239,14 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push71=, 165
 	i32.add 	$4=, $4, $pop71
 	br      	2
-.LBB28_4:
+.LBB31_4:
 	end_block
 	i64.const	$9=, 0
 	i64.const	$push72=, 11
 	i64.le_u	$push3=, $7, $pop72
 	br_if   	2, $pop3
 	br      	3
-.LBB28_5:
+.LBB31_5:
 	end_block
 	i32.const	$push77=, 208
 	i32.add 	$push7=, $4, $pop77
@@ -4219,21 +4258,21 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.const	$push73=, 5
 	i32.lt_u	$push10=, $pop9, $pop73
 	i32.select	$4=, $pop7, $pop76, $pop10
-.LBB28_6:
+.LBB31_6:
 	end_block
 	i64.extend_u/i32	$push11=, $4
 	i64.const	$push79=, 56
 	i64.shl 	$push12=, $pop11, $pop79
 	i64.const	$push78=, 56
 	i64.shr_s	$9=, $pop12, $pop78
-.LBB28_7:
+.LBB31_7:
 	end_block
 	i64.const	$push81=, 31
 	i64.and 	$push14=, $9, $pop81
 	i64.const	$push80=, 4294967295
 	i64.and 	$push13=, $6, $pop80
 	i64.shl 	$9=, $pop14, $pop13
-.LBB28_8:
+.LBB31_8:
 	end_block
 	i32.const	$push87=, 1
 	i32.add 	$5=, $5, $pop87
@@ -4309,7 +4348,7 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i64.gt_u	$push34=, $7, $pop33
 	i64.select	$push38=, $pop37, $pop36, $pop34
 	i64.store	0($pop39), $pop38
-.LBB28_11:
+.LBB31_11:
 	end_block
 	i32.const	$push116=, 8
 	i32.add 	$push115=, $2, $pop116
@@ -4347,8 +4386,8 @@ _ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderE
 	i32.add 	$push59=, $10, $pop58
 	i32.store	__stack_pointer($pop60), $pop59
 	.endfunc
-.Lfunc_end28:
-	.size	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end28-_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
+.Lfunc_end31:
+	.size	_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_, .Lfunc_end31-_ZZN5eosio11multi_indexILy11948801739928371200EN16multi_index_test11limit_orderEJNS_10indexed_byILy4581808439210016768EN5boost11multi_index13const_mem_funIS2_yXadL_ZNKS2_14get_expirationEvEEEEEENS3_ILy4587891630098350080ENS6_IS2_oXadL_ZNKS2_9get_priceEvEEEEEEEE7emplaceIZNS1_16multi_index_test2onERKNSD_7triggerEEUlRT_E_EENSB_14const_iteratorEyOSH_ENKUlSI_E_clINSB_4itemEEEDaSI_
 
 	.text
 	.weak	_Znwj
@@ -4364,7 +4403,7 @@ _Znwj:
 	i32.call	$push2=, malloc@FUNCTION, $pop3
 	tee_local	$push1=, $0=, $pop2
 	br_if   	0, $pop1
-.LBB29_1:
+.LBB32_1:
 	loop    	
 	i32.const	$0=, 0
 	i32.const	$push9=, 0
@@ -4377,13 +4416,13 @@ _Znwj:
 	tee_local	$push5=, $0=, $pop6
 	i32.eqz 	$push11=, $pop5
 	br_if   	0, $pop11
-.LBB29_3:
+.LBB32_3:
 	end_loop
 	end_block
 	copy_local	$push12=, $0
 	.endfunc
-.Lfunc_end29:
-	.size	_Znwj, .Lfunc_end29-_Znwj
+.Lfunc_end32:
+	.size	_Znwj, .Lfunc_end32-_Znwj
 
 	.weak	_ZdlPv
 	.type	_ZdlPv,@function
@@ -4393,11 +4432,11 @@ _ZdlPv:
 	i32.eqz 	$push0=, $0
 	br_if   	0, $pop0
 	call    	free@FUNCTION, $0
-.LBB30_2:
+.LBB33_2:
 	end_block
 	.endfunc
-.Lfunc_end30:
-	.size	_ZdlPv, .Lfunc_end30-_ZdlPv
+.Lfunc_end33:
+	.size	_ZdlPv, .Lfunc_end33-_ZdlPv
 
 	.section	.text._ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv,"axG",@progbits,_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv,comdat
 	.hidden	_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv
@@ -4408,8 +4447,8 @@ _ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv:
 	call    	abort@FUNCTION
 	unreachable
 	.endfunc
-.Lfunc_end31:
-	.size	_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv, .Lfunc_end31-_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv
+.Lfunc_end34:
+	.size	_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv, .Lfunc_end34-_ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv
 
 	.text
 	.hidden	memcmp
@@ -4423,7 +4462,7 @@ memcmp:
 	block   	
 	i32.eqz 	$push10=, $2
 	br_if   	0, $pop10
-.LBB32_2:
+.LBB35_2:
 	block   	
 	loop    	
 	i32.load8_u	$push4=, 0($0)
@@ -4441,16 +4480,16 @@ memcmp:
 	tee_local	$push5=, $2=, $pop6
 	br_if   	0, $pop5
 	br      	2
-.LBB32_4:
+.LBB35_4:
 	end_loop
 	end_block
 	i32.sub 	$5=, $3, $4
-.LBB32_5:
+.LBB35_5:
 	end_block
 	copy_local	$push11=, $5
 	.endfunc
-.Lfunc_end32:
-	.size	memcmp, .Lfunc_end32-memcmp
+.Lfunc_end35:
+	.size	memcmp, .Lfunc_end35-memcmp
 
 	.hidden	malloc
 	.globl	malloc
@@ -4461,8 +4500,8 @@ malloc:
 	i32.const	$push0=, _ZN5eosio11memory_heapE
 	i32.call	$push1=, _ZN5eosio14memory_manager6mallocEm@FUNCTION, $pop0, $0
 	.endfunc
-.Lfunc_end33:
-	.size	malloc, .Lfunc_end33-malloc
+.Lfunc_end36:
+	.size	malloc, .Lfunc_end36-malloc
 
 	.section	.text._ZN5eosio14memory_manager6mallocEm,"axG",@progbits,_ZN5eosio14memory_manager6mallocEm,comdat
 	.hidden	_ZN5eosio14memory_manager6mallocEm
@@ -4484,7 +4523,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.add 	$push1=, $0, $pop0
 	i32.const	$push64=, 16
 	i32.store	0($pop1), $pop64
-.LBB34_3:
+.LBB37_3:
 	end_block
 	i32.const	$push2=, 8
 	i32.add 	$push3=, $1, $pop2
@@ -4517,11 +4556,11 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.const	$push14=, 8192
 	i32.store	0($1), $pop14
 	i32.store	0($13), $0
-.LBB34_7:
+.LBB37_7:
 	end_block
 	i32.const	$push72=, 4
 	i32.add 	$10=, $2, $pop72
-.LBB34_8:
+.LBB37_8:
 	loop    	
 	block   	
 	i32.load	$push74=, 8($1)
@@ -4552,12 +4591,12 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.add 	$push76=, $13, $pop77
 	tee_local	$push75=, $1=, $pop76
 	br_if   	3, $pop75
-.LBB34_10:
+.LBB37_10:
 	end_block
 	i32.call	$push86=, _ZN5eosio14memory_manager16next_active_heapEv@FUNCTION, $0
 	tee_local	$push85=, $1=, $pop86
 	br_if   	0, $pop85
-.LBB34_11:
+.LBB37_11:
 	end_loop
 	end_block
 	i32.const	$push26=, 2147483644
@@ -4569,7 +4608,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.load	$push88=, 8392($0)
 	tee_local	$push87=, $3=, $pop88
 	copy_local	$13=, $pop87
-.LBB34_12:
+.LBB37_12:
 	loop    	
 	i32.const	$push100=, 12
 	i32.mul 	$push27=, $13, $pop100
@@ -4591,7 +4630,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	tee_local	$push90=, $6=, $pop91
 	i32.const	$push89=, 4
 	i32.add 	$13=, $pop90, $pop89
-.LBB34_13:
+.LBB37_13:
 	loop    	
 	i32.load	$push33=, 0($5)
 	i32.add 	$7=, $6, $pop33
@@ -4609,7 +4648,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	block   	
 	i32.ge_u	$push35=, $1, $2
 	br_if   	0, $pop35
-.LBB34_15:
+.LBB37_15:
 	loop    	
 	i32.add 	$push109=, $13, $1
 	tee_local	$push108=, $10=, $pop109
@@ -4628,7 +4667,7 @@ _ZN5eosio14memory_manager6mallocEm:
 	tee_local	$push113=, $1=, $pop114
 	i32.lt_u	$push40=, $pop113, $2
 	br_if   	0, $pop40
-.LBB34_18:
+.LBB37_18:
 	end_loop
 	end_block
 	i32.lt_u	$push41=, $1, $2
@@ -4645,11 +4684,11 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.const	$push118=, 2147483647
 	i32.and 	$push48=, $pop47, $pop118
 	i32.store	0($pop46), $pop48
-.LBB34_20:
+.LBB37_20:
 	end_block
 	i32.ge_u	$push49=, $1, $2
 	br_if   	4, $pop49
-.LBB34_21:
+.LBB37_21:
 	end_block
 	i32.add 	$push53=, $13, $1
 	i32.const	$push121=, 4
@@ -4671,23 +4710,23 @@ _ZN5eosio14memory_manager6mallocEm:
 	i32.store	0($11), $pop122
 	i32.ne  	$push60=, $13, $3
 	br_if   	0, $pop60
-.LBB34_23:
+.LBB37_23:
 	end_loop
 	end_block
 	return  	$1
-.LBB34_24:
+.LBB37_24:
 	end_block
 	i32.load	$push50=, 0($8)
 	i32.const	$push51=, -2147483648
 	i32.or  	$push52=, $pop50, $pop51
 	i32.store	0($8), $pop52
 	return  	$13
-.LBB34_25:
+.LBB37_25:
 	end_block
 	i32.const	$push61=, 0
 	.endfunc
-.Lfunc_end34:
-	.size	_ZN5eosio14memory_manager6mallocEm, .Lfunc_end34-_ZN5eosio14memory_manager6mallocEm
+.Lfunc_end37:
+	.size	_ZN5eosio14memory_manager6mallocEm, .Lfunc_end37-_ZN5eosio14memory_manager6mallocEm
 
 	.section	.text._ZN5eosio14memory_manager16next_active_heapEv,"axG",@progbits,_ZN5eosio14memory_manager16next_active_heapEv,comdat
 	.hidden	_ZN5eosio14memory_manager16next_active_heapEv
@@ -4707,7 +4746,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push95=, 0
 	i32.load	$7=, _ZZ4sbrkjE10sbrk_bytes($pop95)
 	br      	1
-.LBB35_2:
+.LBB38_2:
 	end_block
 	current_memory	$7=
 	i32.const	$push99=, 0
@@ -4718,7 +4757,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.shl 	$push97=, $7, $pop4
 	tee_local	$push96=, $7=, $pop97
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop98), $pop96
-.LBB35_3:
+.LBB38_3:
 	end_block
 	copy_local	$3=, $7
 	block   	
@@ -4742,7 +4781,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	br_if   	1, $pop11
 	i32.const	$push12=, 0
 	i32.load	$3=, _ZZ4sbrkjE10sbrk_bytes($pop12)
-.LBB35_6:
+.LBB38_6:
 	end_block
 	i32.const	$8=, 0
 	i32.const	$push105=, 0
@@ -4781,7 +4820,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.shl 	$push112=, $3, $pop26
 	tee_local	$push111=, $3=, $pop112
 	i32.store	_ZZ4sbrkjE10sbrk_bytes($pop113), $pop111
-.LBB35_9:
+.LBB38_9:
 	end_block
 	i32.const	$push116=, 8192
 	i32.add 	$2=, $2, $pop116
@@ -4812,7 +4851,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	br_if   	2, $pop38
 	i32.const	$push39=, 0
 	i32.load	$6=, _ZZ4sbrkjE10sbrk_bytes($pop39)
-.LBB35_13:
+.LBB38_13:
 	end_block
 	i32.const	$push41=, 0
 	i32.add 	$push40=, $6, $5
@@ -4857,7 +4896,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push61=, 2147483647
 	i32.and 	$push62=, $pop60, $pop61
 	i32.store	0($6), $pop62
-.LBB35_17:
+.LBB38_17:
 	end_block
 	i32.const	$push63=, 8388
 	i32.add 	$push142=, $0, $pop63
@@ -4878,10 +4917,10 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.add 	$push136=, $0, $pop70
 	tee_local	$push135=, $8=, $pop136
 	i32.store	0($pop135), $7
-.LBB35_18:
+.LBB38_18:
 	end_block
 	return  	$8
-.LBB35_19:
+.LBB38_19:
 	end_block
 	block   	
 	i32.load	$push150=, 0($2)
@@ -4916,7 +4955,7 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.const	$push88=, 2147483647
 	i32.and 	$push89=, $pop87, $pop88
 	i32.store	0($3), $pop89
-.LBB35_21:
+.LBB38_21:
 	end_block
 	i32.const	$push90=, 8388
 	i32.add 	$push156=, $0, $pop90
@@ -4929,14 +4968,14 @@ _ZN5eosio14memory_manager16next_active_heapEv:
 	i32.store	0($7), $3
 	i32.const	$push93=, 0
 	return  	$pop93
-.LBB35_22:
+.LBB38_22:
 	end_block
 	i32.add 	$push71=, $8, $7
 	i32.store	0($2), $pop71
 	copy_local	$push158=, $2
 	.endfunc
-.Lfunc_end35:
-	.size	_ZN5eosio14memory_manager16next_active_heapEv, .Lfunc_end35-_ZN5eosio14memory_manager16next_active_heapEv
+.Lfunc_end38:
+	.size	_ZN5eosio14memory_manager16next_active_heapEv, .Lfunc_end38-_ZN5eosio14memory_manager16next_active_heapEv
 
 	.text
 	.hidden	free
@@ -4960,7 +4999,7 @@ free:
 	i32.mul 	$push3=, $2, $pop18
 	i32.const	$push17=, _ZN5eosio11memory_heapE+8192
 	i32.add 	$1=, $pop3, $pop17
-.LBB36_3:
+.LBB39_3:
 	loop    	
 	i32.const	$push21=, 4
 	i32.add 	$push4=, $3, $pop21
@@ -4977,18 +5016,18 @@ free:
 	i32.add 	$push8=, $2, $pop7
 	i32.gt_u	$push9=, $pop8, $0
 	br_if   	3, $pop9
-.LBB36_6:
+.LBB39_6:
 	end_block
 	i32.const	$push25=, 12
 	i32.add 	$push24=, $3, $pop25
 	tee_local	$push23=, $3=, $pop24
 	i32.lt_u	$push14=, $pop23, $1
 	br_if   	0, $pop14
-.LBB36_7:
+.LBB39_7:
 	end_loop
 	end_block
 	return
-.LBB36_8:
+.LBB39_8:
 	end_block
 	i32.const	$push10=, -4
 	i32.add 	$push27=, $0, $pop10
@@ -4998,8 +5037,8 @@ free:
 	i32.and 	$push13=, $pop11, $pop12
 	i32.store	0($pop26), $pop13
 	.endfunc
-.Lfunc_end36:
-	.size	free, .Lfunc_end36-free
+.Lfunc_end39:
+	.size	free, .Lfunc_end39-free
 
 	.type	.L.str,@object
 	.section	.rodata.str1.1,"aMS",@progbits,1
@@ -5791,6 +5830,7 @@ _ZN5eosio11memory_heapE:
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
 	.ident	"clang version 4.0.1 (https://github.com/llvm-mirror/clang.git 3c8961bedc65c9a15cbe67a2ef385a0938f7cfef) (https://github.com/llvm-mirror/llvm.git c8fccc53ed66d505898f8850bcc690c977a7c9a7)"
+	.functype	current_time, i64
 	.functype	require_auth2, void, i64, i64
 	.functype	require_auth, void, i64
 	.functype	eosio_assert, void, i32, i32

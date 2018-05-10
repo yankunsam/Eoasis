@@ -1,11 +1,11 @@
 const char* const tic_tac_toe_wast = R"=====(
 (module
  (type $FUNCSIG$v (func))
+ (type $FUNCSIG$j (func (result i64)))
  (type $FUNCSIG$vjj (func (param i64 i64)))
  (type $FUNCSIG$vj (func (param i64)))
  (type $FUNCSIG$ijjjj (func (param i64 i64 i64 i64) (result i32)))
  (type $FUNCSIG$vii (func (param i32 i32)))
- (type $FUNCSIG$j (func (result i64)))
  (type $FUNCSIG$vijii (func (param i32 i64 i32 i32)))
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
  (type $FUNCSIG$i (func (result i32)))
@@ -15,6 +15,7 @@ const char* const tic_tac_toe_wast = R"=====(
  (import "env" "abort" (func $abort))
  (import "env" "action_data_size" (func $action_data_size (result i32)))
  (import "env" "current_receiver" (func $current_receiver (result i64)))
+ (import "env" "current_time" (func $current_time (result i64)))
  (import "env" "db_find_i64" (func $db_find_i64 (param i64 i64 i64 i64) (result i32)))
  (import "env" "db_get_i64" (func $db_get_i64 (param i32 i32 i32) (result i32)))
  (import "env" "db_next_i64" (func $db_next_i64 (param i32 i32) (result i32)))
@@ -28,7 +29,7 @@ const char* const tic_tac_toe_wast = R"=====(
  (import "env" "require_auth2" (func $require_auth2 (param i64 i64)))
  (table 0 anyfunc)
  (memory $0 1)
- (data (i32.const 4) "p5\00\00")
+ (data (i32.const 4) "pM\00\00")
  (data (i32.const 16) "create\00")
  (data (i32.const 32) "restart\00")
  (data (i32.const 48) "close\00")
@@ -61,6 +62,9 @@ const char* const tic_tac_toe_wast = R"=====(
  (data (i32.const 9488) "malloc_from_freed was designed to only be called after _heap was completely allocated\00")
  (export "memory" (memory $0))
  (export "_ZeqRK11checksum256S1_" (func $_ZeqRK11checksum256S1_))
+ (export "_ZeqRK11checksum160S1_" (func $_ZeqRK11checksum160S1_))
+ (export "_ZneRK11checksum160S1_" (func $_ZneRK11checksum160S1_))
+ (export "now" (func $now))
  (export "_ZN5eosio12require_authERKNS_16permission_levelE" (func $_ZN5eosio12require_authERKNS_16permission_levelE))
  (export "apply" (func $apply))
  (export "memcmp" (func $memcmp))
@@ -72,6 +76,33 @@ const char* const tic_tac_toe_wast = R"=====(
     (get_local $0)
     (get_local $1)
     (i32.const 32)
+   )
+  )
+ )
+ (func $_ZeqRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.eqz
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+  )
+ )
+ (func $_ZneRK11checksum160S1_ (param $0 i32) (param $1 i32) (result i32)
+  (i32.ne
+   (call $memcmp
+    (get_local $0)
+    (get_local $1)
+    (i32.const 32)
+   )
+   (i32.const 0)
+  )
+ )
+ (func $now (result i32)
+  (i32.wrap/i64
+   (i64.div_u
+    (call $current_time)
+    (i64.const 1000000)
    )
   )
  )
@@ -2081,7 +2112,7 @@ const char* const tic_tac_toe_wast = R"=====(
    (get_local $7)
    (i32.const 288)
   )
-  (i32.store offset=36
+  (i32.store8 offset=39
    (get_local $12)
    (select
     (i32.const 1)
@@ -2128,7 +2159,7 @@ const char* const tic_tac_toe_wast = R"=====(
    (get_local $12)
    (i32.add
     (get_local $12)
-    (i32.const 36)
+    (i32.const 39)
    )
   )
   (i32.store offset=16
@@ -2787,7 +2818,7 @@ const char* const tic_tac_toe_wast = R"=====(
     )
     (i32.const 32)
    )
-   (i32.load
+   (i32.load8_u
     (i32.load offset=4
      (get_local $3)
     )
@@ -3876,7 +3907,7 @@ const char* const tic_tac_toe_wast = R"=====(
     (i32.const 8)
    )
   )
-  (call $_ZN5eosiorsINS_10datastreamIPKcEEhLj9ELi0EEERT_S6_RAT1__T0_
+  (call $_ZN5eosiorsINS_10datastreamIPKcEEhLj9ELPv0EEERT_S7_RAT1__T0_
    (get_local $0)
    (i32.add
     (get_local $1)
@@ -4209,7 +4240,7 @@ const char* const tic_tac_toe_wast = R"=====(
    )
   )
  )
- (func $_ZN5eosiorsINS_10datastreamIPKcEEhLj9ELi0EEERT_S6_RAT1__T0_ (param $0 i32) (param $1 i32) (result i32)
+ (func $_ZN5eosiorsINS_10datastreamIPKcEEhLj9ELPv0EEERT_S7_RAT1__T0_ (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -5511,7 +5542,7 @@ const char* const tic_tac_toe_wast = R"=====(
       )
      )
     )
-    (call_indirect $FUNCSIG$v
+    (call_indirect (type $FUNCSIG$v)
      (get_local $2)
     )
     (br_if $label$1

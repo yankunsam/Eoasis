@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -17,10 +17,20 @@ eosiolib/datastream.hpp
 -
 eosiolib/serialize.hpp
 -
+boost/preprocessor/variadic/size.hpp
+-
+boost/preprocessor/variadic/to_tuple.hpp
+-
+boost/preprocessor/tuple/enum.hpp
+-
+boost/preprocessor/facilities/overload.hpp
+-
 
 ../contracts/eosiolib/chain.h
 eosiolib/types.h
 -
+
+../contracts/eosiolib/contract.hpp
 
 ../contracts/eosiolib/datastream.hpp
 eosiolib/system.h
@@ -29,11 +39,15 @@ eosiolib/memory.h
 -
 eosiolib/vector.hpp
 -
+boost/container/flat_set.hpp
+-
 boost/container/flat_map.hpp
 -
 eosiolib/varint.hpp
 -
 array
+-
+set
 -
 map
 -
@@ -72,14 +86,6 @@ type_traits
 eosiolib/system.h
 -
 
-../contracts/eosiolib/math.h
-eosiolib/system.h
--
-
-../contracts/eosiolib/math.hpp
-eosiolib/math.h
--
-
 ../contracts/eosiolib/memory.h
 string.h
 -
@@ -115,6 +121,8 @@ memory
 -
 boost/multi_index/mem_fun.hpp
 -
+eosiolib/action.h
+-
 eosiolib/types.hpp
 -
 eosiolib/serialize.hpp
@@ -134,8 +142,6 @@ eosiolib/types.h
 eosiolib/print.h
 -
 eosiolib/types.hpp
--
-eosiolib/math.hpp
 -
 eosiolib/fixed_key.hpp
 -
@@ -550,18 +556,24 @@ boost/pfr/detail/sequence_tuple.hpp
 boost/pfr/detail/fields_count.hpp
 -
 
-/home/sam/eos/contracts/identity/identity.cpp
-identity.hpp
-/home/sam/eos/contracts/identity/identity.hpp
-
-/home/sam/eos/contracts/identity/identity.hpp
+/home/sam/eos/contracts/identity/common.cpp
+common.hpp
+/home/sam/eos/contracts/identity/common.hpp
 eosiolib/chain.h
 -
-eosiolib/dispatcher.hpp
--
+
+/home/sam/eos/contracts/identity/common.hpp
 eosiolib/singleton.hpp
 -
 eosiolib/multi_index.hpp
+-
+
+/home/sam/eos/contracts/identity/identity.cpp
+common.hpp
+/home/sam/eos/contracts/identity/common.hpp
+eosiolib/contract.hpp
+-
+eosiolib/dispatcher.hpp
 -
 eosiolib/vector.hpp
 -

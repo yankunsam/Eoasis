@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/sam/eos/contracts/identity/common.cpp" "/home/sam/eos/build/contracts/identity/common.cpp.bc"
   "/home/sam/eos/contracts/identity/identity.cpp" "/home/sam/eos/build/contracts/identity/identity.cpp.bc"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
@@ -12,6 +13,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../contracts"
   "../externals/magic_get/include"
+  "../contracts/identity/.."
   )
 
 # Targets to which this target links.

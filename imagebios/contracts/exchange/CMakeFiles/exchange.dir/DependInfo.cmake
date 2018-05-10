@@ -12,6 +12,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../contracts"
   "../externals/magic_get/include"
+  "../contracts/exchange/.."
   )
 
 # Targets to which this target links.

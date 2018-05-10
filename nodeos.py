@@ -69,8 +69,8 @@ class Nodeos:
         "--plugin","eosio::chain_api_plugin",
         "--plugin","eosio::http_plugin",
         "--plugin","eosio::net_api_plugin",
-        "--plugin","eosio::account_history_plugin",
-        "--plugin","eosio::account_history_api_plugin",
+        #"--plugin","eosio::account_history_plugin",
+        #"--plugin","eosio::account_history_api_plugin",
         "--plugin","eosio::wallet_api_plugin"]
         with daemon.DaemonContext(stdout=log,stderr=log):
             if stale is 0:

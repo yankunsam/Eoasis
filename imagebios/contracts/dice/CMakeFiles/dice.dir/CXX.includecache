@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -16,6 +16,14 @@ eosiolib/action.h
 eosiolib/datastream.hpp
 -
 eosiolib/serialize.hpp
+-
+boost/preprocessor/variadic/size.hpp
+-
+boost/preprocessor/variadic/to_tuple.hpp
+-
+boost/preprocessor/tuple/enum.hpp
+-
+boost/preprocessor/facilities/overload.hpp
 -
 
 ../contracts/eosiolib/asset.hpp
@@ -43,11 +51,15 @@ eosiolib/memory.h
 -
 eosiolib/vector.hpp
 -
+boost/container/flat_set.hpp
+-
 boost/container/flat_map.hpp
 -
 eosiolib/varint.hpp
 -
 array
+-
+set
 -
 map
 -
@@ -83,8 +95,6 @@ eosiolib/action.hpp
 -
 eosiolib/print.hpp
 -
-eosiolib/math.hpp
--
 eosiolib/multi_index.hpp
 -
 eosiolib/dispatcher.hpp
@@ -100,14 +110,6 @@ algorithm
 type_traits
 -
 eosiolib/system.h
--
-
-../contracts/eosiolib/math.h
-eosiolib/system.h
--
-
-../contracts/eosiolib/math.hpp
-eosiolib/math.h
 -
 
 ../contracts/eosiolib/memory.h
@@ -145,6 +147,8 @@ memory
 -
 boost/multi_index/mem_fun.hpp
 -
+eosiolib/action.h
+-
 eosiolib/types.hpp
 -
 eosiolib/serialize.hpp
@@ -164,8 +168,6 @@ eosiolib/types.h
 eosiolib/print.h
 -
 eosiolib/types.hpp
--
-eosiolib/math.hpp
 -
 eosiolib/fixed_key.hpp
 -

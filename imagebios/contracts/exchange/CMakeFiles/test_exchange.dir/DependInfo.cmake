@@ -10,6 +10,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../contracts/exchange/.."
   "../contracts/exchange/fixed_point/include"
   "../libraries/fc/include"
   "/home/sam/opt/boost_1_66_0/include"

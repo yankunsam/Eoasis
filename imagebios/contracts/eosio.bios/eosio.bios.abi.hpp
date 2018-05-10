@@ -34,20 +34,13 @@ const char* const eosio_bios_abi = R"=====(
       "name": "set_producers",
       "base": "",
       "fields": [
-        {"name":"version",    "type":"uint32"},
-        {"name":"producers",   "type":"producer_key[]"}
+        {"name":"schedule",   "type":"producer_key[]"}
       ]
     },{
       "name": "require_auth",
       "base": "",
       "fields": [
         {"name":"from", "type":"account_name"}
-      ]
-    },{
-      "name": "nonce",
-      "base": "",
-      "fields": [
-        {"name":"value", "type":"string"}
       ]
     }],
   "actions": [{
@@ -69,10 +62,6 @@ const char* const eosio_bios_abi = R"=====(
     },{
       "name": "reqauth",
       "type": "require_auth",
-      "ricardian_contract": ""
-    },{
-      "name": "nonce",
-      "type": "nonce",
       "ricardian_contract": ""
     }
   ],

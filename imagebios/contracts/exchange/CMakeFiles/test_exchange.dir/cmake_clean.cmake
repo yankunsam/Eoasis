@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "exchange.bc"
   "exchange.s"
   "exchange.wast"
+  "exchange.wasm"
   "exchange.abi.hpp"
   "exchange.wast.hpp"
   "CMakeFiles/test_exchange.dir/test_exchange.cpp.o"
