@@ -110,14 +110,13 @@ def setprods(config,cleosinstance):
     # you may also want to remove whitespace characters like `\n` at the end of each line
     #data['version'] = '12348'
     data['schedule'] = producers
-    print("data")
-    print(data)
+    data_tmp = json.dumps(data)
     #json_data = json.dumps(data)
-    with open('setprods.json', 'w') as f:
-      tmp = json.dump(data, f, ensure_ascii=False)
+    #with open('setprods.json', 'w') as f:
+     # tmp = json.dump(data, f, ensure_ascii=False)
     #pushaction(self,contract,action,data,account,permission)
     #cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
-    cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
+    cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],data_tmp,config['setprods']['account'],config['setprods']['permission'])
 
 def getbalance(config,cleosinstance):
     #getbalance(contract,account,symbol):
