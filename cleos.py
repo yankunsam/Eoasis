@@ -1,4 +1,5 @@
 import subprocess
+import json
 
 privatekey = "5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"
 class Cleos:
@@ -54,7 +55,15 @@ class Cleos:
         subprocess.run(self.getbalancecmdlist + [contract,account,symbol])
 
     def currencytransfer(self,sender,recipient,amount,memo):
-        subprocess.run(self.currencytransfercmdlist + [sender,recipient,amount,memo])
+        #subprocess.run(self.currencytransfercmdlist + [sender,recipient,amount,memo
+        data = {}
+        data['from'] = sender
+        data['to'] = recipient
+        data['quantity'] = "%s %s" %(amount,"EOS")
+        data['memo'] = "transfer from %s to %s" % (sender,recipient)
+        data_json = json.dumps(data)
+        print(data_json)
+        subprocess.run(self.pushactioncmdlist + ["eosio","transfer",data_json,"-p","%s@%s" % ("eosio","active")])
 
 #cleosinstance = Cleos("eosio")
 #cleosinstance.createWallet()
