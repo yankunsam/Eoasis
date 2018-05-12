@@ -5,6 +5,7 @@ import time
 import daemon
 import shutil
 import os
+from pathlib import Path
 
 
 # year = ""
@@ -58,9 +59,11 @@ class Nodeos:
         #Delete exist data directory
         if os.path.exists(self.datadir):
             shutil.rmtree(self.datadir)
-            shutil.rmtree("/home/sam/eosio-wallet")
         os.mkdir(self.datadir)
-        os.mkdir("/home/sam/eosio-wallet")
+        walletdir = "%s%s" % (str(Path.home()),"/eosio-wallt")
+        if os.path.exists(walletdir):
+            shutil.rmtree(walletdir)
+        os.mkdir(walletdir)
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         for item in p2paddresslist:
