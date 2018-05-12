@@ -58,7 +58,9 @@ class Nodeos:
         #Delete exist data directory
         if os.path.exists(self.datadir):
             shutil.rmtree(self.datadir)
+            shutil.rmtree("/home/sam/eosio-wallet")
         os.mkdir(self.datadir)
+        os.mkdir("/home/sam/eosio-wallet")
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         for item in p2paddresslist:
@@ -67,10 +69,11 @@ class Nodeos:
         pluginlist = ['--plugin',"eosio::producer_plugin",
         "--plugin","eosio::wallet_plugin",
         "--plugin","eosio::chain_api_plugin",
+        "--plugin","eosio::chain_plugin",
         "--plugin","eosio::http_plugin",
         "--plugin","eosio::net_api_plugin",
-        #"--plugin","eosio::account_history_plugin",
-        #"--plugin","eosio::account_history_api_plugin",
+        "--plugin","eosio::history_plugin",
+        "--plugin","eosio::history_api_plugin",
         "--plugin","eosio::wallet_api_plugin"]
         with daemon.DaemonContext(stdout=log,stderr=log):
             if stale is 0:
