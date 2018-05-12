@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wno-invalid-partial-specialization -O3 -DNDEBUG   -std=gnu++
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sam/eos/contracts/exchange/.. -I/home/sam/eos/contracts/exchange/fixed_point/include -I/home/sam/eos/libraries/fc/include -I/home/sam/opt/boost_1_66_0/include -I/usr/include/openssl/include -I/usr/local/include -I/home/sam/eos/libraries/fc/vendor/websocketpp 
+CXX_INCLUDES = -I/home/sam/eos/contracts/exchange/.. -I/home/sam/eos/contracts/exchange/fixed_point/include -I/home/sam/eos/libraries/fc/include -I/home/sam/opt/boost_1_66_0/include -I/usr/local/include -I/home/sam/eos/libraries/fc/vendor/websocketpp 
 

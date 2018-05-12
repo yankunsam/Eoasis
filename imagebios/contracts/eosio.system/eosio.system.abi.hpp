@@ -14,7 +14,7 @@ const char* const eosio_system_abi = R"=====(
       "base": "",
       "fields": [
          {"name":"account", "type":"account_name"},
-         {"name":"bytes", "type":"uint32"}
+         {"name":"bytes", "type":"uint64"}
       ]
     },{
       "name": "buyram",

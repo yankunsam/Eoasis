@@ -63,7 +63,7 @@ class Cleos:
         data['memo'] = "transfer from %s to %s" % (sender,recipient)
         data_json = json.dumps(data)
         print(data_json)
-        subprocess.run(self.pushactioncmdlist + ["eosio","transfer",data_json,"-p","%s@%s" % ("eosio","active")])
+        subprocess.run(self.pushactioncmdlist + ["eosio.token","transfer",data_json,"-p","%s@%s" % (sender,"active")])
 
 #cleosinstance = Cleos("eosio")
 #cleosinstance.createWallet()
