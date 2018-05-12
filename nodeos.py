@@ -60,7 +60,7 @@ class Nodeos:
         if os.path.exists(self.datadir):
             shutil.rmtree(self.datadir)
         os.mkdir(self.datadir)
-        walletdir = "%s%s" % (str(Path.home()),"/eosio-wallt")
+        walletdir = "%s%s" % (str(Path.home()),"/eosio-wallet")
         if os.path.exists(walletdir):
             shutil.rmtree(walletdir)
         os.mkdir(walletdir)
