@@ -11,6 +11,7 @@ class Cleos:
     pushactioncmdlist = ["cleos","push","action"]
     getbalancecmdlist = ['cleos','get','currency','balance']
     currencytransfercmdlist = ['cleos','transfer']
+    createaccountbysystemlist = ['cleos', 'system', 'newaccount']
     def __init__(self,account):
         self.account = account
 
@@ -63,3 +64,9 @@ class Cleos:
         data['memo'] = "transfer from %s to %s" % (sender,recipient)
         data_json = json.dumps(data)
         subprocess.run(self.pushactioncmdlist + ["eosio.token","transfer",data_json,"-p","%s@%s" % (sender,"active")])
+
+    def createaccountbysystem(self,arglist):
+        #cleos system newaccount eosio voter4 EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk
+        #EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk  --buy-ram-bytes 1000 --stake-net "10 EOS"  --stake-cpu "10 EOS"
+        print((arglist))
+        subprocess.run(self.createaccountbysystemlist + arglist)

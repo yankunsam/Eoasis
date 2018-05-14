@@ -38,7 +38,7 @@ def createwallet(config,cleosinstance):
 
 
 def createtokenaccount(config,cleosinstance):
-    cleosinstance.createAccount(config['tokencontract']['creator'],config['tokencontract']['contract'],config['tokencontract']['ownerkey'],config['tokencontract']['activekey'])
+    cleosinstance.createAccount(config['tokencontract']['creator'],config['tokencontract']['accountname'],config['tokencontract']['ownerkey'],config['tokencontract']['activekey'])
     cleosinstance.importPrivatekey(config['tokencontract']['privatekey'])
 
 def settokencontract(config,cleosinstance):
@@ -151,6 +151,26 @@ def regproducer(config):
     cleosinstance.pushaction(config['regproducer']['contract'],config['regproducer']['action'],
     data_tmp,config['regproducer']['account'],config['regproducer']['permission'])
 
+def delegatebw(config,cleosinstance):
+    data = {}
+    data['from'] = config['delegatebw']['from']
+    data['receiver'] = config['delegatebw']['receiver']
+    data['stake_net_quantity'] = config['delegatebw']['stake_net_quantity']
+    data['stake_cpu_quantity'] = config['delegatebw']['stake_cpu_quantity']
+    data['transfer'] = config['delegatebw']['transfer']
+    data_tmp = json.dumps(data)
+    cleosinstance.pushaction(config['delegatebw']['contract'],config['delegatebw']['action'],data_tmp,config['delegatebw']['account'],config['delegatebw']['permission'])
+
+def createaccountbysystem(config,cleosinstance):
+    #cleos system newaccount eosio voter4 EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk
+    #EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk  --buy-ram-bytes 1000 --stake-net "10 EOS"  --stake-cpu "10 EOS"
+    data = {}
+    for item in config['voter']['item'].split(";"):
+        tmp = item.split(",")
+        print(tmp)
+        cleosinstance.importPrivatekey(tmp[0])
+        cleosinstance.createaccountbysystem(tmp[1:])
+
 
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
@@ -159,7 +179,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey','importbpprivatekey','currencytransfer','regproducer'])
+    'createkey','importbpprivatekey','currencytransfer','regproducer','delegatebw','createaccountbysystem'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -229,6 +249,13 @@ def main():
     elif args.command == "regproducer":
         print(args.command)
         regproducer(config)
+    elif args.command == "delegatebw":
+        print(args.command)
+        delegatebw(config,cleosinstance)
+
+    elif args.command == "createaccountbysystem":
+        print(args.command)
+        createaccountbysystem(config,cleosinstance)
 
     #test
     #test()
