@@ -36,6 +36,11 @@ def startbios(config):
 def createwallet(config,cleosinstance):
     cleosinstance.createWallet()
 
+
+def createtokenaccount(config,cleosinstance):
+    cleosinstance.createAccount(config['tokencontract']['creator'],config['tokencontract']['contract'],config['tokencontract']['ownerkey'],config['tokencontract']['activekey'])
+    cleosinstance.importPrivatekey(config['tokencontract']['privatekey'])
+
 def settokencontract(config,cleosinstance):
     contractdir = config['tokencontract']['contractdir']
     wastfile = "%s/%s" % (contractdir,config['tokencontract']['wastfile'])
@@ -111,11 +116,11 @@ def setprods(config,cleosinstance):
     data['schedule'] = producers
     data_tmp = json.dumps(data,ensure_ascii=False)
     print(data_tmp)
-    with open('setprods.json', 'w') as f:
-     tmp = json.dump(data, f, ensure_ascii=False)
+    #with open('setprods.json', 'w') as f:
+     #tmp = json.dump(data, f, ensure_ascii=False)
     #pushaction(self,contract,action,data,account,permission)
     #cleosinstance.pushaction("eosio","setprods","/home/sam/Public/Porridge/setprods.json","eosio","active")
-    cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],config['setprods']['data'],config['setprods']['account'],config['setprods']['permission'])
+    cleosinstance.pushaction(config['setprods']['contract'],config['setprods']['action'],data_tmp,config['setprods']['account'],config['setprods']['permission'])
 
 def getbalance(config,cleosinstance):
     #getbalance(contract,account,symbol):
@@ -135,6 +140,17 @@ def currencytransfer(config,cleosinstance):
         tmp = item.split(" ")
         cleosinstance.currencytransfer(tmp[0],tmp[1],tmp[2],tmp[3])
 
+def regproducer(config):
+    cleosinstance = Cleos("eosio")
+    data = {}
+    #cleos push action eosio regproducer ./regproducer.json -p eos.beijing
+    data['producer'] = config['regproducer']['account']
+    data['producer_key'] = config['nodeos']['publickey']
+    data['url'] = config['regproducer']['url']
+    data_tmp = json.dumps(data)
+    cleosinstance.pushaction(config['regproducer']['contract'],config['regproducer']['action'],
+    data_tmp,config['regproducer']['account'],config['regproducer']['permission'])
+
 
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
@@ -143,7 +159,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey','importbpprivatekey','currencytransfer'])
+    'createkey','importbpprivatekey','currencytransfer','regproducer'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -170,6 +186,7 @@ def main():
     if args.command == "settokencontract":
         print(args.command)
         cleosinstance = Cleos("eosio.token")
+        createtokenaccount(config,cleosinstance)
         settokencontract(config,cleosinstance)
 
     elif args.command == "setsystemcontract":
@@ -207,7 +224,11 @@ def main():
         print(args.command)
         createkey(cleosinstance)
     elif args.command == "currencytransfer":
+        print(args.command)
         currencytransfer(config,cleosinstance)
+    elif args.command == "regproducer":
+        print(args.command)
+        regproducer(config)
 
     #test
     #test()
