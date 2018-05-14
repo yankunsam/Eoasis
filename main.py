@@ -159,6 +159,7 @@ def delegatebw(config,cleosinstance):
     data['stake_cpu_quantity'] = config['delegatebw']['stake_cpu_quantity']
     data['transfer'] = config['delegatebw']['transfer']
     data_tmp = json.dumps(data)
+    print(data)
     cleosinstance.pushaction(config['delegatebw']['contract'],config['delegatebw']['action'],data_tmp,config['delegatebw']['account'],config['delegatebw']['permission'])
 
 def createaccountbysystem(config,cleosinstance):
@@ -171,6 +172,18 @@ def createaccountbysystem(config,cleosinstance):
         cleosinstance.importPrivatekey(tmp[0])
         cleosinstance.createaccountbysystem(tmp[1:])
 
+def voteproducer(config,cleosinstance):
+    data = {}
+    data_tmp = []
+    data['voter'] = config['voteproducer']['voter']
+    data['proxy']= config['voteproducer']['proxy']
+    for item in config['voteproducer']['producers'].split(","):
+        data_tmp.append(item)
+    data['producers'] = data_tmp
+    print(data)
+    cleosinstance.pushaction(config['voteproducer']['contract'],config['voteproducer']['action'],json.dumps(data),config['voteproducer']['account'],config['voteproducer']['permission'])
+
+
 
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
@@ -179,7 +192,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey','importbpprivatekey','currencytransfer','regproducer','delegatebw','createaccountbysystem'])
+    'createkey','importbpprivatekey','currencytransfer','regproducer','delegatebw','createaccountbysystem','voteproducer'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -256,6 +269,9 @@ def main():
     elif args.command == "createaccountbysystem":
         print(args.command)
         createaccountbysystem(config,cleosinstance)
+    elif args.command == "voteproducer":
+        print(args.command)
+        voteproducer(config,cleosinstance)
 
     #test
     #test()
