@@ -25,7 +25,7 @@ class Cleos:
             tmp = []
             tmp.append(result[13:13+51])
             tmp.append(result[13+51+13:-1])
-            self.importPrivatekey(tmp[0])
+            #self.importPrivatekey(tmp[0])
             return  tmp
 
     #TODO: check wallet exist
