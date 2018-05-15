@@ -8,6 +8,7 @@ accountname = os.uname()[1]
 config['nodeos']['accountname'] = accountname
 cleosinstance = Cleos("eosio")
 keylist = cleosinstance.createKey()
+print("%s:%s" % (accountname,keylist[1]))
 config['nodeos']['privatekey'] = keylist[0]
 config['nodeos']['publickey'] = keylist[1]
 config['regproducer']['account'] = accountname
