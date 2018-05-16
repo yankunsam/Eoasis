@@ -17,7 +17,7 @@ COPY contracts/eosio.system/eosio.system.wast /root/contracts/eosio.system/eosio
 COPY contracts/eosio.system/eosio.system.abi /root/contracts/eosio.system/eosio.system.abi
 COPY contracts/eosio.token/eosio.token.wast /root/contracts/eosio.token/eosio.token.wast
 COPY contracts/eosio.token/eosio.token.abi /root/contracts/eosio.token/eosio.token.abi
-RUN cd /root/ && git clone https://github.com/yankunsam/Eoasis.git && cp ./Eoasis/configtemplate/genesis.json /opt/config/genesis.json
 EXPOSE 8888
 EXPOSE 8889
 EXPOSE 9876
+ENTRYPOINT ["tail", "-f", "/dev/null"]

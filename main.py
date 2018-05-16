@@ -3,11 +3,14 @@ from cleos import Cleos
 import argparse
 import configparser
 import json
+import os
 
 
 def parseconfigfile():
     config = configparser.ConfigParser()
-    config.read("config.ini")
+    dirname = os.path.dirname(__file__)
+    configfile = os.path.join(dirname, './config.ini')
+    config.read(configfile)
     return config
 
 

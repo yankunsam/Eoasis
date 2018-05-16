@@ -1,10 +1,10 @@
 #!/bin/bash
-if [ $# -ne 2 ]; then
-  echo "./agent.sh producer_name container_count"
+if [ $# -ne 1 ]; then
+  echo "./agent.sh  container_count"
   exit
 fi
 
-image="samyankun/eostestnet"
+image="samyankun/eoasis"
 tag="0.1"
 
 container_hostname=$1
@@ -13,6 +13,7 @@ then
   echo "[INFO] Delete the exist account file"
   rm ./accounts.conf
 fi
+touch accounts.conf
 if grep -Fxq "$container_hostname" ./accounts.conf
 then
     # if found
@@ -29,7 +30,7 @@ if ! [ -x "$(which docker)" ]; then
 fi
 #if [[ "$(docker images -q $image:$tag 2> /dev/null)" == "" ]]; then
   #docker pull samyankun/eostestnet:0.1
-docker pull $image:$tag
+#docker pull $image:$tag
 if [ "$(docker ps -aq)" ]; then
   docker stop $(docker ps -aq)
 fi
@@ -40,7 +41,7 @@ fi
 #delete exist data
 rm -rf /opt/data/*
 let portbase=9800
-let portmax=9800+$2-1
+let portmax=9800+$1-1
 for port in `seq $portbase $portmax `
 do
   bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 4 | head -n 1)
@@ -50,14 +51,16 @@ do
     echo "mkdir error"
     exit
   fi
-  docker run  -d  --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/ --name $bp$port -p $port:9876 $image:$tag 
+  docker run  -d -it --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/ -v /home/sam/Public/Porridge:/root/Eoasis --name $bp$port -p $port:9876 $image:$tag
   if [  $? -ne 0 ]; then
     echo "container error"
     exit
   fi
   sleep 1
-  docker exec $bp$port cat /opt/data/publickey.conf >> ./accounts.conf
-  docker exec $bp$port cleos wallet create > /opt/data/data-$bp/wallet.password
-  docker exec $bp$port  cleos wallet import $(cat /opt/data/data-$bp/privatekey.conf  | awk '{print $2}')
+  docker exec $bp$port cp /root/Eoasis/configtemplate/genesis.json /opt/config/genesis.json
+  docker exec $bp$port python /root/Eoasis/setconfig.py > accounts.conf
+  docker exec $bp$port python /root/Eoasis/main.py startnode
+  docker exec $bp$port python /root/Eoasis/main.py createwallet > /opt/data/data-$bp/wallet.password
+  docker exec $bp$port python /root/Eoasis/main.py importbpprivatekey
 
 done

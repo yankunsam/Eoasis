@@ -57,13 +57,13 @@ class Nodeos:
         subprocess.run(["killall","nodeos","-q"])
         p2paddresstemp = []
         #Delete exist data directory
-        if os.path.exists(self.datadir):
-            shutil.rmtree(self.datadir)
-        os.mkdir(self.datadir)
+        #if os.path.exists(self.datadir):
+        #    shutil.rmtree(self.datadir)
+        #    os.mkdir(self.datadir)
         walletdir = "%s%s" % (str(Path.home()),"/eosio-wallet")
-        if os.path.exists(walletdir):
-            shutil.rmtree(walletdir)
-        os.mkdir(walletdir)
+        #if os.path.exists(walletdir):
+        #    shutil.rmtree(walletdir)
+        #os.mkdir(walletdir)
         #with Popen, nodeos will run in backend
         log = open(("%s/%s" % (self.datadir,"nodeos.log")),'w+')
         for item in p2paddresslist:
