@@ -1,5 +1,5 @@
 #!/bin/bash
-image="samyankun/eosbios"
+image="samyankun/eoasis"
 tag="0.1"
 docker build -t $image:$tag .
 if [ $? -ne 0  ]
