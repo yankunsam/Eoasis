@@ -58,7 +58,7 @@ do
   fi
   sleep 1
   docker exec $bp$port cp /root/Eoasis/configtemplate/genesis.json /opt/config/genesis.json
-  docker exec $bp$port python /root/Eoasis/setconfig.py > accounts.conf
+  docker exec $bp$port python /root/Eoasis/setconfig.py >> accounts.conf
   docker exec $bp$port python /root/Eoasis/main.py startnode
   docker exec $bp$port python /root/Eoasis/main.py createwallet > /opt/data/data-$bp/wallet.password
   docker exec $bp$port python /root/Eoasis/main.py importbpprivatekey
