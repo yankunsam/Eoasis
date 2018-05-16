@@ -51,7 +51,7 @@ do
     echo "mkdir error"
     exit
   fi
-  docker run  -d -it --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/ -v /home/sam/Public/Porridge:/root/Eoasis --name $bp$port -p $port:9876 $image:$tag
+  docker run  -d -it --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/ -v /home/sam/Public/Eoasis:/root/Eoasis --name $bp$port -p $port:9876 $image:$tag
   if [  $? -ne 0 ]; then
     echo "container error"
     exit
