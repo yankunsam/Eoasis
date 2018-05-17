@@ -40,8 +40,8 @@ if [ $? -ne 0 ]; then
 fi
 #delete exist data
 rm -rf /opt/data/*
-let portbase=9800
-let portmax=9800+$1-1
+let portbase=9700
+let portmax=9700+$1-1
 for port in `seq $portbase $portmax `
 do
   bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 4 | head -n 1)
