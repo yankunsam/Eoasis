@@ -8,8 +8,8 @@ configfile = os.path.join(dirname, './config.ini')
 config.read(configfile)
 biosnodeaddress="127.0.0.1:9876"
 bpaddress = []
-for i in range(2,10):
-    bpaddresstmp="%s%s%s" % ("172.17.0.",i,":9876")
+for i in range(9800,9800+52):
+    bpaddresstmp="%s:%s" % ("192.168.0.127",i)
     bpaddress.append(bpaddresstmp)
 bpaddress = ','.join(bpaddress)
 print(bpaddress)
