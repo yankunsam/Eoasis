@@ -2,16 +2,21 @@ import configparser
 import os
 from cleos import Cleos
 import subprocess
+
 config = configparser.ConfigParser()
 dirname = os.path.dirname(__file__)
 configfile = os.path.join(dirname, './config.ini')
 config.read(configfile)
-biosnodeaddress="127.0.0.1:9876"
+biosnodeaddress="103.235.232.27:9876"
 bpaddress = []
+
 for i in range(9700,9700+5):
-    bpaddresstmp="%s:%s" % ("127.0.0.1",i)
+    bpaddresstmp1="%s:%s" % ("103.235.232.21",i)
+    bpaddresstmp2="%s:%s" % ("103.235.232.21",i)
     #bpaddresstmp="%s:%s" % ("192.168.0.127",i)
-    bpaddress.append(bpaddresstmp)
+    bpaddress.append(bpaddresstmp1)
+    bpaddress.append(bpaddresstmp2)
+
 bpaddress = ','.join(bpaddress)
 print(bpaddress)
 config['biosnode']['p2paddress'] = bpaddress
