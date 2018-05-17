@@ -30,7 +30,8 @@ if ! [ -x "$(which docker)" ]; then
 fi
 #if [[ "$(docker images -q $image:$tag 2> /dev/null)" == "" ]]; then
   #docker pull samyankun/eostestnet:0.1
-#docker pull $image:$tag
+#fi
+docker pull $image:$tag
 if [ "$(docker ps -aq)" ]; then
   docker stop $(docker ps -aq)
 fi
