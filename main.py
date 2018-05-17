@@ -82,6 +82,11 @@ def createbpaccount(config,cleosinstance):
     #TODO add wallet section in config.ini
     cleosinstance.createAccountByFile("eosio",accountfile)
 
+def createvoteraccount(config,cleosinstance):
+    accountfile = config['voter']['voteraccountfile']
+    #TODO add wallet section in config.ini
+    cleosinstance.createAccountByFile("eosio",accountfile)
+
 def createtoken(config,cleosinstance):
     cleosinstance.pushaction(config['createtoken']['contract'],
                             config['createtoken']['action'],
@@ -191,7 +196,7 @@ def voteproducer(config,cleosinstance):
 def main():
     #parse command line: https://docs.python.org/3.5/howto/argparse.html
     parser = argparse.ArgumentParser()
-    parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount',
+    parser.add_argument("command",help="start a bios node",choices=['startbios','createbpaccount','createvoteraccount',
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
@@ -217,6 +222,10 @@ def main():
         print("[INFO]: in createbpaccount\n")
         print(args.command)
         createbpaccount(config,cleosinstance)
+    elif args.command == "createvoteraccount":
+        print("[INFO]: in createvoteraccount")
+        print(args.command)
+        createvoteraccount(config,cleosinstance)
     elif args.command == "setcontract":
         print(args.command)
     if args.command == "settokencontract":
