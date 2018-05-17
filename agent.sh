@@ -51,16 +51,16 @@ do
     echo "mkdir error"
     exit
   fi
-  docker run  -d -it --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/  --name $bp$port -p $port:9876 $image:$tag
+  docker run  -d -it --rm --hostname  $bp -v /opt/data/data-$bp:/opt/data/  --name $bp -p $port:9876 $image:$tag
   if [  $? -ne 0 ]; then
     echo "container error"
     exit
   fi
   sleep 1
-  docker exec $bp$port cp /root/Eoasis/configtemplate/genesis.json /opt/config/genesis.json
-  docker exec $bp$port python /root/Eoasis/setconfig.py >> accounts.conf
-  docker exec $bp$port python /root/Eoasis/main.py startnode
-  docker exec $bp$port python /root/Eoasis/main.py createwallet > /opt/data/data-$bp/wallet.password
-  docker exec $bp$port python /root/Eoasis/main.py importbpprivatekey
+  docker exec $bp cp /root/Eoasis/configtemplate/genesis.json /opt/config/genesis.json
+  docker exec $bp python /root/Eoasis/setconfig.py >> accounts.conf
+  docker exec $bp python /root/Eoasis/main.py startnode
+  docker exec $bp python /root/Eoasis/main.py createwallet > /opt/data/data-$bp/wallet.password
+  docker exec $bp python /root/Eoasis/main.py importbpprivatekey
 
 done
