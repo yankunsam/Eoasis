@@ -114,7 +114,7 @@ def setprods(config,cleosinstance):
     with open(config['setprods']['bpaccountfile']) as f:
         content = f.read().splitlines()
         #print content
-    for item in content:
+    for item in content[:21]:
         tmp = item.split(':', 1)
         producers_tmp = {"producer_name": tmp[0],"block_signing_key": tmp[1]}
         producers.append(producers_tmp)
@@ -177,8 +177,8 @@ def createaccountbysystem(config,cleosinstance):
     for item in config['voter']['item'].split(";"):
         tmp = item.split(",")
         print(tmp)
-        cleosinstance.importPrivatekey(tmp[0])
-        cleosinstance.createaccountbysystem(tmp[1:])
+        #cleosinstance.importPrivatekey(tmp[0])
+        cleosinstance.createaccountbysystem(tmp)
 
 def voteproducer(config,cleosinstance):
     data = {}
