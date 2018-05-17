@@ -10,7 +10,7 @@ config.read(configfile)
 biosnodeaddress="103.235.232.27:9876"
 bpaddress = []
 
-for i in range(9700,9700+5):
+for i in range(9700,9700+26):
     bpaddresstmp1="%s:%s" % ("103.235.232.21",i)
     bpaddresstmp2="%s:%s" % ("103.235.232.43",i)
     #bpaddresstmp="%s:%s" % ("192.168.0.127",i)
