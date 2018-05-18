@@ -39,6 +39,8 @@ python main.py currencytransfer
 # ./createvoter.sh
 # python createvoterbysystem.py
 # python main.py createaccountbysystem
+# python transfer.py
+# python main.py currencytransfer
 # python delegateandvoter.py
 # python voter.py
 ```
