@@ -13,7 +13,7 @@ for conffile in ["accounts.conf","voters.conf"]:
         for line in f:
             accountname = line.split(':')[0]
             balanceaccount.append(accountname)
-            tmp = "%s %s %s %s" % ("eosio.token",accountname,"1000.0000","EOS")
+            tmp = "%s %s %s %s" % ("eosio.token",accountname,"400000000.0000","EOS")
             transfer.append(tmp)
 transfer = ';'.join(transfer)
 balanceaccount = ','.join(balanceaccount)
