@@ -11,8 +11,12 @@ biosnodeaddress="103.235.232.27:9876"
 bpaddress = []
 
 for i in range(9700,9700+11):
-    bpaddresstmp1="%s:%s" % ("103.235.232.21",i)
-    bpaddresstmp2="%s:%s" % ("103.235.232.43",i)
+    #eos1: 103.235.232.21
+    #eos2: 103.235.232.43
+    #pc:   125.35.118.114
+    #home: 124.126.92.146
+    bpaddresstmp1="%s:%s" % ("125.35.118.114",i)
+    bpaddresstmp2="%s:%s" % ("124.126.92.146",i)
     #bpaddresstmp3="%s:%s" % ("103.235.232.27",i)
     #bpaddresstmp="%s:%s" % ("192.168.0.127",i)
     bpaddress.append(bpaddresstmp1)
