@@ -1,5 +1,5 @@
 rm voters.conf
-for i in `seq 1 30`
+for i in `seq 1 1`
 do
     bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 4 | head -n 1)
     command=$(cleos create key)
