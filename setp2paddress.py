@@ -7,22 +7,19 @@ config = configparser.ConfigParser()
 dirname = os.path.dirname(__file__)
 configfile = os.path.join(dirname, './config.ini')
 config.read(configfile)
-biosnodeaddress="103.235.232.27:9876"
+eos0 = "103.235.232.27"
+eos1 = "103.235.232.21"
+eos2 = "103.235.232.43"
+biosnodeaddress="%s:%s" % (eos0,"9876")
 bpaddress = []
 
 for i in range(9700,9700+11):
-    #eos1: 103.235.232.21
-    #eos2: 103.235.232.43
-    #pc:   125.35.118.114
-    #home: 124.126.92.146
-    bpaddresstmp1="%s:%s" % ("125.35.118.114",i)
-    bpaddresstmp2="%s:%s" % ("124.126.92.146",i)
-    #bpaddresstmp3="%s:%s" % ("103.235.232.27",i)
-    #bpaddresstmp="%s:%s" % ("192.168.0.127",i)
+    bpaddresstmp1="%s:%s" % (eos1,i)
+    bpaddresstmp2="%s:%s" % (eos2,i)
     bpaddress.append(bpaddresstmp1)
     bpaddress.append(bpaddresstmp2)
-    #bpaddress.append(bpaddresstmp3)
 
+    
 bpaddress = ','.join(bpaddress)
 print(bpaddress)
 config['biosnode']['p2paddress'] = bpaddress
