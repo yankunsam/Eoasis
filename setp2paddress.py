@@ -13,13 +13,13 @@ eos2 = "103.235.232.43"
 biosnodeaddress="%s:%s" % (eos0,"9876")
 bpaddress = []
 
-for i in range(9700,9700+11):
+for i in range(9700,9700+15):
     bpaddresstmp1="%s:%s" % (eos1,i)
     bpaddresstmp2="%s:%s" % (eos2,i)
     bpaddress.append(bpaddresstmp1)
     bpaddress.append(bpaddresstmp2)
 
-    
+
 bpaddress = ','.join(bpaddress)
 print(bpaddress)
 config['biosnode']['p2paddress'] = bpaddress
