@@ -45,11 +45,14 @@ python main.py setbioscontract
 ```
 
 <img alt="README-Screen Shot 2018-05-19 at 8.31.01 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.31.01 AM.png" width="" height="" >
+
 # Create BIOS Stage's Block producers
 You should copy **"accounts.conf"**  to biosnode's **"accounts.conf"** for these following steps
+
 ```
 python main.py createbpaccount
 ```
+
 <img alt="README-Screen Shot 2018-05-19 at 8.35.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.35.00 AM.png" width="" height="" >
 # Token Contract
 ```
