@@ -28,15 +28,29 @@ python main.py startnode
 python main.py createwallet
 python main.py importbpprivatekey
 ```
+For out example Instance we have a agent.sh
+```
+./agent.sh 15
+```
+It will generate the hostname in a random way. Also producer name is the container hostname.
+
+*The output like this:*
+
+<img alt="README-Screen Shot 2018-05-19 at 8.25.11 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.25.11 AM.png" width="" height="" >
+
 **Remeber: bios contract,token contract and system contract must been deplied into bios node**
 # BIOS Contract
 ```
 python main.py setbioscontract
 ```
+
+<img alt="README-Screen Shot 2018-05-19 at 8.31.01 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.31.01 AM.png" width="" height="" >
 # Create BIOS Stage's Block producers
+You should copy **"accounts.conf"**  to biosnode's **"accounts.conf"** for these following steps
 ```
 python main.py createbpaccount
 ```
+<img alt="README-Screen Shot 2018-05-19 at 8.35.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.35.00 AM.png" width="" height="" >
 # Token Contract
 ```
 python main.py settokencontract
