@@ -8,7 +8,7 @@ configfile = os.path.join(dirname, './config.ini')
 config.read(configfile)
 transfer = []
 balanceaccount=["eosio.token"]
-for conffile in ["accounts.conf","voters.conf"]:
+for conffile in ["voters.conf"]:
     with open(conffile,'r') as f:
         for line in f:
             accountname = line.split(':')[0]
