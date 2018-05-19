@@ -33,7 +33,7 @@ python main.py createwallet
 python main.py importbpprivatekey
 
 ```
-For out example Instance we have a agent.sh
+For our example instance, we have a agent.sh
 
 ```
 ./agent.sh 15
@@ -58,9 +58,13 @@ You should copy **"accounts.conf"**  to biosnode's **"accounts.conf"** for these
 
 ```
 python main.py createbpaccount
+python main.py setprods
 ```
 
 <img alt="README-Screen Shot 2018-05-19 at 8.35.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.35.00 AM.png" width="" height="" >
+
+
+<img alt="README-Screen Shot 2018-05-19 at 9.12.33 AM.png" src="assets/README-Screen Shot 2018-05-19 at 9.12.33 AM.png" width="" height="" >
 
 
 # Token Contract
@@ -70,13 +74,25 @@ python main.py settokencontract
 python main.py createtoken
 python main.py issuetoken
 ```
-
-# Transfer Initial EOS to block producers
+# System Contract
 
 ```
-python transfer.py
-python main.py currencytransfer
+# python main.py setsystemcontract
 ```
+
+# Register Block Producer
+
+*On BP host*
+
+```
+./regproducer.sh
+
+```
+
+<img alt="README-Screen Shot 2018-05-19 at 9.49.12 AM.png" src="assets/README-Screen Shot 2018-05-19 at 9.49.12 AM.png" width="" height="" >
+
+
+
 
 # Voting Process
 
@@ -89,3 +105,9 @@ python main.py currencytransfer
 # python delegateandvoter.py
 # python voter.py
 ```
+
+
+<img alt="README-Screen Shot 2018-05-19 at 9.53.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 9.53.00 AM.png" width="" height="" >
+
+
+*** Now, You can have a check that the bp as your voting. Sorry for the only voter in this example instance ***
