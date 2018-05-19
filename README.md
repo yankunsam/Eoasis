@@ -4,8 +4,8 @@
 # Example Instance
 #### **Here we run 30 bp as containers **
 
-Host | Type |Ipaddress| Port
------|-------
+Host | Type | Ipaddress | Port|
+-----|-------|----|----|
 eos0| BIOS |103.235.232.27| 9876
 eos1| BP Host| 103.235.232.21| 9700~9714
 eos2| BP Host | 103.235.232.43| 9700~9714
