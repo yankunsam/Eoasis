@@ -54,18 +54,25 @@ python main.py createbpaccount
 ```
 
 <img alt="README-Screen Shot 2018-05-19 at 8.35.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 8.35.00 AM.png" width="" height="" >
+
+
 # Token Contract
+
 ```
 python main.py settokencontract
 python main.py createtoken
 python main.py issuetoken
 ```
+
 # Transfer Initial EOS to block producers
+
 ```
 python transfer.py
 python main.py currencytransfer
 ```
+
 # Voting Process
+
 ```
 # ./createvoter.sh
 # python createvoterbysystem.py
