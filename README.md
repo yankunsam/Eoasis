@@ -2,7 +2,7 @@
 **Infrastructure of blockchain.Now we just support _EOS_.**
 
 # Example Instance
-#### **Here we run 30 bp as containers **
+## Here we run 30 containers as block producers
 
 Host | Type | Ipaddress | Port|
 -----|-------|----|----|
