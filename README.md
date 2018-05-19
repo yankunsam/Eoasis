@@ -110,4 +110,4 @@ python main.py issuetoken
 <img alt="README-Screen Shot 2018-05-19 at 9.53.00 AM.png" src="assets/README-Screen Shot 2018-05-19 at 9.53.00 AM.png" width="" height="" >
 
 
-*** Now, You can have a check that the bp as your voting. Sorry for the only voter in this example instance ***
+***Now, You can have a check that the bp as your voting. Sorry for the only voter in this example instance***
