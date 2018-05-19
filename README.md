@@ -1,12 +1,26 @@
 # Eoasis
 **Infrastructure of blockchain.Now we just support _EOS_.**
+
+# Example Instance
+#### **Here we run 30 bp as containers **
+Host | Type |Ipaddress| Port
+-----|-------
+eos0| BIOS |103.235.232.27| 9876
+eos1| BP Host| 103.235.232.21| 9700~9714
+eos2| BP Host | 103.235.232.43| 9700~9714
 # EOS BIOS Node
+*You need configure the "datadir" and "configdir" in config.ini* before execute below steps.
 ```
 python setp2paddress.py
 python main.py startbios
 python main.py createwallet
 python main.py importbiosprivatekey
 ```
+
+You can check the output of nodeos like this:
+
+<img alt="README-001.png" src="assets/README-001.png" width="" height="" >
+
 # Block Producer Node
 ```
 python setp2paddress.py
