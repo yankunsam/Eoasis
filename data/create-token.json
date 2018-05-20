@@ -1,6 +1,6 @@
 {
   "issuer": "eosio.token",
-  "maximum_supply": "1000000000.0000 EOS",
+  "maximum_supply": "1000000000.0000 SYS",
   "can_freeze": false,
   "can_recall": false,
   "can_whitelist": false

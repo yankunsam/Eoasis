@@ -1,7 +1,7 @@
 rm voters.conf
 for i in `seq 1 1`
 do
-    bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 4 | head -n 1)
+    bp=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 12 | head -n 1)
     command=$(cleos create key)
     privatekey=$(echo $command | awk '{print $3}')
     echo "Privatekey:" $privatekey
