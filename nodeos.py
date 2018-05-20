@@ -8,13 +8,6 @@ import os
 from pathlib import Path
 
 
-# year = ""
-# month = ""
-# day = ""
-# hour = ""
-# minute = ""
-
-
 class Nodeos:
     __conf = {
     "initial_key": "",
