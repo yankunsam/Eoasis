@@ -20,7 +20,7 @@ for conffile in ["voters.conf"]:
             accountname = line.split(':')[0]
             config['voteproducer']['voter'] = accountname
             config['voteproducer']['account'] = accountname
-            config['voteproducer']['producers'] = ','.join(bpcanidatelist[23:-1])
+            config['voteproducer']['producers'] = ','.join(bpcanidatelist[5:26])
             cfgfile = open(configfile,'w')
             config.write(cfgfile)
             cfgfile.close()
