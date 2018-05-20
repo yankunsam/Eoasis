@@ -1,3 +1,4 @@
 accounts.conf
 setprods.json
 __pycache__/
+*.pyc
