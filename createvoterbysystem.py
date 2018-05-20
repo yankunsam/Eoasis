@@ -14,7 +14,7 @@ for conffile in ["voters.conf"]:
             publickey = line.split(':')[1].strip()
             #"eosio,voter1,EOS4zz6rh5Uag11ZcAy4Nap7xvQCTiSC1qZSCEcfQ8GRizFH3XJ2q,
             #EOS4zz6rh5Uag11ZcAy4Nap7xvQCTiSC1qZSCEcfQ8GRizFH3XJ2q,
-            #--buy-ram-bytes,1000,--stake-net,10 EOS,--stake-cpu,10 EOS"
+            #--buy-ram-bytes,1000,--stake-net,10 SYS,--stake-cpu,10 SYS"
             tmp = "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s" % ("eosio",accountname,publickey,publickey,"--buy-ram-bytes"
             ,"1000","--stake-net","10 SYS","--stake-cpu","10 SYS")
             voters.append(tmp)
