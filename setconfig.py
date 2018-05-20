@@ -15,6 +15,7 @@ config['nodeos']['privatekey'] = keylist[0]
 config['nodeos']['publickey'] = keylist[1]
 config['regproducer']['account'] = accountname
 config['regproducer']['url'] = "%s%s%s" %("www.",accountname,".com")
+config['regproducer']['location'] = 1
 config['delegatebw']['account'] = accountname
 config['delegatebw']['from'] = accountname
 config['delegatebw']['receiver'] = accountname

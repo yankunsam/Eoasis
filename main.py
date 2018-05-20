@@ -155,6 +155,7 @@ def regproducer(config):
     data['producer'] = config['regproducer']['account']
     data['producer_key'] = config['nodeos']['publickey']
     data['url'] = config['regproducer']['url']
+    data['location'] = config['regproducer']['location']
     data_tmp = json.dumps(data)
     cleosinstance.pushaction(config['regproducer']['contract'],config['regproducer']['action'],
     data_tmp,config['regproducer']['account'],config['regproducer']['permission'])
