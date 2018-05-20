@@ -60,7 +60,7 @@ class Cleos:
         data = {}
         data['from'] = sender
         data['to'] = recipient
-        data['quantity'] = "%s %s" %(amount,"EOS")
+        data['quantity'] = "%s %s" %(amount,"SYS")
         data['memo'] = "transfer from %s to %s" % (sender,recipient)
         data_json = json.dumps(data)
         subprocess.run(self.pushactioncmdlist + ["eosio.token","transfer",data_json,"-p","%s@%s" % (sender,"active")])
