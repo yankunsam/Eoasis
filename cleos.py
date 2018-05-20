@@ -67,6 +67,6 @@ class Cleos:
 
     def createaccountbysystem(self,arglist):
         #cleos system newaccount eosio voter4 EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk
-        #EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk  --buy-ram-bytes 1000 --stake-net "10 EOS"  --stake-cpu "10 EOS"
+        #EOS6MNykmdcqD8emsFWZo5nWH7baBpckcpWiAVY7NxaVEJXFijsLk  --buy-ram-bytes 1000 --stake-net "10 SYS"  --stake-cpu "10 SYS"
         print((arglist))
         subprocess.run(self.createaccountbysystemlist + arglist)

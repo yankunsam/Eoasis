@@ -9,9 +9,9 @@ RUN mkdir -p /opt/contracts/eosio.bios
 RUN mkdir -p /opt/contracts/eosio.system
 RUN mkdir -p /opt/contracts/eosio.token
 RUN mkdir /root/Eoasis
-COPY nodeos /usr/local/bin/nodeos
-COPY cleos /usr/local/bin/cleos
-COPY keosd /usr/local/bin/keosd
+COPY bin/nodeos /usr/local/bin/nodeos
+COPY bin/cleos /usr/local/bin/cleos
+COPY bin/keosd /usr/local/bin/keosd
 COPY contracts/eosio.bios/eosio.bios.wast /root/contracts/eosio.bios/eosio.bios.wast
 COPY contracts/eosio.bios/eosio.bios.abi /root/contracts/eosio.bios/eosio.bios.abi
 COPY contracts/eosio.system/eosio.system.wast /root/contracts/eosio.system/eosio.system.wast
