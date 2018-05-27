@@ -11,6 +11,7 @@
  (type $FUNCSIG$iii (func (param i32 i32) (result i32)))
  (type $FUNCSIG$iiii (func (param i32 i32 i32) (result i32)))
  (type $FUNCSIG$vj (func (param i64)))
+ (type $FUNCSIG$jii (func (param i32 i32) (result i64)))
  (type $FUNCSIG$vjjjj (func (param i64 i64 i64 i64)))
  (type $FUNCSIG$vji (func (param i64 i32)))
  (import "env" "abort" (func $abort))
@@ -22,8 +23,8 @@
  (import "env" "read_action_data" (func $read_action_data (param i32 i32) (result i32)))
  (import "env" "require_auth" (func $require_auth (param i64)))
  (import "env" "require_auth2" (func $require_auth2 (param i64 i64)))
- (import "env" "set_active_producers" (func $set_active_producers (param i32 i32) (result i32)))
  (import "env" "set_privileged" (func $set_privileged (param i64 i32)))
+ (import "env" "set_proposed_producers" (func $set_proposed_producers (param i32 i32) (result i64)))
  (import "env" "set_resource_limits" (func $set_resource_limits (param i64 i64 i64 i64)))
  (table 6 6 anyfunc)
  (elem (i32.const 0) $__wasm_nullptr $_ZN5eosio4bios7setprivEyh $_ZN5eosio4bios10setalimitsEyyyy $_ZN5eosio4bios10setglimitsEyyy $_ZN5eosio4bios8setprodsENSt3__16vectorINS_12producer_keyENS1_9allocatorIS3_EEEE $_ZN5eosio4bios7reqauthEy)
@@ -1461,7 +1462,7 @@
    )
   )
   (drop
-   (call $set_active_producers
+   (call $set_proposed_producers
     (get_local $2)
     (get_local $0)
    )
