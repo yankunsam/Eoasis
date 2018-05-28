@@ -198,10 +198,12 @@ def createsystemaccount(config,cleosinstance):
     creator = "eosio"
     for name in systemaccounts:
         name = config['systemaccount'][name].split(',')[0]
-        ownerkey = config['systemaccount'][name].split(',')[1]
-        activekey = config['systemaccount'][name].split(',')[2]
+        privatekey = config['systemaccount'][name].split(',')[1]
+        ownerkey = config['systemaccount'][name].split(',')[2]
+        activekey = config['systemaccount'][name].split(',')[3]
         print(name,ownerkey,activekey)
-        #cleosinstance.createAccount(creator,name,ownerkey,activekey)
+        cleosinstance.importPrivatekey(privatekey)
+        cleosinstance.createAccount(creator,name,ownerkey,activekey)
 
 
 

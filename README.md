@@ -16,6 +16,7 @@ eos2| BP Host | 103.235.232.43| 9700~9714
 ```
 python setp2paddress.py
 python main.py startbios
+python main.py createsystemaccount
 python main.py createwallet
 python main.py importbiosprivatekey
 ```
