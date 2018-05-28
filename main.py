@@ -200,7 +200,7 @@ def createsystemaccount(config,cleosinstance):
         name = config['systemaccount'][name].split(',')[0]
         privatekey = config['systemaccount'][name].split(',')[1]
         ownerkey = config['systemaccount'][name].split(',')[2]
-        activekey = config['systemaccount'][name].split(',')[3]
+        activekey = config['systemaccount'][name].split(',')[2]
         print(name,ownerkey,activekey)
         cleosinstance.importPrivatekey(privatekey)
         cleosinstance.createAccount(creator,name,ownerkey,activekey)
