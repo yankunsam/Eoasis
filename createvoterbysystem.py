@@ -15,7 +15,7 @@ for conffile in ["voters.conf"]:
             #"eosio,voter1,EOS4zz6rh5Uag11ZcAy4Nap7xvQCTiSC1qZSCEcfQ8GRizFH3XJ2q,
             #EOS4zz6rh5Uag11ZcAy4Nap7xvQCTiSC1qZSCEcfQ8GRizFH3XJ2q,
             #--buy-ram-bytes,1000,--stake-net,10 SYS,--stake-cpu,10 SYS"
-            tmp = "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s" % ("eosio",accountname,publickey,publickey,"--buy-ram-bytes"
+            tmp = "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s" % ("eosio.token",accountname,publickey,publickey,"--buy-ram-bytes"
             ,"1000","--stake-net","10 SYS","--stake-cpu","10 SYS")
             voters.append(tmp)
     voters = ';'.join(voters)
