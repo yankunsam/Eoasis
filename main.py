@@ -192,6 +192,18 @@ def voteproducer(config,cleosinstance):
     print(data)
     cleosinstance.pushaction(config['voteproducer']['contract'],config['voteproducer']['action'],json.dumps(data),config['voteproducer']['account'],config['voteproducer']['permission'])
 
+def createsystemaccount(config,cleosinstance):
+    #createAccount(self,creator,accountname,ownerkey,activekey):
+    systemaccounts = ["eosio.bpay","eosio.msig","eosio.names","eosio.ram","eosio.ramfee","eosio.saving","eosio.stake","eosio.vpay"]
+    creator = "eosio"
+    for name in systemaccounts:
+        name = config['systemaccount'][name].split(',')[0]
+        ownerkey = config['systemaccount'][name].split(',')[1]
+        activekey = config['systemaccount'][name].split(',')[2]
+        print(name,ownerkey,activekey)
+        #cleosinstance.createAccount(creator,name,ownerkey,activekey)
+
+
 
 
 def main():
@@ -201,7 +213,7 @@ def main():
     'setprods','setcontract','pushaction','createwallet',
     'importbiosprivatekey','startnode','setprods',
     'setbioscontract','setsystemcontract','settokencontract','createtoken','issuetoken','getbalance',
-    'createkey','importbpprivatekey','currencytransfer','regproducer','delegatebw','createaccountbysystem','voteproducer'])
+    'createkey','importbpprivatekey','currencytransfer','regproducer','delegatebw','createaccountbysystem','voteproducer','createsystemaccount'])
     #parse.add_argument("--createbpaccount",type=int,)
     args = parser.parse_args()
     print(args)
@@ -285,6 +297,9 @@ def main():
     elif args.command == "voteproducer":
         print(args.command)
         voteproducer(config,cleosinstance)
+    elif args.command == "createsystemaccount":
+        print(args.command)
+        createsystemaccount(config,cleosinstance)
 
     #test
     #test()
