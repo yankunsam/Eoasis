@@ -79,7 +79,7 @@ class Nodeos:
         "--plugin","eosio::wallet_api_plugin"]
         with daemon.DaemonContext(stdout=log,stderr=log):
             if stale is 0:
-                nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000"] + p2paddresstemp + pluginlist
+                nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000"，"--genesis-json","%s%s" % (self.configdir,"genesis.json")] + p2paddresstemp + pluginlist
             else:
-                nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000","-e"] + p2paddresstemp + pluginlist
+                nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000","--genesis-json","%s%s" % (self.configdir,"genesis.json"),"-e"] + p2paddresstemp + pluginlist
             subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
