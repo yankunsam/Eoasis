@@ -5,7 +5,7 @@ privatekey = "5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"
 class Cleos:
     setcontractcmdlist = ["cleos","set","contract"]
     createwalletcmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","wallet","create"]
-    importprivatekeycmdlist = ["cleos","wallet","import"]
+    importprivatekeycmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888",,"wallet","import"]
     createkeycmdlist = ["cleos","create","key"]
     createaccountcmdlist = ["cleos","create","account"]
     pushactioncmdlist = ["cleos","push","action"]
