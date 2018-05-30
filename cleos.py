@@ -3,15 +3,15 @@ import json
 
 privatekey = "5JKesiwGnAWW6G4VVtobNbY1HCEBZeHeXRn6Dt3JC2ySn9MGib5"
 class Cleos:
-    setcontractcmdlist = ["cleos","set","contract"]
+    setcontractcmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","set","contract"]
     createwalletcmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","wallet","create"]
     importprivatekeycmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","wallet","import"]
-    createkeycmdlist = ["cleos","create","key"]
-    createaccountcmdlist = ["cleos","create","account"]
-    pushactioncmdlist = ["cleos","push","action"]
-    getbalancecmdlist = ['cleos','get','currency','balance']
-    currencytransfercmdlist = ['cleos','transfer']
-    createaccountbysystemlist = ['cleos', 'system', 'newaccount']
+    createkeycmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","create","key"]
+    createaccountcmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","create","account"]
+    pushactioncmdlist = ["cleos","--wallet-url", "http://127.0.0.1:8888","push","action"]
+    getbalancecmdlist = ['cleos',"--wallet-url", "http://127.0.0.1:8888",'get','currency','balance']
+    currencytransfercmdlist = ['cleos',"--wallet-url", "http://127.0.0.1:8888",'transfer']
+    createaccountbysystemlist = ['cleos', "--wallet-url", "http://127.0.0.1:8888",'system', 'newaccount']
     def __init__(self,account):
         self.account = account
 
