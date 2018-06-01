@@ -27,7 +27,7 @@
  (import "env" "set_proposed_producers" (func $set_proposed_producers (param i32 i32) (result i64)))
  (import "env" "set_resource_limits" (func $set_resource_limits (param i64 i64 i64 i64)))
  (table 6 6 anyfunc)
- (elem (i32.const 0) $__wasm_nullptr $_ZN5eosio4bios7setprivEyh $_ZN5eosio4bios10setalimitsEyyyy $_ZN5eosio4bios10setglimitsEyyy $_ZN5eosio4bios8setprodsENSt3__16vectorINS_12producer_keyENS1_9allocatorIS3_EEEE $_ZN5eosio4bios7reqauthEy)
+ (elem (i32.const 0) $__wasm_nullptr $_ZN5eosio4bios7setprivEyh $_ZN5eosio4bios10setalimitsEyxxx $_ZN5eosio4bios10setglimitsEyyy $_ZN5eosio4bios8setprodsENSt3__16vectorINS_12producer_keyENS1_9allocatorIS3_EEEE $_ZN5eosio4bios7reqauthEy)
  (memory $0 1)
  (data (i32.const 4) "\c0I\00\00")
  (data (i32.const 16) "onerror\00")
@@ -630,7 +630,7 @@
        )
       )
       (drop
-       (call $_ZN5eosio14execute_actionINS_4biosES1_JyyyyEEEbPT_MT0_FvDpT1_E
+       (call $_ZN5eosio14execute_actionINS_4biosES1_JyxxxEEEbPT_MT0_FvDpT1_E
         (i32.add
          (get_local $9)
          (i32.const 88)
@@ -940,7 +940,7 @@
   )
   (i32.const 1)
  )
- (func $_ZN5eosio4bios10setalimitsEyyyy (type $FUNCSIG$vijjjj) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
+ (func $_ZN5eosio4bios10setalimitsEyxxx (type $FUNCSIG$vijjjj) (param $0 i32) (param $1 i64) (param $2 i64) (param $3 i64) (param $4 i64)
   (call $require_auth
    (i64.load
     (get_local $0)
@@ -953,7 +953,7 @@
    (get_local $4)
   )
  )
- (func $_ZN5eosio14execute_actionINS_4biosES1_JyyyyEEEbPT_MT0_FvDpT1_E (param $0 i32) (param $1 i32) (result i32)
+ (func $_ZN5eosio14execute_actionINS_4biosES1_JyxxxEEEbPT_MT0_FvDpT1_E (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i64)
@@ -1081,7 +1081,7 @@
    (get_local $9)
    (get_local $9)
   )
-  (call $_ZN5boost6fusion6detail17for_each_unrolledILi4EE4callINS0_18std_tuple_iteratorINSt3__15tupleIJyyyyEEELi0EEEZN5eosiorsINSA_10datastreamIPKcEEJyyyyEEERT_SH_RNS7_IJDpT0_EEEEUlSH_E_EEvRKSG_RKT0_
+  (call $_ZN5boost6fusion6detail17for_each_unrolledILi4EE4callINS0_18std_tuple_iteratorINSt3__15tupleIJyxxxEEELi0EEEZN5eosiorsINSA_10datastreamIPKcEEJyxxxEEERT_SH_RNS7_IJDpT0_EEEEUlSH_E_EEvRKSG_RKT0_
    (i32.add
     (get_local $9)
     (i32.const 56)
@@ -1429,8 +1429,10 @@
   (local $2 i32)
   (local $3 i32)
   (set_local $3
-   (i32.load offset=4
-    (i32.const 0)
+   (tee_local $2
+    (i32.load offset=4
+     (i32.const 0)
+    )
    )
   )
   (call $require_auth
@@ -1438,19 +1440,35 @@
     (get_local $0)
    )
   )
-  (i32.store offset=4
-   (i32.const 0)
-   (tee_local $2
-    (i32.sub
-     (get_local $3)
-     (i32.and
-      (i32.add
-       (tee_local $0
-        (call $action_data_size)
-       )
-       (i32.const 15)
+  (block $label$0
+   (block $label$1
+    (br_if $label$1
+     (i32.lt_u
+      (tee_local $0
+       (call $action_data_size)
       )
-      (i32.const -16)
+      (i32.const 513)
+     )
+    )
+    (set_local $2
+     (call $malloc
+      (get_local $0)
+     )
+    )
+    (br $label$0)
+   )
+   (i32.store offset=4
+    (i32.const 0)
+    (tee_local $2
+     (i32.sub
+      (get_local $2)
+      (i32.and
+       (i32.add
+        (get_local $0)
+        (i32.const 15)
+       )
+       (i32.const -16)
+      )
      )
     )
    )
@@ -2620,7 +2638,7 @@
    (return)
   )
  )
- (func $_ZN5boost6fusion6detail17for_each_unrolledILi4EE4callINS0_18std_tuple_iteratorINSt3__15tupleIJyyyyEEELi0EEEZN5eosiorsINSA_10datastreamIPKcEEJyyyyEEERT_SH_RNS7_IJDpT0_EEEEUlSH_E_EEvRKSG_RKT0_ (param $0 i32) (param $1 i32)
+ (func $_ZN5boost6fusion6detail17for_each_unrolledILi4EE4callINS0_18std_tuple_iteratorINSt3__15tupleIJyxxxEEELi0EEEZN5eosiorsINSA_10datastreamIPKcEEJyxxxEEERT_SH_RNS7_IJDpT0_EEEEUlSH_E_EEvRKSG_RKT0_ (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (set_local $3
