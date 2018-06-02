@@ -46,7 +46,7 @@ class Nodeos:
 
     def nodeosRun(self,publickey,privatekey,producername,p2paddresslist,stale=0):
         #parameter check for ***ALL***
-        privatekey = "%s%s%s%s%s%s%s%s%s" % ("[",'"',publickey,'"',",",'"',privatekey,'"',"]")
+        privatekey = "%s%s%s" % (publickey,"=KEY:",privatekey)
         subprocess.run(["killall","nodeos","-q"])
         p2paddresstemp = []
         #Delete exist data directory
@@ -82,4 +82,4 @@ class Nodeos:
                 nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000","--genesis-json","%s%s" % (self.configdir,"/genesis.json")] + p2paddresstemp + pluginlist
             else:
                 nodeosCmdList = ["nodeos","--max-clients","0","--data-dir",self.datadir,"--config-dir",self.configdir,"--unlock-timeout","9000","--genesis-json","%s%s" % (self.configdir,"/genesis.json"),"-e"] + p2paddresstemp + pluginlist
-            subprocess.Popen(nodeosCmdList + ["--private-key",privatekey,"--producer-name",producername])
+            subprocess.Popen(nodeosCmdList + ["--signature-provider",privatekey,"--producer-name",producername])
