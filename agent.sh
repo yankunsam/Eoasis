@@ -31,7 +31,7 @@ fi
 #if [[ "$(docker images -q $image:$tag 2> /dev/null)" == "" ]]; then
   #docker pull samyankun/eostestnet:0.1
 #fi
-docker pull $image:$tag
+#docker pull $image:$tag
 if [ "$(docker ps -aq)" ]; then
   docker stop $(docker ps -aq)
 fi
@@ -40,7 +40,7 @@ if [ $? -ne 0 ]; then
   echo "Error occurs"
 fi
 #delete exist data
-rm -rf /opt/data/*
+rm -rf /opt/data/data-*
 let portbase=9700
 let portmax=9700+$1-1
 for port in `seq $portbase $portmax `
@@ -61,6 +61,9 @@ do
   docker exec $bp cp /root/Eoasis/configtemplate/genesis.json /opt/config/genesis.json
   docker exec $bp python /root/Eoasis/setconfig.py >> accounts.conf
   docker exec $bp python /root/Eoasis/main.py startnode
+  if [ $? -ne 0  ]; then
+      echo "startnode"
+  fi
   docker exec $bp python /root/Eoasis/main.py createwallet > /opt/data/data-$bp/wallet.password
   docker exec $bp python /root/Eoasis/main.py importbpprivatekey
 
