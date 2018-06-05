@@ -77734,7 +77734,7 @@
                        (get_local $0)
                       )
                      )
-                     (call $pop_arg
+                     (call $pop_arg.381
                       (i32.add
                        (get_local $39)
                        (i32.const 416)
@@ -84873,7 +84873,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 16)
@@ -84890,7 +84890,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 32)
@@ -84907,7 +84907,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 48)
@@ -84924,7 +84924,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 64)
@@ -84941,7 +84941,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 80)
@@ -84958,7 +84958,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 96)
@@ -84975,7 +84975,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 112)
@@ -84992,7 +84992,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 128)
@@ -85009,7 +85009,7 @@
                    )
                   )
                  )
-                 (call $pop_arg
+                 (call $pop_arg.381
                   (i32.add
                    (get_local $3)
                    (i32.const 144)
@@ -85327,7 +85327,7 @@
   )
   (get_local $6)
  )
- (func $pop_arg (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $pop_arg.381 (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i64)
   (local $4 i32)
   (i32.store offset=4
