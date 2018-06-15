@@ -2,3 +2,4 @@ accounts.conf
 setprods.json
 __pycache__/
 *.pyc
+config.ini
