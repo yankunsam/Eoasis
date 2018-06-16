@@ -1,4 +1,5 @@
 #!/bin/bash
+killall nodeos
 cd /Users/sam/Public/eos/contracts/fifa
 eosiocpp -g fifa.abi fifa.cpp
 cd /Users/sam/Public/eos

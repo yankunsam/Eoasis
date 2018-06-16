@@ -29,3 +29,4 @@ cleos --wallet-url  "http://127.0.0.1:8888" push action eosio updatescore '[{"id
 cleos --wallet-url "http://127.0.0.1:8888" push action eosio teamscore '[0]' -p eosio
 cleos --wallet-url "http://127.0.0.1:8888" push action eosio teamsort '[0]' -p eosio
 cleos --wallet-url "http://127.0.0.1:8888" push action eosio  reward ./reward.json -p eosio
+cleos --wallet-url "http://127.0.0.1:8888" push action eosio stakesum ./stakesum.json -p eosio
