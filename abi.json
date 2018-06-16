@@ -1,0 +1,305 @@
+{
+  "version": "eosio::abi/1.0",
+  "types": [],
+  "structs": [{
+      "name": "gamelist",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint32"
+        },{
+          "name": "name",
+          "type": "string"
+        },{
+          "name": "rewardway",
+          "type": "uint16"
+        }
+      ]
+    },{
+      "name": "footballer",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "country",
+          "type": "string"
+        },{
+          "name": "name",
+          "type": "string"
+        },{
+          "name": "jersey_number",
+          "type": "uint64"
+        },{
+          "name": "price",
+          "type": "asset"
+        },{
+          "name": "score",
+          "type": "uint16"
+        }
+      ]
+    },{
+      "name": "team",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "owner",
+          "type": "name"
+        },{
+          "name": "banker",
+          "type": "name"
+        },{
+          "name": "players",
+          "type": "uint32[]"
+        },{
+          "name": "scoresum",
+          "type": "uint64"
+        },{
+          "name": "cost",
+          "type": "asset"
+        },{
+          "name": "stake",
+          "type": "asset"
+        },{
+          "name": "gameid",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "result",
+      "base": "",
+      "fields": [{
+          "name": "owner",
+          "type": "name"
+        },{
+          "name": "scoresum",
+          "type": "uint64"
+        },{
+          "name": "number",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "gameinfo",
+      "base": "",
+      "fields": [{
+          "name": "name",
+          "type": "string"
+        },{
+          "name": "rewardway",
+          "type": "uint16"
+        }
+      ]
+    },{
+      "name": "newgame",
+      "base": "",
+      "fields": [{
+          "name": "game",
+          "type": "gameinfo"
+        }
+      ]
+    },{
+      "name": "fbinfo",
+      "base": "",
+      "fields": [{
+          "name": "name",
+          "type": "string"
+        },{
+          "name": "country",
+          "type": "string"
+        },{
+          "name": "jersey_number",
+          "type": "uint8"
+        },{
+          "name": "price",
+          "type": "asset"
+        },{
+          "name": "score",
+          "type": "uint16"
+        }
+      ]
+    },{
+      "name": "newfber",
+      "base": "",
+      "fields": [{
+          "name": "item",
+          "type": "fbinfo"
+        }
+      ]
+    },{
+      "name": "newscore",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "score",
+          "type": "uint16"
+        }
+      ]
+    },{
+      "name": "updatescore",
+      "base": "",
+      "fields": [{
+          "name": "item",
+          "type": "newscore"
+        }
+      ]
+    },{
+      "name": "teaminfo",
+      "base": "",
+      "fields": [{
+          "name": "owner",
+          "type": "name"
+        },{
+          "name": "banker",
+          "type": "name"
+        },{
+          "name": "players",
+          "type": "uint32[]"
+        },{
+          "name": "scoresum",
+          "type": "uint64"
+        },{
+          "name": "cost",
+          "type": "asset"
+        },{
+          "name": "stake",
+          "type": "asset"
+        },{
+          "name": "gameid",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "newteam",
+      "base": "",
+      "fields": [{
+          "name": "team",
+          "type": "teaminfo"
+        }
+      ]
+    },{
+      "name": "calscore",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "teamscore",
+      "base": "",
+      "fields": [{
+          "name": "gameid",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "teamsort",
+      "base": "",
+      "fields": [{
+          "name": "gameid",
+          "type": "uint8"
+        }
+      ]
+    },{
+      "name": "reward",
+      "base": "",
+      "fields": [{
+          "name": "gameid",
+          "type": "uint8"
+        },{
+          "name": "bonus",
+          "type": "asset"
+        },{
+          "name": "number",
+          "type": "uint64"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "newgame",
+      "type": "newgame",
+      "ricardian_contract": ""
+    },{
+      "name": "newfber",
+      "type": "newfber",
+      "ricardian_contract": ""
+    },{
+      "name": "updatescore",
+      "type": "updatescore",
+      "ricardian_contract": ""
+    },{
+      "name": "newteam",
+      "type": "newteam",
+      "ricardian_contract": ""
+    },{
+      "name": "calscore",
+      "type": "calscore",
+      "ricardian_contract": ""
+    },{
+      "name": "teamscore",
+      "type": "teamscore",
+      "ricardian_contract": ""
+    },{
+      "name": "teamsort",
+      "type": "teamsort",
+      "ricardian_contract": ""
+    },{
+      "name": "reward",
+      "type": "reward",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "gamelist",
+      "index_type": "i64",
+      "key_names": [
+        "id",
+        "name"
+      ],
+      "key_types": [
+        "uint32",
+        "string"
+      ],
+      "type": "gamelist"
+    },{
+      "name": "footballer",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "footballer"
+    },{
+      "name": "team",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "team"
+    },{
+      "name": "result",
+      "index_type": "i64",
+      "key_names": [
+        "owner"
+      ],
+      "key_types": [
+        "name"
+      ],
+      "type": "result"
+    }
+  ],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}

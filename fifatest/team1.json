@@ -1,7 +1,7 @@
 [
 {
 "owner": "user1",
-"banker": "eosio.token"
+"banker": "eosio.token",
 "players":[0,1],
 "scoresum": 0,
 "cost": "0.0000 SYS",

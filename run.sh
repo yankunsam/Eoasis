@@ -1,4 +1,5 @@
 #!/bin/bash
+killall nodeos keosd
 python3 main.py startbios
 sleep 5
 python3 main.py createwallet > walletpassword

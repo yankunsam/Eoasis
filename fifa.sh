@@ -1,10 +1,8 @@
 #!/bin/bash
-killall nodeos
-killall keosd
 cd /Users/sam/Public/eos/contracts/fifa
 eosiocpp -g fifa.abi fifa.cpp
 cd /Users/sam/Public/eos
-./eosio_build.sh
+#./eosio_build.sh
 cd /Users/sam/Public/Eoasis
 ./run.sh
 cd /Users/sam/Public/eos/build/contracts
