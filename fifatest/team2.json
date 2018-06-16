@@ -1,0 +1,11 @@
+[
+{
+"owner": "user2",
+"banker": "eosio.token"
+"players":[0,2],
+"scoresum": 0,
+"cost": "0.0000 SYS",
+"stake": "50.0000 SYS",
+"gameid": 0
+}
+]
